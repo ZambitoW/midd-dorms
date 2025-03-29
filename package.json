@@ -4,7 +4,9 @@
   "private": true,
   "contributors": [
     "Danny Smith <dpsmith@middlebury.edu>",
-    "Moon Granda <mgranda@middlebury.edu>"
+    "Moon Granda <mgranda@middlebury.edu>",
+    "Jackson Stone <jston@middlebury.edu",
+    "William Zambito <wzambito@middlebury.edu"
   ],
   "scripts": {
     "dev": "next dev",
