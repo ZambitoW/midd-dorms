@@ -1,13 +1,15 @@
 {
-  "name": "project-skeleton",
+  "name": "project-camelshump",
   "version": "0.1.0",
+  "description": "MiddDorms - a site for Middlebury College students to view and post reviews about the Middlebury dorm buildings  ",
   "private": true,
   "contributors": [
     "Danny Smith <dpsmith@middlebury.edu>",
     "Moon Granda <mgranda@middlebury.edu>",
     "Jackson Stone <jston@middlebury.edu>",
     "William Zambito <wzambito@middlebury.edu>",
-    "Swikriti Kharel <skharel@middlebury.edu>"
+    "Swikriti Kharel <skharel@middlebury.edu>",
+    "Ashley Townsend <aatownsend@middlebury.edu>"
   ],
   "scripts": {
     "dev": "next dev",

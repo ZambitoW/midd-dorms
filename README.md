@@ -6,7 +6,7 @@
 
 ## Project Description
 
-MiddDorms is an online housing rating systems that allows current Middlebury College students to share their reviews of their housing experiences. It provides students with valuable information of dorm buildings and their room types to make more informed choices during room selection. MiddDorms allows students to browse through the different dorms and see their key ratings (noise, cleanliness, amenities) which might help them choose a dorm room more suited to their needs.
+MiddDorms is an online housing rating system that allows current Middlebury College students to share their reviews of their housing experiences. It provides students with valuable information of dorm buildings and their room types to make more informed choices during room selection. MiddDorms allows students to browse through the different dorms and see their key ratings (noise, cleanliness, amenities) which might help them choose a dorm room more suited to their needs.
 
 ## Project Link
 
