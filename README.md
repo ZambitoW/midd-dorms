@@ -1,6 +1,16 @@
 # Project Skeleton
 
-TODO: Implement CI badges, provide a link to the deployed version of your application, and provide a brief description of the application functionality.
+## Project Workflow Status Badge
+
+![workflow status](https://github.com/csci312a-s25/project-camelshump/actions/workflows/node.js.yml/badge.svg)
+
+## Project Description
+
+MiddDorms is an online housing rating systems that allows current Middlebury College students to share their reviews of their housing experiences. It provides students with valuable information of dorm buildings and their room types to make more informed choices during room selection. MiddDorms allows students to browse through the different dorms and see their key ratings (noise, cleanliness, amenities) which might help them choose a dorm room more suited to their needs.
+
+## Project Link
+
+https://camelshump.csci312.dev
 
 ## Creation
 
