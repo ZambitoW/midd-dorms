@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "firstName": "William",
+    "lastName": "Zambito ",
+    "email": "wzambito@middlebury.edu"
+  },
+  {
+    "id": 2,
+    "firstName": "Jackson",
+    "lastName": "Stone ",
+    "email": "jstone@middlebury.edu"
+  }
+]
