@@ -1,0 +1,18 @@
+[
+  {
+    "id": "gifford",
+    "name": "Gifford Hall",
+    "category": "sophomores",
+    "description": "Built in 1940, Gifford Hall is a sophomore residence hall that has 4- and 5-person suites in addition to singles that span accros 6 floors. Gifford is conveniently located near Proctor Dining Hall. The building also houses the Gamut Room, a student-run performance space situated in the basement, along with an outdoor amphitheater and a classroom.",
+    "roomTypes": ["single", "double", "suite"],
+    "amenities": ["lounges", "kitchen", "laundry", "elevator"],
+    "accessibility": ["wheelchair accessible", "elevator access"],
+    "proximity": {
+      "proctor": "1 min walk",
+      "ross": "4 min walk",
+      "atwater": "6 min walk",
+      "library": "6 min walk",
+      "athletics": "10 min walk"
+    }
+  }
+]
