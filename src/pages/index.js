@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import { useRouter } from "next/router";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -40,7 +42,12 @@ export default function Home() {
             </li>
             <li>Save and see your changes instantly.</li>
           </ol>
-
+          <button
+            className={styles.primary}
+            onClick={() => router.push("/user/ProfilePage")}
+          >
+            Go to Profile
+          </button>
           <div className={styles.ctas}>
             <a
               className={styles.primary}
