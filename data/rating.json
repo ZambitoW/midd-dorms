@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "student": "Student 1",
+    "room": "room 1",
+    "storage_space": 5,
+    "size": 5,
+    "noise": 5,
+    "dining_hall_proximity": 5,
+    "ac_proximity": 5,
+    "public_bathrooms": 5,
+    "public_kitchens": 5,
+    "elevators": 5,
+    "laundry": 5
+  },
+  {
+    "id": 2,
+    "student": "Student 2",
+    "room": "room 2",
+    "storage_space": 6,
+    "size": 6,
+    "noise": 6,
+    "dining_hall_proximity": 6,
+    "ac_proximity": 6,
+    "public_bathrooms": 6,
+    "public_kitchens": 6,
+    "elevators": 6,
+    "laundry": 6
+  }
+]
