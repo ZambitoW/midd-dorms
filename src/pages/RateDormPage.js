@@ -1,5 +1,5 @@
 //import {useState} from "react";
-import Reviewer from "./Reviewer";
+import Reviewer from "../components/Reviewer";
 
 export default function RateDormPage() {
   //  const dormOptions = [
