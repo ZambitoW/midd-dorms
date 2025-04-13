@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import styles from "./ProfilePage.module.css";
+import styles from "../../styles/ProfilePage.module.css";
 
 export default function ProfilePage() {
+  // Placeholder data to check
   const test = [
     {
       id: 1,
@@ -54,7 +55,7 @@ export default function ProfilePage() {
 
   function generateTable() {
     return (
-      <table border="1">
+      <table className={styles["review-table"]}>
         <thead>
           <tr>
             <th>Dorm</th>
@@ -103,7 +104,7 @@ export default function ProfilePage() {
             {classChange ? "Change Graduation Year" : "Submit"}
           </button>
         </div>
-        <h2> Past Rides </h2>
+        <h2> Past Reviews </h2>
         <div>{generateTable(pastReviews)}</div>
       </div>
     </div>

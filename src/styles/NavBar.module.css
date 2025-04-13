@@ -1,0 +1,69 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 24px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.logo_title {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo {
+  height: 32px;
+  width: 32px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333333;
+  transition: color 0.3s ease;
+}
+
+.title:hover {
+  color: #0070f3;
+}
+
+.about_profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.about_button {
+  background-color: transparent;
+  border: none;
+  font-size: 0.95rem;
+  color: #555555;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 4px 8px;
+}
+
+.about_button:hover {
+  color: #0070f3;
+}
+
+/* Review this not sure how to make it look better*/
+.profile {
+  height: 32px;
+  width: 32px;
+  background-color: #cccccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
