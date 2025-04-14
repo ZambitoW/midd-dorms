@@ -3,13 +3,14 @@ import { useState } from "react";
 import styles from "../../styles/ProfilePage.module.css";
 
 export default function ProfilePage() {
-  // Placeholder data to check
+  // Placeholder data for sprint 1, will be changed in future sprints
   const test = [
     {
       id: 1,
       Dorm: "Battell",
       RoomType: "Double",
       Rating: 4,
+      comment: "I really enjoyed living in this dorm",
       date: "2025-03-01",
     },
     {
@@ -17,25 +18,27 @@ export default function ProfilePage() {
       Dorm: "Atwater",
       RoomType: "Single",
       Rating: 5,
+      comment: "Cool dorm, but really loud ",
       date: "2025-02-20",
     },
   ];
 
-  const [firstName, setFirstName] = useState("Midd"); //Placeholder waiting for DB
-  const [lastName, setLastName] = useState("Dorms"); //Placeholder waiting for DB
-  const [classYear, setClassYear] = useState("2028"); //Placeholder waiting for DB
-  const [email] = useState("middDorms@middlebury.edu"); //Placeholder waiting for DB
+  // These are just placeholders, the states will depend on the userID, when we implement authentication
+  const [firstName, setFirstName] = useState("John");
+  const [lastName, setLastName] = useState("doe");
+  const [classYear, setClassYear] = useState("2028");
+  const [email] = useState("jdoe@middlebury.edu");
   const [pastReviews, setPastReviews] = useState(test);
 
   const [classChange, setClassChange] = useState(true);
 
   // PlaceHolder Code/Text
 
-  // Will need to fetch by userID
+  // Will need to fetch by userID when authentication is implemented
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch("Enter my URL");
+        const response = await fetch("Enter my URL"); //Api Call will be set up in next Sprint
 
         if (response.ok) {
           const data = await response.json();
@@ -61,6 +64,7 @@ export default function ProfilePage() {
             <th>Dorm</th>
             <th>Room Type</th>
             <th>Rating</th>
+            <th>Comment</th>
             <th>Date </th>
           </tr>
         </thead>
@@ -70,6 +74,7 @@ export default function ProfilePage() {
               <td>{review.Dorm}</td>
               <td>{review.RoomType}</td>
               <td>{review.Rating} </td>
+              <td>{review.comment}</td>
               <td>{review.date} </td>
             </tr>
           ))}
