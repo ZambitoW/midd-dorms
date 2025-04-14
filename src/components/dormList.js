@@ -7,17 +7,26 @@ export default function DormList({ dormFilter }) {
   const [dorms, setDorms] = useState([]);
 
   useEffect(() => {
-    fetch("/api/dorms")
-      .then((res) => res.json())
-      .then((data) => {
-        const filteredDorms = data.filter((dorm) => {
-          if (dormFilter === "first") return dorm.dorm_id === "battell";
-          if (dormFilter === "second") return dorm.dorm_id === "gifford";
-          if (dormFilter === "junior") return dorm.dorm_id === "forest"; // or another one later
-          return true; // fallback
-        });
-        setDorms(filteredDorms);
-      });
+    const fetchDorms = async () => {
+      try {
+        const response = await fetch("/api/dorms");
+        if (response.ok) {
+          const data = await response.json();
+          const filteredDorms = data.filter((dorm) => {
+            if (dormFilter === "first") return dorm.dorm_id === "battell";
+            if (dormFilter === "second") return dorm.dorm_id === "gifford";
+            if (dormFilter === "junior") return dorm.dorm_id === "forest"; // or another one later
+            return true; // fallback
+          });
+          setDorms(filteredDorms);
+        } else {
+          console.error("Failed to fetch dorms:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Error fetching dorms data:", error);
+      }
+    };
+    fetchDorms();
   }, [dormFilter]);
 
   return (
