@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./styles.css";
+import Image from "next/image";
+import styles from "@/styles/Home.module.css";
 
 const imageList = [
   "/websiteimages/gifftrash.jpg",
@@ -24,22 +25,27 @@ export default function ImageSlideshow() {
   };
 
   return (
-    <div className="slideshow-container" style={{ textAlign: "center" }}>
-      <img
-        src={imageList[index]}
-        alt="Slide"
-        style={{
-          width: "100%",
-          maxWidth: "1000px",
-          height: "auto",
-          borderRadius: "8px",
-          display: "block",
-          margin: "0 auto",
-        }}
-      />
+    <div className="slideshow-container" styles={{ textAlign: "center" }}>
       <div>
-        <button onClick={prevSlide}>Previous</button>
-        <button onClick={nextSlide}>Next</button>
+        <Image
+          src={imageList[index]}
+          alt="Slide"
+          width={500}
+          height={500}
+          style={{
+            width: "50%",
+            maxWidth: "500px",
+            height: "auto",
+            borderRadius: "8px",
+            display: "block",
+          }}
+        />
+        <button className={styles.secondary} onClick={prevSlide}>
+          ←
+        </button>
+        <button className={styles.secondary} onClick={nextSlide}>
+          →
+        </button>
       </div>
     </div>
   );
