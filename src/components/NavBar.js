@@ -20,7 +20,7 @@ export default function NavBar() {
 
       <div className={styles["about_profile"]}>
         <button
-          onClick={() => router.push("/ReviewWriter")}
+          onClick={() => router.push("/RateDormPage")}
           className={styles["about_button"]}
         >
           Write A Review
