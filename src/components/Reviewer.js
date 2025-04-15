@@ -8,6 +8,8 @@ of one and a space for entering additional comments.
 
 import { useState } from "react";
 import PropTypes from "prop-types";
+import styles from "@/styles/Reviewer.module.css";
+import { useRouter } from "next/router";
 
 export default function Reviewer({
   initialResponses = {},
@@ -46,9 +48,11 @@ export default function Reviewer({
     },
   ];
 
-  //dorm options and room types can be imported from where they're created, added these so it could run
+  const router = useRouter();
+
+  // These are placeholders for now we will add all dorms when we set up our API in next sprint
   const dormOptions = ["Gifford", "Battell"];
-  const roomTypes = ["Single", "Double"];
+  const roomTypes = ["Single", "Double", "Suites"];
 
   const [selectedDorm, setSelectedDorm] = useState("");
   const [selectedRoomType, setSelectedRoomType] = useState("");
@@ -64,51 +68,56 @@ export default function Reviewer({
   };
 
   const handleSubmit = () => {
-    // save data to users previous reviews
+    // save data to users previous reviews -> This will be done int the next sprint
+    router.push("/submission");
   };
 
   return (
-    <div style={{ maxHeight: "10vh" }}>
+    <div className={styles.overall}>
       <h1>Rate Your Dorm Experience</h1>
 
       {/* Dorm selector */}
-      <h2>Select Your Dorm:</h2>
-      <select
-        value={selectedDorm}
-        onChange={(e) => setSelectedDorm(e.target.value)}
-      >
-        <option value="">-- Choose a dorm --</option>
+      <div className={styles.question}>
+        <h2>Select Your Dorm:</h2>
+        <select
+          value={selectedDorm}
+          onChange={(e) => setSelectedDorm(e.target.value)}
+          className={styles.select}
+        >
+          <option value="">-- Choose a dorm --</option>
 
-        {dormOptions.map((dorm) => (
-          <option key={dorm} value={dorm}>
-            {dorm}
-          </option>
-        ))}
-      </select>
-
+          {dormOptions.map((dorm) => (
+            <option key={dorm} value={dorm}>
+              {dorm}
+            </option>
+          ))}
+        </select>
+      </div>
       {/* Room type selector */}
-      <h2>Select Your Room Type:</h2>
-      <select
-        value={selectedRoomType}
-        onChange={(e) => setSelectedRoomType(e.target.value)}
-      >
-        <option value="">-- Choose a room type --</option>
-        {roomTypes.map((type) => (
-          <option key={type} value={type}>
-            {type}
-          </option>
-        ))}
-      </select>
-
+      <div className={styles.question}>
+        <h2>Select Your Room Type:</h2>
+        <select
+          value={selectedRoomType}
+          onChange={(e) => setSelectedRoomType(e.target.value)}
+          className={styles.select}
+        >
+          <option value="">-- Choose a room type --</option>
+          {roomTypes.map((type) => (
+            <option key={type} value={type}>
+              {type}
+            </option>
+          ))}
+        </select>
+      </div>
       {questions.map((question) => (
-        <div key={question.id}>
+        <div key={question.id} className={styles.question}>
           <p>
             {question.prompt} (1 = {question.scale.low}, 5 ={" "}
             {question.scale.high})
           </p>
 
           {[1, 2, 3, 4, 5].map((num) => (
-            <label key={`${question.id}-${num}`}>
+            <label key={`${question.id}-${num}`} className={styles.radio}>
               <input
                 type="radio"
                 name={question.id}
@@ -123,19 +132,21 @@ export default function Reviewer({
       ))}
 
       {/* comment box */}
-      <div>
+      <div className={styles.question}>
         <p> Do you have any additional comments?</p>
         <textarea
           rows={4}
           placeholder="Type your thoughts here..."
           value={comment}
           onChange={(e) => setComment(e.target.value)}
+          className={styles.text}
         />
       </div>
 
       <button
         onClick={handleSubmit}
         disabled={!selectedDorm || !selectedRoomType}
+        className={styles.submitButton}
       >
         Submit{" "}
       </button>

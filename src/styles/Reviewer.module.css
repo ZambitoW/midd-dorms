@@ -1,0 +1,36 @@
+.overall {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.select {
+  padding: 10px;
+  width: 100%;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.choices {
+  margin-right: 10px;
+}
+
+.text {
+  width: 100%;
+  padding: 10px;
+}
+
+.submitButton {
+  padding: 10px 20px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.submitButton:disabled {
+  background-color: #ccc;
+}

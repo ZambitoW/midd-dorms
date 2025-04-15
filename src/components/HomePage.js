@@ -17,12 +17,24 @@ export default function HomeCreator() {
             height={200}
           />
           <div>
-            <p>
-              🏫 Did you know Battell is said to be turned into a museum, once
-              the new dorm opens? Giffords 5th floor lounge has amazing sunset
-              views! 🌲 Forest has personal sinks adjoining two single
-              rooms.{" "}
-            </p>
+            <div>
+              <h4> Fun Facts</h4>
+              <ul>
+                <li>
+                  🗽 Did you know Battell is said to be turned into a museum
+                  once the new dorm opens?
+                </li>
+                <li>
+                  🏡 Middlebury has over 60 housing buildings to accommodate
+                  students.
+                </li>
+                <li>
+                  🦁 Hepburn Hall, built in 1916, houses the newsroom for the
+                  student newspaper and was once adorned with hunting trophies,
+                  earning it the nickname &quot;Hepburn Zoo&quot;
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 

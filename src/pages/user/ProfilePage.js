@@ -63,7 +63,7 @@ export default function ProfilePage() {
           <tr>
             <th>Dorm</th>
             <th>Room Type</th>
-            <th>Rating</th>
+            <th>Overall Rating</th>
             <th>Comment</th>
             <th>Date </th>
           </tr>

@@ -164,7 +164,6 @@
   flex-shrink: 0;
 }
 
-/* Give a Card like structure to resident buttons */
 .cardGrid {
   display: flex;
   flex-wrap: wrap;
@@ -226,7 +225,6 @@
   background-color: #fafafa;
 }
 
-/* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .primary:hover {
     background: var(--button-primary-hover);

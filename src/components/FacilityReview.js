@@ -1,6 +1,7 @@
 import styles from "../styles/FacilityReview.module.css";
 import React from "react";
 
+//These are hardcoded for this sprint, they will be implements using the API in our next Sprint
 const facilityRatings = {
   Bathrooms: 5,
   Laundry: 3,
