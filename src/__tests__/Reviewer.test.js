@@ -1,6 +1,16 @@
 import { render, screen } from "@testing-library/react";
 import Reviewer from "@/components/Reviewer"; // Adjust the import path as necessary
 
+jest.mock("next/router", () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+    pathname: "/",
+    route: "/",
+    query: {},
+    asPath: "/",
+  }),
+}));
+
 describe("Reviewer", () => {
   test("Test if submit button is disable when first opening the page", () => {
     // Arrange
