@@ -2,73 +2,71 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  font-family: Arial, sans-serif;
-  max-width: 600px;
-  margin: 40px auto;
-  color: #202124;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  font-family: "Roboto", sans-serif;
+  color: #00356b; /* Middlebury blue text */
 }
 
 .left {
   flex: 2;
+  min-width: 300px;
+}
+
+.right {
+  flex: 1;
+  text-align: center;
+  min-width: 150px;
+  font-size: 1.2rem;
 }
 
 .ratingRow {
   display: flex;
   align-items: center;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .label {
-  width: 130px;
-  font-size: 14px;
-  color: #202124;
+  flex: 1;
+  font-weight: bold;
+  color: #00356b;
 }
 
 .barContainer {
-  position: relative;
-  flex: 1;
-  background-color: #e0e0e0;
+  flex: 3;
   height: 10px;
+  background-color: #dbe4ee; /* light blue-gray background */
   border-radius: 5px;
-  margin: 0 12px;
+  margin: 0 10px;
   overflow: hidden;
 }
 
 .barFill {
-  position: absolute;
-  top: 0;
-  left: 0;
   height: 100%;
-  background-color: #fbbc04;
-  border-radius: 5px 0 0 5px;
-  transition: width 0.6s ease;
+  background-color: #00356b; /* Middlebury blue fill */
+  transition: width 0.4s ease;
 }
 
 .score {
-  width: 40px;
+  width: 50px;
   text-align: right;
-  font-size: 13px;
-  color: #5f6368;
-}
-
-.right {
-  flex: 1;
-  text-align: right;
-  margin-left: 40px;
+  color: #00356b;
 }
 
 .average {
-  font-size: 40px;
-  font-weight: 500;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #00356b;
 }
 
 .stars {
-  color: #fbbc04;
-  font-size: 18px;
-  margin-top: -6px;
+  color: gold;
+  font-size: 1.5rem;
 }
 
 .reviewCount {
-  font-size: 13px;
-  color: #5f6368;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
 }
