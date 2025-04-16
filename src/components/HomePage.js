@@ -1,8 +1,21 @@
 import styles from "@/styles/Home.module.css";
 import DormList from "@/components/dormList";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import funFacts from "../../data/funFacts";
+
+function getRandomFacts(facts, count) {
+  const shuffled = [...facts].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+}
 
 export default function HomeCreator() {
+  const [randomFacts, setRandomFacts] = useState([]);
+
+  useEffect(() => {
+    const selectedFacts = getRandomFacts(funFacts, 3);
+    setRandomFacts(selectedFacts);
+  }, []);
   return (
     <>
       <main className={styles.main}>
@@ -18,21 +31,11 @@ export default function HomeCreator() {
           />
           <div>
             <div>
-              <h4> Fun Facts</h4>
+              <h4>Fun Facts</h4>
               <ul>
-                <li>
-                  🗽 Did you know Battell is said to be turned into a museum
-                  once the new dorm opens?
-                </li>
-                <li>
-                  🏡 Middlebury has over 60 housing buildings to accommodate
-                  students.
-                </li>
-                <li>
-                  🦁 Hepburn Hall, built in 1916, houses the newsroom for the
-                  student newspaper and was once adorned with hunting trophies,
-                  earning it the nickname &quot;Hepburn Zoo&quot;
-                </li>
+                {randomFacts.map((fact) => (
+                  <li key={fact}>{fact}</li>
+                ))}
               </ul>
             </div>
           </div>
