@@ -1,14 +1,13 @@
 exports.up = function (knex) {
   return knex.schema.createTable("Rating", (table) => {
     table.increments("id").primary();
-
     table.integer("userId").notNullable();
     table.string("buildingId").notNullable();
     table
       .foreign("userId")
       .references("id")
       .inTable("User")
-      .onDelete("CASCADE"); //probably going to have to use foreign key here
+      .onDelete("CASCADE");
     table
       .foreign("buildingId")
       .references("id")

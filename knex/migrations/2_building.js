@@ -4,9 +4,9 @@ exports.up = function (knex) {
     table.string("name");
     table.string("category"); // For what class
     table.text("description");
-    table.specificType("roomType", "text[]");
+    table.specificType("roomTypes", "text[]");
     table.specificType("amenities", "text[]");
-    table.specificType("accessibility", "text[]");
+    table.boolean("wheelchairAccessible");
     table.specificType("proximity", "jsonb");
   });
 };
