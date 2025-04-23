@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      knex:
-        specifier: ^3.1.0
-        version: 3.1.0(pg@8.14.1)(sqlite3@5.1.7)
       module-alias:
         specifier: ^2.2.3
         version: 2.2.3
@@ -69,6 +66,9 @@ importers:
       jest-extended:
         specifier: ^4.0.2
         version: 4.0.2(jest@29.7.0(@types/node@22.13.10))
+      knex:
+        specifier: ^3.1.0
+        version: 3.1.0(pg@8.14.1)(sqlite3@5.1.7)
       lint-staged:
         specifier: ^15.5.0
         version: 15.5.0

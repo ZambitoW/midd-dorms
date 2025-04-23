@@ -20,18 +20,21 @@ export default function handler(req, res) {
       name: "Gifford Hall",
       building_type: "Suites, Singles",
       residents: "Sophmores",
+      mapId: "511466",
     },
     battell: {
       dorm_id: "battell",
       name: "Battell",
       building_type: "Singles, Doubles",
       residents: "Freshman",
+      mapId: "511452",
     },
     forest: {
       dorm_id: "forest",
       name: "Forest",
       building_type: "Sink-mate singles",
       residents: "Seniors/Febs",
+      mapId: "571679",
     },
   };
 

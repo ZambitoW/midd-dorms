@@ -46,6 +46,11 @@ export default function DormLayout({ dorm }) {
     ],
   };
 
+  // battell url: https://map.middlebury.edu/?id=229#!ce/50703?ct/68812,68815,68816?m/511452?s/
+  // giff url: https://map.middlebury.edu/?id=229#!ce/50703?ct/68812,68815,68816?m/511466?s/
+
+  // giff mapId: 511466
+  // battell mapId: 511452
   if (!dorm) return <p>Loading...</p>;
   return (
     <div className={styles.page}>
@@ -99,6 +104,32 @@ export default function DormLayout({ dorm }) {
             </ul>
           </div>
         </section>
+        {/* Map Section */}
+        <section className={styles.dormSection}>
+          <h2 className={styles.dormHeading} style={{ textAlign: "center" }}>
+            Location on Campus
+          </h2>
+          <div style={{ width: "100%", height: "500px", marginBottom: "20px" }}>
+            <iframe
+              src={
+                dorm.mapId
+                  ? `https://map.middlebury.edu/?id=229#!ce/50703?ct/68812,68815,68816?m/${dorm.mapId}?s/`
+                  : `https://map.middlebury.edu/?id=229`
+              }
+              width="100%"
+              height="100%"
+              style={{ border: "none" }}
+              loading="lazy"
+              allowFullScreen
+              title="Middlebury Dorm Map"
+            />
+          </div>
+          {!dorm.mapId && (
+            <p style={{ textAlign: "center", fontStyle: "italic" }}>
+              Specific map location not yet linked to this dorm
+            </p>
+          )}
+        </section>
       </main>
     </div>
   );
@@ -109,5 +140,6 @@ DormLayout.propTypes = {
     name: PropTypes.string.isRequired,
     building_type: PropTypes.string.isRequired,
     residents: PropTypes.string.isRequired,
+    mapId: PropTypes.string,
   }).isRequired,
 };

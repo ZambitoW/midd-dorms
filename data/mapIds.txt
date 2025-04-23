@@ -1,0 +1,22 @@
+Map IDs:
+
+Battell: 511452
+Allen: 511450
+Stewart: 511500
+Hepburn: 511470
+----------
+Gifford: 511466
+Hadley: 511467
+Coffrin: 511463
+Pearsons: 511491
+Milliken: 511486
+----------
+Forest: 571679
+LaForce: 511479
+Atwater: 511451
+Lang: 511480
+Kelly: 511476
+Painter: 511488
+Starr: 511499
+Ross Tower: 511496
+Voter: 511503
