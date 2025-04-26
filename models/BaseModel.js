@@ -1,6 +1,6 @@
 import { Model, AjvValidator } from "objection";
 import addFormats from "ajv-formats";
-import { knex } from "../../knex/knex";
+import { knex } from "../knex/knex.js";
 
 class BaseModel extends Model {
   static createValidator() {

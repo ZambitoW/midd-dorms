@@ -1,10 +1,11 @@
 [
   {
-    "id": 1,
+    "id": 100,
     "userId": 1,
     "buildingId": "gifford",
     "room_type": "single",
     "storage_space": 5,
+    "clean": 5,
     "size": 5,
     "noise": 5,
     "dining_hall_proximity": 5,
@@ -12,14 +13,16 @@
     "public_bathrooms": 5,
     "public_kitchens": 5,
     "elevators": 5,
-    "laundry": 5
+    "laundry": 5,
+    "comment": "Solid"
   },
   {
-    "id": 2,
+    "id": 101,
     "userId": 2,
     "buildingId": "battell",
     "room_type": "double",
     "storage_space": 4,
+    "clean": 4,
     "size": 4,
     "noise": 4,
     "dining_hall_proximity": 4,
@@ -27,6 +30,7 @@
     "public_bathrooms": 4,
     "public_kitchens": 4,
     "elevators": 4,
-    "laundry": 4
+    "laundry": 4,
+    "comment": "Moldy"
   }
 ]

@@ -18,6 +18,7 @@ export default class User extends BaseModel {
         firstName: { type: "string" },
         lastName: { type: "string" },
         email: { type: "string" }, //Dont believe objection recognizes text as a type
+        classYear: { type: "integer" },
       },
     };
   }
