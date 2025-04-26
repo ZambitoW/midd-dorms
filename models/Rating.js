@@ -11,22 +11,25 @@ export default class Rating extends BaseModel {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["room", "student"],
+      required: [],
 
       properties: {
         id: { type: "integer" },
         userId: { type: "integer" },
         buildingId: { type: "string" },
         room_type: { type: "string" },
-        storage_space: { type: "integer", minimum: 1, maximum: 10 },
-        size: { type: "integer", minimum: 1, maximum: 10 },
-        noise: { type: "integer", minimum: 1, maximum: 10 },
-        dining_hall_proximity: { type: "integer", minimum: 1, maximum: 10 },
-        ac_proximity: { type: "integer", minimum: 1, maximum: 10 },
-        public_bathrooms: { type: "integer", minimum: 1, maximum: 10 },
-        public_kitchens: { type: "integer", minimum: 1, maximum: 10 },
-        elevators: { type: "integer", minimum: 1, maximum: 10 },
-        laundry: { type: "integer", minimum: 1, maximum: 10 },
+        storage_space: { type: "integer", minimum: 1, maximum: 5 },
+        clean: { type: "integer", minimum: 1, maximum: 5 },
+        size: { type: "integer", minimum: 1, maximum: 5 },
+        noise: { type: "integer", minimum: 1, maximum: 5 },
+        dining_hall_proximity: { type: "integer", minimum: 1, maximum: 5 },
+        ac_proximity: { type: "integer", minimum: 1, maximum: 5 },
+        public_bathrooms: { type: "integer", minimum: 1, maximum: 5 },
+        public_kitchens: { type: "integer", minimum: 1, maximum: 5 },
+        elevators: { type: "integer", minimum: 1, maximum: 5 },
+        laundry: { type: "integer", minimum: 1, maximum: 5 },
+        comment: { type: "string" },
+        created_at: { type: "string", format: "date-time" },
       },
     };
   }

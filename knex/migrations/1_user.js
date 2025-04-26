@@ -5,7 +5,7 @@ exports.up = function (knex) {
     table.string("firstName");
     table.string("lastName");
     table.text("email");
-    // table.specificType("savedReviews", "integer[]");
+    table.integer("classYear");
   });
 };
 

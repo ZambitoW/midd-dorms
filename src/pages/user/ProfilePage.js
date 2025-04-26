@@ -1,36 +1,20 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import styles from "../../styles/ProfilePage.module.css";
+import ReviewTable from "@/components/ReviewTable";
 
 export default function ProfilePage() {
-  // Placeholder data for sprint 1, will be changed in future sprints
-  const test = [
-    {
-      id: 1,
-      Dorm: "Battell",
-      RoomType: "Double",
-      Rating: 4,
-      comment: "I really enjoyed living in this dorm",
-      date: "2025-03-01",
-    },
-    {
-      id: 2,
-      Dorm: "Atwater",
-      RoomType: "Single",
-      Rating: 5,
-      comment: "Cool dorm, but really loud ",
-      date: "2025-02-20",
-    },
-  ];
-
-  // These are just placeholders, the states will depend on the userID, when we implement authentication
-  const [firstName, setFirstName] = useState("John");
-  const [lastName, setLastName] = useState("doe");
-  const [classYear, setClassYear] = useState("2028");
-  const [email] = useState("jdoe@middlebury.edu");
-  const [pastReviews, setPastReviews] = useState(test);
+  const [userProfile, setUserProfile] = useState({
+    id: null,
+    firstName: "",
+    lastName: "",
+    email: "",
+    classYear: "",
+    pastReviews: [],
+  });
 
   const [classChange, setClassChange] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // PlaceHolder Code/Text
 
@@ -38,14 +22,14 @@ export default function ProfilePage() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch("Enter my URL"); //Api Call will be set up in next Sprint
+        const response = await fetch("/api/ProfilePage"); //Api Call will be set up in next Sprint
 
         if (response.ok) {
           const data = await response.json();
-          setFirstName(data.userInfo.firstName);
-          setLastName(data.userInfo.lastName);
-          setClassYear(data.userInfo.classYear);
-          setPastReviews(data.pastReviews);
+          setUserProfile({
+            ...data.userInfo,
+            pastReviews: data.pastReviews,
+          });
         } else {
           console.error("Error fetching profile data:", response.statusText);
         }
@@ -56,61 +40,76 @@ export default function ProfilePage() {
     fetchProfile();
   }, []);
 
-  function generateTable() {
-    return (
-      <table className={styles["review-table"]}>
-        <thead>
-          <tr>
-            <th>Dorm</th>
-            <th>Room Type</th>
-            <th>Overall Rating</th>
-            <th>Comment</th>
-            <th>Date </th>
-          </tr>
-        </thead>
-        <tbody>
-          {pastReviews.map((review) => (
-            <tr key={review.id}>
-              <td>{review.Dorm}</td>
-              <td>{review.RoomType}</td>
-              <td>{review.Rating} </td>
-              <td>{review.comment}</td>
-              <td>{review.date} </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    );
-  }
+  const handleClassYearChange = async () => {
+    const currentYear = new Date().getFullYear();
+    if (userProfile.classYear < currentYear) {
+      setErrorMessage("You must enter a valid Graduation Year!");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/ProfilePage", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: userProfile.id,
+          classYear: userProfile.classYear,
+        }),
+      });
+
+      if (response.ok) {
+        const updatedData = await response.json();
+        console.log("Class year updated successfully:", updatedData);
+        setClassChange(!classChange);
+        setErrorMessage("");
+      } else {
+        console.error("Error updating class year:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error making PUT request:", error);
+    }
+  };
 
   return (
     <div className={styles["profile-container"]}>
       <h1>Profile Page</h1>
       <div>
-        <h2>{`${firstName} ${lastName}`}</h2>
-        <p>{`Email: ${email}`}</p>
+        <h2>{`${userProfile.firstName} ${userProfile.lastName}`}</h2>
+        <p>{`Email: ${userProfile.email}`}</p>
         <div className={styles["graduation-year-section"]}>
           {classChange ? (
-            <span>{`Graduation Year: ${classYear}`}</span>
+            <span>{`Graduation Year: ${userProfile.classYear}`}</span>
           ) : (
             <input
               type="number"
-              value={classYear}
+              value={userProfile.classYear}
               placeholder="Enter your graduation year"
-              onChange={(e) => setClassYear(e.target.value)}
+              onChange={(e) =>
+                setUserProfile({
+                  ...userProfile,
+                  classYear: e.target.value,
+                })
+              }
             />
           )}
           <button
             className={styles.button}
             onClick={() => {
-              setClassChange(!classChange);
+              if (!classChange) {
+                handleClassYearChange();
+              } else {
+                setClassChange(!classChange);
+              }
             }}
           >
             {classChange ? "Change Graduation Year" : "Submit"}
           </button>
         </div>
-        <h2> Past Reviews </h2>
-        <div>{generateTable(pastReviews)}</div>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+        <h2>Past Reviews</h2>
+        <ReviewTable reviews={userProfile.pastReviews} />
       </div>
     </div>
   );
