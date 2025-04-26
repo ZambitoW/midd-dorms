@@ -46,6 +46,26 @@ export default function Reviewer({
       prompt: "How close was the nearest laundry?",
       scale: { low: "Very Far", high: "Very Close" },
     },
+    {
+      id: "public_bathrooms",
+      prompt: "Rate the quality of the public bathrooms in your dorm.",
+      scale: { low: "Bad quality", high: "Great quality" },
+    },
+    {
+      id: "public_kitchens",
+      prompt: "Rate the quality of the public kitchens in your dorm.",
+      scale: { low: "Bad quality", high: "Great quality" },
+    },
+    {
+      id: "ac_proximity",
+      prompt: "How close are you to the athletic center?",
+      scale: { low: "Very far", high: "Very close" },
+    },
+    {
+      id: "elevators",
+      prompt: "How many elevators are in your dorm and how reliable are they?",
+      scale: { low: "No elevators", high: "Many very reliable elevators" },
+    },
   ];
 
   const router = useRouter();
@@ -67,9 +87,30 @@ export default function Reviewer({
     }));
   };
 
-  const handleSubmit = () => {
-    // save data to users previous reviews -> This will be done int the next sprint
-    router.push("/submission");
+  const handleSubmit = async () => {
+    const reviewData = {
+      dorm: selectedDorm,
+      roomType: selectedRoomType,
+      responses,
+      comment,
+    };
+
+    console.log("Review Data:", reviewData);
+
+    const response = await fetch("/api/review", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reviewData),
+    });
+
+    if (response.ok) {
+      console.log(await response.json());
+      router.push("/submission");
+    } else {
+      console.error("Failed to submit review:", response.statusText);
+    }
   };
 
   return (
