@@ -8,7 +8,7 @@ exports.up = function (knex) {
     table.specificType("amenities", "text[]");
     table.boolean("wheelchairAccessible");
     table.specificType("proximity", "jsonb");
-    table.integer("mapID");
+    table.integer("mapId");
   });
 };
 
