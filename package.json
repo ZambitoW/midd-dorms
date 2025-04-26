@@ -12,12 +12,14 @@
     "Ashley Townsend <aatownsend@middlebury.edu>"
   ],
   "scripts": {
-    "dev": "next dev",
+    "dev": "node ./dev-runner.js next dev",
     "build": "next build",
     "start": "next start",
     "test": "jest",
     "lint": "eslint src",
-    "prepare": "node .husky/install.mjs"
+    "prepare": "node .husky/install.mjs",
+    "predev": "docker compose -f docker-compose.dev.yml up -d",
+    "postdev": "docker compose -f docker-compose.dev.yml down"
   },
   "dependencies": {
     "module-alias": "^2.2.3",
