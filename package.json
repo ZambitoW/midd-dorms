@@ -22,8 +22,11 @@
     "postdev": "docker compose -f docker-compose.dev.yml down"
   },
   "dependencies": {
+    "ajv-formats": "^3.0.1",
     "module-alias": "^2.2.3",
     "next": "15.1.7",
+    "next-connect": "^1.0.0",
+    "objection": "^3.1.5",
     "pg": "^8.14.1",
     "prop-types": "^15.8.1",
     "react": "18.3.1",
