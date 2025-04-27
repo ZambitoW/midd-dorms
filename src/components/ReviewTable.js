@@ -53,7 +53,7 @@ ReviewTable.propTypes = {
       id: PropTypes.number.isRequired,
       Dorm: PropTypes.string.isRequired,
       RoomType: PropTypes.string.isRequired,
-      Rating: PropTypes.number.isRequired,
+      Rating: PropTypes.string.isRequired,
       comment: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
     }),
