@@ -3,7 +3,6 @@
     "id": "gifford",
     "name": "Gifford Hall",
     "category": "sophomores",
-    "mapId": 511466,
     "description": "Built in 1940, Gifford Hall is a sophomore residence hall that has 4- and 5-person suites in addition to singles that span accros 6 floors. Gifford is conveniently located near Proctor Dining Hall. The building also houses the Gamut Room, a student-run performance space situated in the basement, along with an outdoor amphitheater and a classroom.",
     "roomTypes": ["single", "double", "suite"],
     "amenities": ["lounges", "kitchen", "laundry", "elevator"],
@@ -14,7 +13,8 @@
       "atwater": "6 min walk",
       "library": "6 min walk",
       "athletics": "10 min walk"
-    }
+    },
+    "mapId": 511466
   },
   {
     "id": "battell",
@@ -31,6 +31,7 @@
       "atwater": "2 min walk",
       "library": "2 min walk",
       "athletics": "10 min walk"
+
     }
   },
   {
@@ -151,5 +152,111 @@
       "library": "6 min walk",
       "athletics": "12 min walk"
     }
+
+    },
+    "mapId": 511452
+  },
+  {
+    "id": "atwater",
+    "name": "Atwater A and B Suites",
+    "category": "upper",
+    "description": "Atwater houses mostly seniors and some juniors. Atwater has suites with 4 singles, a common room and a kitchen. There are also a few singles outside of suites. Atwater also has a classroom and a laundry room on the bottom floor.",
+    "roomTypes": ["single", "suite"],
+    "amenities": ["lounges", "kitchen", "laundry", "elevator"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "8 min walk",
+      "ross": "5 min walk",
+      "atwater": "0 min walk",
+      "library": "5 min walk",
+      "athletics": "12 min walk"
+    },
+    "mapId": 511451
+  },
+  {
+    "id": "laForce",
+    "name": "LaForce",
+    "category": "upper",
+    "description": "La Force is part of the Ross building complex. It has suites with 4 singles, a common area, and a kitchen, and it has individual singles on the top floor.",
+    "roomTypes": ["single", "suite"],
+    "amenities": ["lounges", "kitchen", "elevator", "Dining Hall"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "3 min walk",
+      "ross": "0 min walk",
+      "atwater": "6 min walk",
+      "library": "8 min walk",
+      "athletics": "10 min walk"
+    },
+    "mapId": 511479
+  },
+  {
+    "id": "Lang",
+    "name": "Lang Hall",
+    "category": "upper",
+    "description": "Lang is part of the Ross building. It has suites and singles and normally houses juniors and seniors.",
+    "roomTypes": ["single", "suite"],
+    "amenities": ["lounges", "kitchen", "elevator", "Dining Hall", "Bike Room"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "5 min walk",
+      "ross": "0 min walk",
+      "atwater": "6 min walk",
+      "library": "8 min walk",
+      "athletics": "11 min walk"
+    },
+    "mapId": 511480
+  },
+  {
+    "id": "kelly",
+    "name": "Kelly Hall",
+    "category": "upper",
+    "description": "Kelly is part of the Ross building. It has suites and singles and normally houses juniors and seniors.",
+    "roomTypes": ["single", "suite"],
+    "amenities": ["lounges", "kitchen", "elevator", "Dining Hall", "Bike Room"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "5 min walk",
+      "ross": "0 min walk",
+      "atwater": "6 min walk",
+      "library": "8 min walk",
+      "athletics": "11 min walk"
+    },
+    "mapId": 511476
+  },
+  {
+    "id": "painter",
+    "name": "Painter Hall",
+    "category": "upper",
+    "description": "Painter is one of the oldest dorms on campus. Painter usually houses juniors, and it has singles and two-room doubles. There is a laundry room in the basement of Painter and a kitchen. ",
+    "roomTypes": ["single", "double"],
+    "amenities": ["laundry"],
+    "wheelchairAccessible": false,
+    "proximity": {
+      "proctor": "6 min walk",
+      "ross": "8 min walk",
+      "atwater": "8 min walk",
+      "library": "1 min walk",
+      "athletics": "10 min walk"
+    },
+    "mapId": 511488
+  },
+  {
+    "id": "Starr",
+    "name": "Starr Hall",
+    "category": "upper",
+    "description": "Starr Hall is one of the original dorms on campus. Starr is located centerally on campus on Old Chapel Road near the student center and Axinn Center. Starr has singles and two-room doubles and often houses juniors.",
+    "roomTypes": ["single", "double"],
+    "amenities": [],
+    "wheelchairAccessible": false,
+    "proximity": {
+      "proctor": "6 min walk",
+      "ross": "8 min walk",
+      "atwater": "8 min walk",
+      "library": "1 min walk",
+      "athletics": "10 min walk"
+    },
+    "mapId": 511499
+
   }
 ]
