@@ -1,5 +1,22 @@
+ 
 import { render, screen, fireEvent } from "@testing-library/react";
 import ProfilePage from "@/pages/user/ProfilePage";
+
+beforeEach(() => {
+  global.fetch = jest.fn().mockResolvedValue({
+    ok: true,
+    json: async () => ({
+      userInfo: {
+        id: 1,
+        firstName: "John",
+        lastName: "Doe",
+        email: "john.doe@example.com",
+        classYear: 2028,
+      },
+      pastReviews: [],
+    }),
+  });
+});
 
 describe("ProfilePage", () => {
   test("checks if the past reviews table is present", () => {
@@ -8,22 +25,24 @@ describe("ProfilePage", () => {
     expect(table).toBeInTheDocument();
   });
 
-  test("testing if the change graduation year button works ", () => {
+  test("checks if the change graduation year button works", async () => {
     render(<ProfilePage />);
-    // Arrange
-    const graduationYearText = screen.getByText(/Graduation Year: 2028/i);
+
+    const graduationYearText = await screen.findByText(
+      /Graduation Year: 2028/i,
+    );
     expect(graduationYearText).toBeInTheDocument();
-    // Act
+
     const button = screen.getByText(/Change Graduation Year/i);
     fireEvent.click(button);
-    // Assert
+
     const input = screen.getByPlaceholderText(/Enter your graduation year/i);
     expect(input).toHaveValue(2028);
-    // Submit
+
     fireEvent.change(input, { target: { value: "2027" } });
     const submitButton = screen.getByText(/Submit/i);
     fireEvent.click(submitButton);
-    //Assert
-    expect(screen.getByText(/Graduation Year: 2027/i)).toBeInTheDocument();
+
+    await screen.findByText(/Graduation Year: 2027/i);
   });
 });

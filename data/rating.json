@@ -14,11 +14,11 @@
     "public_kitchens": 5,
     "elevators": 5,
     "laundry": 5,
-    "comment": "Solid"
+    "comment": "The building is awesome, I loved living here gave it max score. I will for sure try to live here again in the future as it is my favorite dorm. I love it so much it is really awesome to live here in Gifford. Loved being in a single, omg too cool!"
   },
   {
     "id": 101,
-    "userId": 2,
+    "userId": 1,
     "buildingId": "battell",
     "room_type": "double",
     "storage_space": 4,
@@ -31,6 +31,7 @@
     "public_kitchens": 4,
     "elevators": 4,
     "laundry": 4,
-    "comment": "Moldy"
+    "comment": "The building was a mess, I hated it smelled bad and was small. The carpets were old and moldy, however the bathtub was really cool"
+
   }
 ]

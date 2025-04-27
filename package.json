@@ -22,6 +22,7 @@
     "postdev": "docker compose -f docker-compose.dev.yml down"
   },
   "dependencies": {
+    "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "module-alias": "^2.2.3",
     "next": "15.1.7",
