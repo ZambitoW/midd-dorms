@@ -165,10 +165,10 @@
 }
 
 .cardGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  padding-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem;
 }
 
 .dormCard {
@@ -186,7 +186,7 @@
 }
 
 .dormCard:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
   border-color: #0070f3;
 }
@@ -223,6 +223,92 @@
   border: 1px solid #eee;
   border-radius: 8px;
   background-color: #fafafa;
+}
+
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.filterItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  color: #333;
+  transition:
+    color 0.2s ease,
+    border-bottom 0.2s ease;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid transparent;
+}
+
+.contentWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  position: relative;
+}
+
+.mainContent {
+  flex: 1;
+}
+
+.filterSidebar {
+  width: 250px;
+  position: sticky;
+  top: 100px;
+  align-self: flex-start;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.filterSidebar h3 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.filterItem:hover {
+  color: #0070f3;
+  border-bottom: 2px solid #0070f3;
+}
+
+.filterItem.active {
+  color: #0070f3;
+  border-bottom: 2px solid #0070f3;
+  font-weight: 600;
+}
+
+.emoji {
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+@media (max-width: 768px) {
+  .contentWrapper {
+    flex-direction: column;
+  }
+
+  .filterSidebar {
+    position: static;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .filterBar {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {

@@ -3,6 +3,7 @@ import DormList from "@/components/dormList";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import funFacts from "../../data/funFacts";
+import FilterBar from "./filterBar";
 
 function getRandomFacts(facts, count) {
   const shuffled = [...facts].sort(() => 0.5 - Math.random());
@@ -12,51 +13,83 @@ function getRandomFacts(facts, count) {
 export default function HomeCreator() {
   const [randomFacts, setRandomFacts] = useState([]);
 
+  const [activeFilters, setActiveFilters] = useState({
+    roomTypes: [],
+    amenities: [],
+    accessibility: [],
+  });
+
   useEffect(() => {
     const selectedFacts = getRandomFacts(funFacts, 3);
     setRandomFacts(selectedFacts);
   }, []);
+
+  const toggleFilter = (category, value) => {
+    console.log("Toggling Filter:", category, value);
+
+    setActiveFilters((prev) => {
+      const val = value.toLowerCase();
+      const isActive = prev[category].includes(val);
+      return {
+        ...prev,
+        [category]: isActive
+          ? prev[category].filter((v) => v !== val)
+          : [...prev[category], val],
+      };
+    });
+  };
+
   return (
     <>
       <main className={styles.main}>
-        <h1 className={styles.title}> Middlebury College Dorms</h1>
+        <div className={styles.contentWrapper}>
+          <div className={styles.mainContent}>
+            <h1 className={styles.title}> Middlebury College Dorms</h1>
 
-        <section className={styles.mainFacts}>
-          <Image
-            className={styles.mainImage}
-            src="/dormsOverview.jpg"
-            alt="Middlebury Dorms"
-            width={300}
-            height={200}
-          />
-          <div>
-            <div>
-              <h4>Fun Facts</h4>
-              <ul>
-                {randomFacts.map((fact) => (
-                  <li key={fact}>{fact}</li>
-                ))}
-              </ul>
-            </div>
+            <section className={styles.mainFacts}>
+              <Image
+                className={styles.mainImage}
+                src="/dormsOverview.jpg"
+                alt="Middlebury Dorms"
+                width={300}
+                height={200}
+              />
+              <div>
+                <h4>Fun Facts</h4>
+                <ul>
+                  {randomFacts.map((fact) => (
+                    <li key={fact}>{fact}</li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+
+            {/* Dorms by Years */}
+
+            <section className={styles.dormSection}>
+              <h2 className={styles.dormHeading}>First Year Dorms</h2>
+              <DormList dormFilter="first" filters={activeFilters} />
+            </section>
+
+            <section className={styles.dormSection}>
+              <h2 className={styles.dormHeading}>Second Year Dorms</h2>
+              <DormList dormFilter="second" filters={activeFilters} />
+            </section>
+
+            <section className={styles.dormSection}>
+              <h2 className={styles.dormHeading}>Junior/Senior Year Dorms</h2>
+              <DormList dormFilter="junior" filters={activeFilters} />
+            </section>
           </div>
-        </section>
 
-        {/* Dorms by Years */}
-
-        <section className={styles.dormSection}>
-          <h2 className={styles.dormHeading}>First Year Dorms</h2>
-          <DormList dormFilter="first" />
-        </section>
-
-        <section className={styles.dormSection}>
-          <h2 className={styles.dormHeading}>Second Year Dorms</h2>
-          <DormList dormFilter="second" />
-        </section>
-
-        <section className={styles.dormSection}>
-          <h2 className={styles.dormHeading}>Junior/Senior Year Dorms</h2>
-          <DormList dormFilter="junior" />
-        </section>
+          <div className={styles.filterSidebar}>
+            <h4>Filter By Categories</h4>
+            <FilterBar
+              activeFilters={activeFilters}
+              toggleFilter={toggleFilter}
+            />
+          </div>
+        </div>
       </main>
 
       <footer className={styles.footer}>{/* Footer will go here*/}</footer>
