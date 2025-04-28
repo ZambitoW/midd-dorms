@@ -72,6 +72,31 @@ export default function ProfilePage() {
     }
   };
 
+  const handleDeleteReview = async (id) => {
+    try {
+      const response = await fetch("/api/ProfilePage", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ reviewId: id }),
+      });
+
+      if (response.ok) {
+        setUserProfile((prevProfile) => ({
+          ...prevProfile,
+          pastReviews: prevProfile.pastReviews.filter(
+            (review) => review.id !== id,
+          ),
+        }));
+      } else {
+        console.error("Failed to delete review:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error deleting review:", error);
+    }
+  };
+
   return (
     <div className={styles["profile-container"]}>
       <h1>Profile Page</h1>
@@ -109,7 +134,10 @@ export default function ProfilePage() {
         </div>
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         <h2>Past Reviews</h2>
-        <ReviewTable reviews={userProfile.pastReviews} />
+        <ReviewTable
+          reviews={userProfile.pastReviews}
+          onDelete={handleDeleteReview}
+        />
       </div>
     </div>
   );

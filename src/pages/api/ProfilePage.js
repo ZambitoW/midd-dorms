@@ -5,7 +5,7 @@ import Rating from "../../../models/Rating"; // Assuming you have a Rating model
 const router = createRouter();
 
 router.get(async (req, res) => {
-  const tempUserID = 2; // Placeholder, replace with dynamic user ID when available
+  const tempUserID = 1; // Placeholder, replace with dynamic user ID when available
   try {
     const user = await User.query().findById(tempUserID).throwIfNotFound();
 
@@ -36,8 +36,8 @@ router.get(async (req, res) => {
             (review.laundry || 0)) /
           9
         ).toFixed(1),
-        comment: review.comment, // Placeholder, modify if you add comments to the Rating model
-        date: new Date().toISOString().split("T")[0], // Placeholder date
+        comment: review.comment,
+        date: new Date().toISOString().split("T")[0],
       })),
     });
   } catch (error) {
@@ -47,24 +47,37 @@ router.get(async (req, res) => {
 });
 
 router.put(async (req, res) => {
-  const { id, classYear } = req.body; // Extract `id` and `classYear` from the request body
+  const { id, classYear } = req.body;
   try {
-    // Find the user by ID
     const user = await User.query().findById(id).throwIfNotFound();
 
-    // Update only the classYear field
     const updatedUser = await user.$query().updateAndFetch({
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
-      classYear: parseInt(classYear), // Ensure it's an integer
+      classYear: parseInt(classYear),
     });
 
-    // Respond with the updated user data
     return res.status(200).json(updatedUser);
   } catch (error) {
     console.error("Error updating user:", error.message, error.stack);
     return res.status(500).json({ error: "Failed to update user data" });
+  }
+});
+router.delete(async (req, res) => {
+  const { reviewId } = req.body;
+
+  try {
+    const deletedReview = await Rating.query().findById(reviewId).delete();
+
+    if (deletedReview) {
+      return res.status(200).json({ message: "Review deleted successfully" });
+    } else {
+      return res.status(404).json({ error: "Review not found" });
+    }
+  } catch (error) {
+    console.error("Error deleting review:", error.message, error.stack);
+    return res.status(500).json({ error: "Failed to delete review" });
   }
 });
 

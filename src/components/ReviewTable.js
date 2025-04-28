@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "@/styles/ProfilePage.module.css";
 import PropTypes from "prop-types";
 
-const ReviewTable = ({ reviews }) => {
+const ReviewTable = ({ reviews, onDelete }) => {
   const [showFullComments, setShowFullComments] = useState({});
 
   const toggleComment = (id) => {
@@ -22,6 +22,7 @@ const ReviewTable = ({ reviews }) => {
           <th>Overall Rating</th>
           <th>Comment (Click to Expand)</th>
           <th>Date</th>
+          <th> Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -38,6 +39,9 @@ const ReviewTable = ({ reviews }) => {
               </div>
             </td>
             <td>{review.date}</td>
+            <td>
+              <button onClick={() => onDelete(review.id)}>Delete</button>
+            </td>
           </tr>
         ))}
       </tbody>
@@ -58,4 +62,5 @@ ReviewTable.propTypes = {
       date: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
