@@ -5,7 +5,7 @@ import Rating from "../../../models/Rating"; // Assuming you have a Rating model
 const router = createRouter();
 
 router.get(async (req, res) => {
-  const tempUserID = 2; // Placeholder, replace with dynamic user ID when available
+  const tempUserID = 1; // Placeholder, replace with dynamic user ID when available
   try {
     const user = await User.query().findById(tempUserID).throwIfNotFound();
 

@@ -31,7 +31,6 @@
       "atwater": "2 min walk",
       "library": "2 min walk",
       "athletics": "10 min walk"
-
     }
   },
   {
@@ -152,9 +151,6 @@
       "library": "6 min walk",
       "athletics": "12 min walk"
     }
-
-    },
-    "mapId": 511452
   },
   {
     "id": "atwater",
@@ -257,6 +253,5 @@
       "athletics": "10 min walk"
     },
     "mapId": 511499
-
   }
 ]

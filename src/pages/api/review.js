@@ -4,7 +4,7 @@ import Rating from "../../../models/Rating";
 const router = createRouter();
 
 router.post(async (req, res) => {
-  const tempUserId = 2; //This should be changes when we do authentication
+  const tempUserId = 1; //This should be changes when we do authentication
   try {
     //console.log("Received data:", req.body);
     const { dorm, roomType, responses, comment } = req.body;
