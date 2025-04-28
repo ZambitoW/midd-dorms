@@ -16,21 +16,21 @@ export default function handler(req, res) {
 
   const dorms = {
     gifford: {
-      dorm_id: "gifford",
-      name: "Gifford Hall",
+      id: "Gifford",
+      name: "Gifford",
       building_type: "Suites, Singles",
       residents: "Sophmores",
       mapId: "511466",
     },
     battell: {
-      dorm_id: "battell",
+      id: "Battell",
       name: "Battell",
       building_type: "Singles, Doubles",
       residents: "Freshman",
       mapId: "511452",
     },
     forest: {
-      dorm_id: "forest",
+      id: "Forest",
       name: "Forest",
       building_type: "Sink-mate singles",
       residents: "Seniors/Febs",

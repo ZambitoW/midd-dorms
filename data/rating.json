@@ -2,7 +2,7 @@
   {
     "id": 100,
     "userId": 1,
-    "buildingId": "Gifford Hall",
+    "buildingId": "Gifford",
     "room_type": "single",
     "storage_space": 5,
     "clean": 5,
@@ -19,7 +19,7 @@
   {
     "id": 101,
     "userId": 1,
-    "buildingId": "Battell Hall",
+    "buildingId": "Battell",
     "room_type": "double",
     "storage_space": 4,
     "clean": 4,
@@ -32,5 +32,22 @@
     "elevators": 4,
     "laundry": 4,
     "comment": "The building was a mess, I hated it smelled bad and was small. The carpets were old and moldy, however the bathtub was really cool"
+  },
+  {
+    "id": 102,
+    "userId": 2,
+    "buildingId": "Gifford",
+    "room_type": "suite",
+    "storage_space": 3,
+    "clean": 3,
+    "size": 2,
+    "noise": 2,
+    "dining_hall_proximity": 3,
+    "ac_proximity": 5,
+    "public_bathrooms": 2,
+    "public_kitchens": 2,
+    "elevators": 3,
+    "laundry": 4,
+    "comment": "Solid"
   }
 ]

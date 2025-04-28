@@ -1,6 +1,6 @@
 [
   {
-    "id": "Gifford Hall",
+    "id": "Gifford",
     "category": "sophomores",
     "description": "Built in 1940, Gifford Hall is a sophomore residence hall that has 4- and 5-person suites in addition to singles that span accros 6 floors. Gifford is conveniently located near Proctor Dining Hall. The building also houses the Gamut Room, a student-run performance space situated in the basement, along with an outdoor amphitheater and a classroom.",
     "roomTypes": ["single", "double", "suite"],
@@ -16,7 +16,7 @@
     "mapId": 511466
   },
   {
-    "id": "Battell Hall",
+    "id": "Battell",
     "category": "freshman",
     "mapId": 511452,
     "description": "Battell Hall is the biggest first year dorm, and it is located in the center of campus. Battell is made up of mostly doubles, but there are also a few singles. Battell features bathtubs and many small lounge spaces.",
@@ -32,7 +32,7 @@
     }
   },
   {
-    "id": "Allen Hall",
+    "id": "Allen",
     "category": "freshman",
     "mapId": 511450,
     "description": "Allen is a small freshman dorm located about a 15 second walk from Atwater dining hall. Allen has a large lounge and a full kitchen. There is also a large parking lot next to Allen.",
@@ -48,7 +48,7 @@
     }
   },
   {
-    "id": "Stewart Hall",
+    "id": "Stewart",
     "category": "freshman",
     "mapId": 511500,
     "description": "Stewart is a freshman dorm conveniently close to Proctor dining hall. It has doubles on single-gender floors and a large laundry room in the basement. There is a lounge with a kitchen in the basement and a lounge on the second floor",
@@ -64,7 +64,7 @@
     }
   },
   {
-    "id": "Hepburn Hall",
+    "id": "Hepburn",
     "category": "freshman",
     "mapId": 511470,
     "description": "Hepburn is a freshman dorm located a 30 second walk from Proctor Dining Hall. It is also conveniently close to the athletic center and right down Chapel Hill is Davis Library ",
@@ -80,7 +80,7 @@
     }
   },
   {
-    "id": "Hadley Hall",
+    "id": "Hadley",
     "category": "Sophomore",
     "mapId": 511467,
     "description": "Hadley is part of the Ross complex, so you can get to Ross dining hall without even going outside. It is also conveniently close to Bi hall. Each floor has 2 suites with 3 doubles and singles on the other side of the hall. There is laundry in the basement.",
@@ -96,7 +96,7 @@
     }
   },
   {
-    "id": "Coffrin Hall",
+    "id": "Coffrin",
     "category": "Sophomore",
     "mapId": 511463,
     "description": "Coffrin Hall is conveniently close to Atwater Dining Hall and Bicentennial Hall. Coffrin houses and sophomores with both singles and doubles. Coffrin also has a large communal kitchen and a large lounge area. There is also a large parking lot next to Coffrin",
@@ -112,7 +112,7 @@
     }
   },
   {
-    "id": "Pearsons Hall",
+    "id": "Pearsons",
     "category": "Sophomore",
     "mapId": 511491,
     "description": "Pearsons is a sophomore dorm building next to Ross dining hall and only about a 3 minute walk from Proctor dining hall. There are doubles and singles in Pearsons. There is also a lounge",
@@ -128,7 +128,7 @@
     }
   },
   {
-    "id": "Millikin Hall",
+    "id": "Millikin",
     "category": "Sophomore",
     "mapId": 511486,
     "description": "Millikin is sophomore housing and is part of the Ross building. It has suites with 3 doubles and it has individual singles across the hall from suites. ",
@@ -144,7 +144,7 @@
     }
   },
   {
-    "id": "Atwater A and B Suites",
+    "id": "Atwater",
     "category": "upper",
     "description": "Atwater houses mostly seniors and some juniors. Atwater has suites with 4 singles, a common room and a kitchen. There are also a few singles outside of suites. Atwater also has a classroom and a laundry room on the bottom floor.",
     "roomTypes": ["single", "suite"],
@@ -176,7 +176,7 @@
     "mapId": 511479
   },
   {
-    "id": "Lang Hall",
+    "id": "Lang",
     "category": "upper",
     "description": "Lang is part of the Ross building. It has suites and singles and normally houses juniors and seniors.",
     "roomTypes": ["single", "suite"],
@@ -192,7 +192,7 @@
     "mapId": 511480
   },
   {
-    "id": "Kelly Hall",
+    "id": "Kelly",
     "category": "upper",
     "description": "Kelly is part of the Ross building. It has suites and singles and normally houses juniors and seniors.",
     "roomTypes": ["single", "suite"],
@@ -208,7 +208,7 @@
     "mapId": 511476
   },
   {
-    "id": "Painter Hall",
+    "id": "Painter",
     "category": "upper",
     "description": "Painter is one of the oldest dorms on campus. Painter usually houses juniors, and it has singles and two-room doubles. There is a laundry room in the basement of Painter and a kitchen. ",
     "roomTypes": ["single", "double"],
@@ -224,7 +224,7 @@
     "mapId": 511488
   },
   {
-    "id": "Starr Hall",
+    "id": "Starr",
     "category": "upper",
     "description": "Starr Hall is one of the original dorms on campus. Starr is located centerally on campus on Old Chapel Road near the student center and Axinn Center. Starr has singles and two-room doubles and often houses juniors.",
     "roomTypes": ["single", "double"],
