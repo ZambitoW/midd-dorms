@@ -32,6 +32,22 @@
     "elevators": 4,
     "laundry": 4,
     "comment": "The building was a mess, I hated it smelled bad and was small. The carpets were old and moldy, however the bathtub was really cool"
-
+  },
+  {
+    "id": 102,
+    "userId": 2,
+    "buildingId": "gifford",
+    "room_type": "suite",
+    "storage_space": 3,
+    "clean": 3,
+    "size": 2,
+    "noise": 2,
+    "dining_hall_proximity": 3,
+    "ac_proximity": 5,
+    "public_bathrooms": 2,
+    "public_kitchens": 2,
+    "elevators": 3,
+    "laundry": 4,
+    "comment": "Solid"
   }
 ]

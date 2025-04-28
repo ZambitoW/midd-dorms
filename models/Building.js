@@ -14,7 +14,7 @@ export default class Building extends BaseModel {
       required: ["name", "category"],
 
       properties: {
-        id: { type: "integer" },
+        id: { type: "string" },
         name: { type: "string" },
         category: { type: "string" },
         description: { type: "string" }, //It doesnt look like objection recognizes text as a type

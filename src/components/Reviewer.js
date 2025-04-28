@@ -6,7 +6,7 @@ of one and a space for entering additional comments.
 
 */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "@/styles/Reviewer.module.css";
 import { useRouter } from "next/router";
@@ -71,14 +71,55 @@ export default function Reviewer({
   const router = useRouter();
 
   // These are placeholders for now we will add all dorms when we set up our API in next sprint
-  const dormOptions = ["Gifford", "Battell"];
-  const roomTypes = ["Single", "Double", "Suites"];
+
+  //const dormOptions = ["Gifford", "Battell"];
+  //const roomTypes = ["Single", "Double", "Suites"];
 
   const [selectedDorm, setSelectedDorm] = useState("");
   const [selectedRoomType, setSelectedRoomType] = useState("");
   const [responses, setResponses] = useState(initialResponses);
   const [comment, setComment] = useState(initialComment);
   const [questions] = useState(defaultQuestions);
+
+  //*******************
+
+  const [dormOptions, setDormOptions] = useState([]);
+  const [roomTypes, setRoomTypes] = useState([]);
+
+  const [dormsRoomTypes, setdormsRoomTypes] = useState([]);
+
+  useEffect(() => {
+    const fetchDormsAndRoomTypes = async () => {
+      try {
+        const response = await fetch("/api/dorms");
+        if (response.ok) {
+          const data = await response.json();
+          const drt = data.reduce((dict, dorm) => {
+            dict[dorm.id] = dorm.roomTypes;
+            return dict;
+          }, {});
+          setdormsRoomTypes(drt);
+
+          const dorms = data.map((dorm) => dorm.id);
+          setDormOptions(dorms);
+        } else {
+          console.error(
+            "Failed to fetch dorms and room types:",
+            response.statusText,
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching dorms and room types:", error);
+      }
+    };
+    fetchDormsAndRoomTypes();
+  }, []);
+
+  useEffect(() => {
+    setRoomTypes(dormsRoomTypes[selectedDorm] || []);
+  }, [selectedDorm, dormsRoomTypes]);
+
+  //*******************
 
   const handleChange = (questionId, value) => {
     setResponses((prev) => ({
@@ -94,8 +135,6 @@ export default function Reviewer({
       responses,
       comment,
     };
-
-    console.log("Review Data:", reviewData);
 
     const response = await fetch("/api/review", {
       method: "POST",

@@ -1,7 +1,7 @@
 import styles from "@/styles/Home.module.css";
 import PropTypes from "prop-types";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ImageSlideshow from "./images";
 import FacilityReview from "./FacilityReview";
 import stylesReview from "../styles/FacilityReview.module.css";
@@ -49,6 +49,56 @@ export default function DormLayout({ dorm }) {
   // battell url: https://map.middlebury.edu/?id=229#!ce/50703?ct/68812,68815,68816?m/511452?s/
   // giff url: https://map.middlebury.edu/?id=229#!ce/50703?ct/68812,68815,68816?m/511466?s/
 
+  //*******************
+  const [facilityRatings, setFacilityRatings] = useState({});
+
+  useEffect(() => {
+    const categories = [
+      "storage_space",
+      "clean",
+      "noise",
+      "size",
+      "dining_hall_proximity",
+      "laundry",
+      "public_bathrooms",
+      "public_kitchens",
+      "ac_proximity",
+      "elevators",
+    ];
+    const fetchReviews = async () => {
+      if (dorm) {
+        try {
+          const response = await fetch(`/api/dorms/${dorm.id}/reviews`);
+          if (response.ok) {
+            const data = await response.json();
+            categories.forEach((category) => {
+              let sum = 0;
+              let count = 0;
+              data.forEach((review) => {
+                if (review[category] !== 0) {
+                  sum += review[category];
+                  count++;
+                }
+              });
+              const average = count > 0 ? (sum / count).toFixed(1) : 0;
+              setFacilityRatings((prevRatings) => ({
+                ...prevRatings,
+                [category]: average,
+              }));
+            });
+          } else {
+            console.error("Failed to fetch reviews:", response.statusText);
+          }
+        } catch (error) {
+          console.error("Error fetching reviews:", error);
+        }
+      }
+    };
+    fetchReviews();
+  }, [dorm]);
+
+  //*******************
+
   // giff mapId: 511466
   // battell mapId: 511452
   if (!dorm) return <p>Loading...</p>;
@@ -62,7 +112,10 @@ export default function DormLayout({ dorm }) {
             <p>Type: {dorm.building_type}</p>
             <p>Residents: {dorm.residents}</p>
             <p />
-            <FacilityReview className={stylesReview.FacilityReview} />
+            <FacilityReview
+              className={stylesReview.FacilityReview}
+              facilityRatings={facilityRatings}
+            />
             <button
               className={styles.secondary}
               onClick={() => router.push("/")}
@@ -137,6 +190,7 @@ export default function DormLayout({ dorm }) {
 
 DormLayout.propTypes = {
   dorm: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     building_type: PropTypes.string.isRequired,
     residents: PropTypes.string.isRequired,

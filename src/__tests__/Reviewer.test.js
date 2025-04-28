@@ -29,4 +29,11 @@ describe("Reviewer", () => {
     const submitButton = screen.getByText(/Submit/i);
     expect(submitButton).toBeDisabled();
   });
+
+  /*
+  test("Test that we only show appropriate room types", () => {
+    render(<Reviewer/>);
+    //Need to write this test
+  })
+  */
 });
