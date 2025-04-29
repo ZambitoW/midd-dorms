@@ -42,7 +42,7 @@ export default function DormList({ dormFilter, filters = {} }) {
               matchesYear = dorm.category.toLowerCase().includes("sophomore");
             }
             if (dormFilter === "junior") {
-              matchesYear = dorm.category.toLowerCase().includes("");
+              matchesYear = dorm.category.toLowerCase().includes("upper");
             } // or another one later
 
             const matchesFilters = matchesCategoryFilters(dorm, filters);
