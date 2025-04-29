@@ -100,7 +100,7 @@ export default function Reviewer({
           }, {});
           setdormsRoomTypes(drt);
 
-          const dorms = data.map((dorm) => dorm.id);
+          const dorms = data.map((dorm) => dorm.name);
           setDormOptions(dorms);
         } else {
           console.error(
