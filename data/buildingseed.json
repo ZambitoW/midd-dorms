@@ -56,7 +56,7 @@
     "category": "freshman",
     "mapId": 511500,
     "description": "Stewart is a freshman dorm conveniently close to Proctor dining hall. It has doubles on single-gender floors and a large laundry room in the basement. There is a lounge with a kitchen in the basement and a lounge on the second floor",
-    "roomTypes": ["double"],
+    "roomTypes": ["single", "double"],
     "amenities": ["lounges", "kitchen", "laundry"],
     "wheelchairAccessible": false,
     "proximity": {

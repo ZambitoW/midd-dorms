@@ -158,7 +158,7 @@ export default function Reviewer({
 
       {/* Dorm selector */}
       <div className={styles.question}>
-        <h2>Select Your Dorm:</h2>
+        <h3>Select Your Dorm:</h3>
         <select
           value={selectedDorm}
           onChange={(e) => setSelectedDorm(e.target.value)}
@@ -175,7 +175,7 @@ export default function Reviewer({
       </div>
       {/* Room type selector */}
       <div className={styles.question}>
-        <h2>Select Your Room Type:</h2>
+        <h3>Select Your Room Type:</h3>
         <select
           value={selectedRoomType}
           onChange={(e) => setSelectedRoomType(e.target.value)}
@@ -213,19 +213,32 @@ export default function Reviewer({
 
       {/* comment box */}
       <div className={styles.question}>
-        <p> Do you have any additional comments?</p>
-        <textarea
-          rows={4}
-          placeholder="Type your thoughts here..."
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          className={styles.text}
-        />
+        <h3> Please Leave a Comment on Your Room: </h3>
+        <div className={styles.textareaWrapper}>
+          <textarea
+            rows={4}
+            placeholder="Type your thoughts here..."
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            className={styles.text}
+          />
+          <div className={styles.characterCountWrapper}>
+            <p
+              className={
+                comment.length < 100 ? styles.errorText : styles.successText
+              }
+            >
+              {comment.length < 100
+                ? `You need ${100 - comment.length} more characters`
+                : "You've reached the character minimum!"}
+            </p>
+          </div>
+        </div>
       </div>
 
       <button
         onClick={handleSubmit}
-        disabled={!selectedDorm || !selectedRoomType}
+        disabled={!selectedDorm || !selectedRoomType || comment.length < 100}
         className={styles.submitButton}
       >
         Submit{" "}
