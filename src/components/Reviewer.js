@@ -116,7 +116,9 @@ export default function Reviewer({
   }, []);
 
   useEffect(() => {
-    setRoomTypes(dormsRoomTypes[selectedDorm] || []);
+    setRoomTypes(
+      dormsRoomTypes[selectedDorm.split(" ")[0].toLowerCase()] || [],
+    );
   }, [selectedDorm, dormsRoomTypes]);
 
   //*******************
