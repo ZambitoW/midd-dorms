@@ -3,8 +3,8 @@ import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 
 const imageList = [
-  "/websiteimages/gifftrash.jpg",
   "/websiteimages/giff.jpg",
+  "/websiteimages/gifftrash.jpg",
   "/websiteimages/giffbathroom.jpg",
   "/websiteimages/giffkitchen.jpg",
   "/websiteimages/gifflaundry.jpg",
