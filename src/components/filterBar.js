@@ -1,7 +1,7 @@
 import styles from "@/styles/Home.module.css";
 import PropTypes from "prop-types";
 
-const filters = {
+export const filters = {
   roomTypes: [
     { label: "🛏️ Singles", value: "single" },
     { label: "🧑‍🤝‍🧑 Doubles", value: "double" },
