@@ -12,7 +12,6 @@ function getRandomFacts(facts, count) {
 
 export default function HomeCreator() {
   const [randomFacts, setRandomFacts] = useState([]);
-  const [yearFilter, setYearFilter] = useState(""); // <-- New for year
 
   const [activeFilters, setActiveFilters] = useState({
     roomTypes: [],
@@ -71,7 +70,6 @@ export default function HomeCreator() {
             <FilterBar
               activeFilters={activeFilters}
               toggleFilter={toggleFilter}
-              setYearFilter={setYearFilter}
             />
           </div>
         </div>
@@ -81,29 +79,17 @@ export default function HomeCreator() {
         <div className={styles.bottomSection}>
           <section className={styles.dormSection}>
             <h2 className={styles.dormHeading}>First Year Dorms</h2>
-            <DormList
-              dormFilter="first"
-              filters={activeFilters}
-              yearFilter={yearFilter}
-            />
+            <DormList dormFilter="first" filters={activeFilters} />
           </section>
 
           <section className={styles.dormSection}>
             <h2 className={styles.dormHeading}>Second Year Dorms</h2>
-            <DormList
-              dormFilter="second"
-              filters={activeFilters}
-              yearFilter={yearFilter}
-            />
+            <DormList dormFilter="second" filters={activeFilters} />
           </section>
 
           <section className={styles.dormSection}>
             <h2 className={styles.dormHeading}>Junior/Senior Year Dorms</h2>
-            <DormList
-              dormFilter="junior"
-              filters={activeFilters}
-              yearFilter={yearFilter}
-            />
+            <DormList dormFilter="junior" filters={activeFilters} />
           </section>
         </div>
       </main>

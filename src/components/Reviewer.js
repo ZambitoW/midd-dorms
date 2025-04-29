@@ -1,11 +1,3 @@
-/*
-Reviewer.js
-
-This provides a series of multiple choice questions with limited user selection 
-of one and a space for entering additional comments.
-
-*/
-
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "@/styles/Reviewer.module.css";
@@ -70,22 +62,13 @@ export default function Reviewer({
 
   const router = useRouter();
 
-  // These are placeholders for now we will add all dorms when we set up our API in next sprint
-
-  //const dormOptions = ["Gifford", "Battell"];
-  //const roomTypes = ["Single", "Double", "Suites"];
-
   const [selectedDorm, setSelectedDorm] = useState("");
   const [selectedRoomType, setSelectedRoomType] = useState("");
   const [responses, setResponses] = useState(initialResponses);
   const [comment, setComment] = useState(initialComment);
   const [questions] = useState(defaultQuestions);
-
-  //*******************
-
   const [dormOptions, setDormOptions] = useState([]);
   const [roomTypes, setRoomTypes] = useState([]);
-
   const [dormsRoomTypes, setdormsRoomTypes] = useState([]);
 
   useEffect(() => {
@@ -118,8 +101,6 @@ export default function Reviewer({
   useEffect(() => {
     setRoomTypes(dormsRoomTypes[selectedDorm] || []);
   }, [selectedDorm, dormsRoomTypes]);
-
-  //*******************
 
   const handleChange = (questionId, value) => {
     setResponses((prev) => ({

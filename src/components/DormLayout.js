@@ -11,48 +11,6 @@ export default function DormLayout({ dorm }) {
   const [activeType, setActiveType] = useState("singles");
   const roomTypes = ["singles", "doubles", "suites"];
 
-  // Sample reviews for each room type placeholders for when we implement API next Sprint
-
-  /*
-  const reviews = {
-    singles: [
-      {
-        id: 1,
-        message:
-          "The Gifford singles are spacious and quiet, perfect for focused study.",
-      },
-      {
-        id: 2,
-        message:
-          "Super practical as it was close to a kitchen and private bathroom.",
-      },
-    ],
-    doubles: [
-      {
-        id: 1,
-        message:
-          "Quite small for a double, me and my roommate had no personal space.",
-      },
-    ],
-    suites: [
-      {
-        id: 1,
-        message:
-          "Having a private kitchen and bathroom is so nice, loved my little Gifford Suite.",
-      },
-      {
-        id: 2,
-        message:
-          "Had a good time in Gifford Suite, wish it was four singles instead of two singles and one double.",
-      },
-    ],
-  };
-  */
-
-  // battell url: https://map.middlebury.edu/?id=229#!ce/50703?ct/68812,68815,68816?m/511452?s/
-  // giff url: https://map.middlebury.edu/?id=229#!ce/50703?ct/68812,68815,68816?m/511466?s/
-
-  //*******************
   const [facilityRatings, setFacilityRatings] = useState({});
   const [reviews, setReviews] = useState({
     singles: [],
@@ -125,10 +83,6 @@ export default function DormLayout({ dorm }) {
     fetchReviews();
   }, [dorm]);
 
-  //*******************
-
-  // giff mapId: 511466
-  // battell mapId: 511452
   if (!dorm) return <p>Loading...</p>;
   return (
     <div className={styles.page}>
