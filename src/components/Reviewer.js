@@ -113,7 +113,7 @@ export default function Reviewer({
 
   const handleSubmit = async () => {
     const reviewData = {
-      dorm: selectedDorm,
+      dorm: selectedDorm.split(" ")[0].toLowerCase(),
       roomType: selectedRoomType,
       responses,
       comment,
