@@ -95,26 +95,25 @@ export default function DormLayout({ dorm }) {
               }));
             });
 
+            const newReviews = {
+              singles: [],
+              doubles: [],
+              suites: [],
+            };
+
             data.forEach((review) => {
               if (review["room_type"] === "single") {
-                setReviews((prevReviews) => ({
-                  ...prevReviews,
-                  singles: [...prevReviews.singles, review],
-                }));
+                newReviews.singles.push(review);
               }
               if (review["room_type"] === "double") {
-                setReviews((prevReviews) => ({
-                  ...prevReviews,
-                  doubles: [...prevReviews.doubles, review],
-                }));
+                newReviews.doubles.push(review);
               }
               if (review["room_type"] === "suite") {
-                setReviews((prevReviews) => ({
-                  ...prevReviews,
-                  suites: [...prevReviews.suites, review],
-                }));
+                newReviews.suites.push(review);
               }
             });
+
+            setReviews(newReviews);
           } else {
             console.error("Failed to fetch reviews:", response.statusText);
           }
