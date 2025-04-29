@@ -1,0 +1,39 @@
+.viewFilterContainer {
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 1rem;
+  font-family: "Roboto", sans-serif;
+  color: #00356b; /* Middlebury blue text */
+}
+
+.label {
+  gap: 1.5 rem;
+  font-weight: bold;
+  color: #00356b;
+  font-size: 1rem;
+}
+
+.reviewFilterContainer select {
+  background-color: white;
+  color: #000000;
+  border: 1px solid #00356b;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  margin-top: 4px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.reviewList {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.reviewList li {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f0f4f8;
+  border-radius: 6px;
+}
