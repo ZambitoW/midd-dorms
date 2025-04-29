@@ -84,6 +84,7 @@ export default function DormLayout({ dorm }) {
   }, [dorm]);
 
   if (!dorm) return <p>Loading...</p>;
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -93,7 +94,6 @@ export default function DormLayout({ dorm }) {
           <div>
             <p>Type: {dorm.building_type}</p>
             <p>Residents: {dorm.residents}</p>
-            <p />
             <FacilityReview
               className={stylesReview.FacilityReview}
               facilityRatings={facilityRatings}
@@ -105,8 +105,14 @@ export default function DormLayout({ dorm }) {
               Home
             </button>
           </div>
+
+          {/* 🔥 Updated ImageSlideshow condition */}
           <div className={styles.mainImage}>
-            <ImageSlideshow className={styles.mainImage} />
+            {dorm.id === "gifford" ? (
+              <ImageSlideshow className={styles.mainImage} />
+            ) : (
+              <></>
+            )}
           </div>
         </section>
 
@@ -139,6 +145,7 @@ export default function DormLayout({ dorm }) {
             </ul>
           </div>
         </section>
+
         {/* Map Section */}
         <section className={styles.dormSection}>
           <h2 className={styles.dormHeading} style={{ textAlign: "center" }}>
