@@ -3,63 +3,63 @@ import PropTypes from "prop-types";
 import styles from "@/styles/Reviewer.module.css";
 import { useRouter } from "next/router";
 
+export const defaultQuestions = [
+  {
+    id: "storage_space",
+    prompt: "How much storage did you have?",
+    scale: { low: "Very Little Storage", high: "Lots of Storage" },
+  },
+  {
+    id: "clean",
+    prompt: "How clean was your dorm?",
+    scale: { low: "Not Clean", high: "Very Clean" },
+  },
+  {
+    id: "noise",
+    prompt: "How loud was your dorm?",
+    scale: { low: "Very Loud", high: "Not Loud" },
+  },
+  {
+    id: "size",
+    prompt: "How big was your dorm?",
+    scale: { low: "Very Little", high: "Very Big" },
+  },
+  {
+    id: "dining_hall_proximity",
+    prompt: "How close was the nearest dining hall?",
+    scale: { low: "Very Far", high: "Very Close" },
+  },
+  {
+    id: "laundry",
+    prompt: "How close was the nearest laundry?",
+    scale: { low: "Very Far", high: "Very Close" },
+  },
+  {
+    id: "public_bathrooms",
+    prompt: "Rate the quality of the public bathrooms in your dorm.",
+    scale: { low: "Bad quality", high: "Great quality" },
+  },
+  {
+    id: "public_kitchens",
+    prompt: "Rate the quality of the public kitchens in your dorm.",
+    scale: { low: "Bad quality", high: "Great quality" },
+  },
+  {
+    id: "ac_proximity",
+    prompt: "How close are you to the athletic center?",
+    scale: { low: "Very far", high: "Very close" },
+  },
+  {
+    id: "elevators",
+    prompt: "How many elevators are in your dorm and how reliable are they?",
+    scale: { low: "No elevators", high: "Many very reliable elevators" },
+  },
+];
+
 export default function Reviewer({
   initialResponses = {},
   initialComment = "",
 }) {
-  const defaultQuestions = [
-    {
-      id: "storage_space",
-      prompt: "How much storage did you have?",
-      scale: { low: "Very Little Storage", high: "Lots of Storage" },
-    },
-    {
-      id: "clean",
-      prompt: "How clean was your dorm?",
-      scale: { low: "Not Clean", high: "Very Clean" },
-    },
-    {
-      id: "noise",
-      prompt: "How loud was your dorm?",
-      scale: { low: "Very Loud", high: "Not Loud" },
-    },
-    {
-      id: "size",
-      prompt: "How big was your dorm?",
-      scale: { low: "Very Little", high: "Very Big" },
-    },
-    {
-      id: "dining_hall_proximity",
-      prompt: "How close was the nearest dining hall?",
-      scale: { low: "Very Far", high: "Very Close" },
-    },
-    {
-      id: "laundry",
-      prompt: "How close was the nearest laundry?",
-      scale: { low: "Very Far", high: "Very Close" },
-    },
-    {
-      id: "public_bathrooms",
-      prompt: "Rate the quality of the public bathrooms in your dorm.",
-      scale: { low: "Bad quality", high: "Great quality" },
-    },
-    {
-      id: "public_kitchens",
-      prompt: "Rate the quality of the public kitchens in your dorm.",
-      scale: { low: "Bad quality", high: "Great quality" },
-    },
-    {
-      id: "ac_proximity",
-      prompt: "How close are you to the athletic center?",
-      scale: { low: "Very far", high: "Very close" },
-    },
-    {
-      id: "elevators",
-      prompt: "How many elevators are in your dorm and how reliable are they?",
-      scale: { low: "No elevators", high: "Many very reliable elevators" },
-    },
-  ];
-
   const router = useRouter();
 
   const [selectedDorm, setSelectedDorm] = useState("");

@@ -5,11 +5,17 @@ import { useState, useEffect } from "react";
 import ImageSlideshow from "./images";
 import FacilityReview from "./FacilityReview";
 import stylesReview from "../styles/FacilityReview.module.css";
+import ReviewFilter from "./ReviewFilter";
+import { defaultQuestions } from "./Reviewer";
 
 export default function DormLayout({ dorm }) {
   const router = useRouter();
   const [activeType, setActiveType] = useState("singles");
   const roomTypes = ["singles", "doubles", "suites"];
+  const [selectedQuestion, setSelectedQuestion] = useState(
+    defaultQuestions[0].id,
+  );
+  const [selectedRating, setSelectedRating] = useState(1);
 
   const [facilityRatings, setFacilityRatings] = useState({});
   const [reviews, setReviews] = useState({
@@ -126,6 +132,12 @@ export default function DormLayout({ dorm }) {
               </button>
             ))}
           </div>
+          <ReviewFilter
+            selectedQuestion={selectedQuestion}
+            setSelectedQuestion={setSelectedQuestion}
+            selectedRating={selectedRating}
+            setSelectedRating={setSelectedRating}
+          />
 
           {/* Dropdown Section */}
           <div className={styles.dropdown}>
@@ -133,9 +145,11 @@ export default function DormLayout({ dorm }) {
               {activeType.charAt(0).toUpperCase() + activeType.slice(1)} Reviews
             </h4>
             <ul>
-              {reviews[activeType].map((review) => (
-                <li key={review.id}>&quot;{review.comment}&quot;</li>
-              ))}
+              {reviews[activeType]
+                .filter((r) => r[selectedQuestion] >= selectedRating)
+                .map((review) => (
+                  <li key={review.id}>&quot;{review.comment}&quot;</li>
+                ))}
             </ul>
           </div>
         </section>
