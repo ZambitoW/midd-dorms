@@ -12,6 +12,8 @@ export default function DormLayout({ dorm }) {
   const roomTypes = ["singles", "doubles", "suites"];
 
   // Sample reviews for each room type placeholders for when we implement API next Sprint
+
+  /*
   const reviews = {
     singles: [
       {
@@ -45,12 +47,18 @@ export default function DormLayout({ dorm }) {
       },
     ],
   };
+  */
 
   // battell url: https://map.middlebury.edu/?id=229#!ce/50703?ct/68812,68815,68816?m/511452?s/
   // giff url: https://map.middlebury.edu/?id=229#!ce/50703?ct/68812,68815,68816?m/511466?s/
 
   //*******************
   const [facilityRatings, setFacilityRatings] = useState({});
+  const [reviews, setReviews] = useState({
+    singles: [],
+    doubles: [],
+    suites: [],
+  });
 
   useEffect(() => {
     const categories = [
@@ -86,6 +94,26 @@ export default function DormLayout({ dorm }) {
                 [category]: average,
               }));
             });
+
+            const newReviews = {
+              singles: [],
+              doubles: [],
+              suites: [],
+            };
+
+            data.forEach((review) => {
+              if (review["room_type"] === "single") {
+                newReviews.singles.push(review);
+              }
+              if (review["room_type"] === "double") {
+                newReviews.doubles.push(review);
+              }
+              if (review["room_type"] === "suite") {
+                newReviews.suites.push(review);
+              }
+            });
+
+            setReviews(newReviews);
           } else {
             console.error("Failed to fetch reviews:", response.statusText);
           }
@@ -152,7 +180,7 @@ export default function DormLayout({ dorm }) {
             </h4>
             <ul>
               {reviews[activeType].map((review) => (
-                <li key={review.id}>&quot;{review.message}&quot;</li>
+                <li key={review.id}>&quot;{review.comment}&quot;</li>
               ))}
             </ul>
           </div>
