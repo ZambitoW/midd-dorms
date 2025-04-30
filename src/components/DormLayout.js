@@ -10,8 +10,14 @@ import { defaultQuestions } from "./Reviewer";
 
 export default function DormLayout({ dorm }) {
   const router = useRouter();
-  const [activeType, setActiveType] = useState("singles");
-  const roomTypes = ["singles", "doubles", "suites"];
+  const [activeType, setActiveType] = useState("single");
+  const {roomTypes} = dorm;
+  //const [roomTypes, setRoomTypes] = useState([]);
+  /*
+  useEffect(() => {
+    setRoomTypes(dorm.roomTypes);
+  }, [dorm.roomTypes]);
+  */
   const [selectedQuestion, setSelectedQuestion] = useState(
     defaultQuestions[0].id,
   );
@@ -19,9 +25,9 @@ export default function DormLayout({ dorm }) {
 
   const [facilityRatings, setFacilityRatings] = useState({});
   const [reviews, setReviews] = useState({
-    singles: [],
-    doubles: [],
-    suites: [],
+    single: [],
+    double: [],
+    suite: [],
   });
 
   useEffect(() => {
@@ -60,23 +66,22 @@ export default function DormLayout({ dorm }) {
             });
 
             const newReviews = {
-              singles: [],
-              doubles: [],
-              suites: [],
+              single: [],
+              double: [],
+              suite: [],
             };
 
             data.forEach((review) => {
               if (review["room_type"] === "single") {
-                newReviews.singles.push(review);
+                newReviews.single.push(review);
               }
               if (review["room_type"] === "double") {
-                newReviews.doubles.push(review);
+                newReviews.double.push(review);
               }
               if (review["room_type"] === "suite") {
-                newReviews.suites.push(review);
+                newReviews.suite.push(review);
               }
             });
-
             setReviews(newReviews);
           } else {
             console.error("Failed to fetch reviews:", response.statusText);
@@ -198,5 +203,6 @@ DormLayout.propTypes = {
     building_type: PropTypes.string.isRequired,
     residents: PropTypes.string.isRequired,
     mapId: PropTypes.string,
+    roomTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
 };
