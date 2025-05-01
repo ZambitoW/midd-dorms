@@ -90,7 +90,7 @@
     "category": "Sophomore",
     "mapId": 511467,
     "description": "Hadley is part of the Ross complex, so you can get to Ross dining hall without even going outside. It is also conveniently close to Bi hall. Each floor has 2 suites with 3 doubles and singles on the other side of the hall. There is laundry in the basement.",
-    "roomTypes": ["single", "double", "suites"],
+    "roomTypes": ["single", "double", "suite"],
     "amenities": ["lounges", "kitchen", "laundry", "elevator"],
     "wheelchairAccessible": true,
     "proximity": {
@@ -136,7 +136,6 @@
     }
   },
   {
-
     "id": "milliken",
 
     "name": "Milliken Hall",
