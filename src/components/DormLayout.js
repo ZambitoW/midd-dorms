@@ -111,10 +111,17 @@ export default function DormLayout({ dorm }) {
             </button>
           </div>
 
-          {/* 🔥 Updated ImageSlideshow condition */}
+          {/* Updated ImageSlideshow condition */}
           <div className={styles.mainImage}>
+            {dorm && (
+              <p style={{ textAlign: "center", fontStyle: "italic" }}>
+                {dorm.description}
+              </p>
+            )}
             {dorm.id === "gifford" ? (
-              <ImageSlideshow className={styles.mainImage} />
+              <>
+                <ImageSlideshow className={styles.mainImage} />
+              </>
             ) : (
               <></>
             )}
@@ -197,6 +204,7 @@ DormLayout.propTypes = {
     building_type: PropTypes.string.isRequired,
     residents: PropTypes.string.isRequired,
     mapId: PropTypes.string,
+    description: PropTypes.string,
     roomTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
 };
