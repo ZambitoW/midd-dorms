@@ -81,6 +81,37 @@
   letter-spacing: 1px;
 }
 
+.image {
+  width: 400px;
+  height: 250px;
+  background-image: url("/dormsOverview.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.floatingFilterPanel {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  z-index: 200;
+}
+
+@media (max-width: 768px) {
+  .image {
+    height: 300px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}
+
 .main ol {
   font-family: var(--font-geist-mono);
   padding-left: 0;
@@ -237,6 +268,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
+  flex-direction: column;
 }
 
 .filterItem {
@@ -255,11 +287,9 @@
 .topSection {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  width: 100%;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  gap: 2rem;
+  margin-top: 1.5rem;
 }
 
 .bottomSection {
@@ -269,18 +299,6 @@
 .mainContent {
   flex: 1;
   min-width: 0;
-}
-
-.filterSidebar {
-  width: 300px;
-  flex-shrink: 0;
-  position: sticky;
-  top: 80px;
-  background-color: #f9f9f9;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .filterSidebar h3 {
@@ -313,16 +331,10 @@
   .contentWrapper {
     flex-direction: column;
   }
+}
 
-  .filterSidebar {
-    position: static;
-    width: 100%;
-    margin-top: 2rem;
-  }
-
-  .filterBar {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.title {
+  font-size: 32px;
 }
 
 @media (hover: hover) and (pointer: fine) {

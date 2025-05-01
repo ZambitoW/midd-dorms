@@ -2,7 +2,7 @@ import Reviewer from "@/components/Reviewer";
 
 export default function RateDormPage() {
   return (
-    <div>
+    <div style={{ paddingTop: "100px" }}>
       <Reviewer />
     </div>
   );

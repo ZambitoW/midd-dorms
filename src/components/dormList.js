@@ -93,7 +93,7 @@ export default function DormList({ dormFilter, filters = {} }) {
                   {dorm.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {dorm.description}
+                  {`${dorm.description.split(" ").slice(0, 20).join(" ")}...`}
                 </Typography>
               </CardContent>
             </Card>

@@ -98,46 +98,48 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className={styles["profile-container"]}>
-      <h1>Profile Page</h1>
-      <div>
-        <h2>{`${userProfile.firstName} ${userProfile.lastName}`}</h2>
-        <p>{`Email: ${userProfile.email}`}</p>
-        <div className={styles["graduation-year-section"]}>
-          {classChange ? (
-            <span>{`Graduation Year: ${userProfile.classYear}`}</span>
-          ) : (
-            <input
-              type="number"
-              value={userProfile.classYear}
-              placeholder="Enter your graduation year"
-              onChange={(e) =>
-                setUserProfile({
-                  ...userProfile,
-                  classYear: e.target.value,
-                })
-              }
-            />
-          )}
-          <button
-            className={styles.button}
-            onClick={() => {
-              if (!classChange) {
-                handleClassYearChange();
-              } else {
-                setClassChange(!classChange);
-              }
-            }}
-          >
-            {classChange ? "Change Graduation Year" : "Submit"}
-          </button>
+    <div style={{ paddingTop: "100px" }}>
+      <div className={styles["profile-container"]}>
+        <h1>Profile Page</h1>
+        <div>
+          <h2>{`${userProfile.firstName} ${userProfile.lastName}`}</h2>
+          <p>{`Email: ${userProfile.email}`}</p>
+          <div className={styles["graduation-year-section"]}>
+            {classChange ? (
+              <span>{`Graduation Year: ${userProfile.classYear}`}</span>
+            ) : (
+              <input
+                type="number"
+                value={userProfile.classYear}
+                placeholder="Enter your graduation year"
+                onChange={(e) =>
+                  setUserProfile({
+                    ...userProfile,
+                    classYear: e.target.value,
+                  })
+                }
+              />
+            )}
+            <button
+              className={styles.button}
+              onClick={() => {
+                if (!classChange) {
+                  handleClassYearChange();
+                } else {
+                  setClassChange(!classChange);
+                }
+              }}
+            >
+              {classChange ? "Change Graduation Year" : "Submit"}
+            </button>
+          </div>
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+          <h2>Past Reviews</h2>
+          <ReviewTable
+            reviews={userProfile.pastReviews}
+            onDelete={handleDeleteReview}
+          />
         </div>
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-        <h2>Past Reviews</h2>
-        <ReviewTable
-          reviews={userProfile.pastReviews}
-          onDelete={handleDeleteReview}
-        />
       </div>
     </div>
   );

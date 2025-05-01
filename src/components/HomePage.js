@@ -1,6 +1,5 @@
 import styles from "@/styles/Home.module.css";
 import DormList from "@/components/dormList";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import funFacts from "../../data/funFacts";
 import FilterBar from "./filterBar";
@@ -44,16 +43,11 @@ export default function HomeCreator() {
       <main className={styles.main}>
         {/* Top Section */}
         <h1 className={styles.title}> Middlebury College Dorms</h1>
+
         <div className={styles.topSection}>
+          <div className={styles.image} />
           <div className={styles.mainContent}>
             <section className={styles.mainFacts}>
-              <Image
-                className={styles.mainImage}
-                src="/dormsOverview.jpg"
-                alt="Middlebury Dorms"
-                width={300}
-                height={200}
-              />
               <div>
                 <h4>Fun Facts</h4>
                 <ul>
@@ -65,8 +59,8 @@ export default function HomeCreator() {
             </section>
           </div>
 
-          <div className={styles.filterSidebar}>
-            <h4>Filter By Categories</h4>
+          <div className={styles.floatingFilterPanel}>
+            <p>Filter By</p>
             <FilterBar
               activeFilters={activeFilters}
               toggleFilter={toggleFilter}
