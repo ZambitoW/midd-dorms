@@ -1,13 +1,25 @@
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import styles from "@/styles/NavBar.module.css";
 
 export default function NavBar() {
+  const [scrolled, setScrolled] = useState(false);
   const router = useRouter();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      setScrolled(offset > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className={styles.navbar}>
+    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
       <div className={styles.logo_title} onClick={() => router.push("/")}>
-        { }
+        {}
         <picture>
           <source
             srcset="../logoBlue.png"

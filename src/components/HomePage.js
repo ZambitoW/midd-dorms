@@ -42,49 +42,48 @@ export default function HomeCreator() {
     <>
       <main className={styles.main}>
         {/* Top Section */}
-        <h1 className={styles.title}> Middlebury College Dorms</h1>
 
-        <div className={styles.topSection}>
-          <div className={styles.image} />
-          <div className={styles.mainContent}>
-            <section className={styles.mainFacts}>
-              <div>
-                <h4>Fun Facts</h4>
-                <ul>
-                  {randomFacts.map((fact) => (
-                    <li key={fact}>{fact}</li>
-                  ))}
-                </ul>
-              </div>
-            </section>
+        <div className={styles.heroSection}>
+          <div className={styles.overlayContent}>
+            <h1 className={styles.heroTitle}>Middlebury College Dorms</h1>
+            <div className={styles.factsCard}>
+              <h4>Fun Facts</h4>
+              <ul>
+                {randomFacts.map((fact) => (
+                  <li key={fact}>{fact}</li>
+                ))}
+              </ul>
+            </div>
           </div>
+        </div>
 
-          <div className={styles.floatingFilterPanel}>
-            <p>Filter By</p>
-            <FilterBar
-              activeFilters={activeFilters}
-              toggleFilter={toggleFilter}
-            />
-          </div>
+        <div className={styles.floatingFilterPanel}>
+          <p>Filter By</p>
+          <FilterBar
+            activeFilters={activeFilters}
+            toggleFilter={toggleFilter}
+          />
         </div>
 
         {/* Bottom Section: Dorms by Years */}
 
         <div className={styles.bottomSection}>
-          <section className={styles.dormSection}>
-            <h2 className={styles.dormHeading}>First Year Dorms</h2>
-            <DormList dormFilter="first" filters={activeFilters} />
-          </section>
+          <div className={styles.dormContentWrapper}>
+            <section className={styles.dormSection}>
+              <h2 className={styles.dormHeading}>First Year Dorms</h2>
+              <DormList dormFilter="first" filters={activeFilters} />
+            </section>
 
-          <section className={styles.dormSection}>
-            <h2 className={styles.dormHeading}>Second Year Dorms</h2>
-            <DormList dormFilter="second" filters={activeFilters} />
-          </section>
+            <section className={styles.dormSection}>
+              <h2 className={styles.dormHeading}>Second Year Dorms</h2>
+              <DormList dormFilter="second" filters={activeFilters} />
+            </section>
 
-          <section className={styles.dormSection}>
-            <h2 className={styles.dormHeading}>Junior/Senior Year Dorms</h2>
-            <DormList dormFilter="junior" filters={activeFilters} />
-          </section>
+            <section className={styles.dormSection}>
+              <h2 className={styles.dormHeading}>Junior/Senior Year Dorms</h2>
+              <DormList dormFilter="junior" filters={activeFilters} />
+            </section>
+          </div>
         </div>
       </main>
 
