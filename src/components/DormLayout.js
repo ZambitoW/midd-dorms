@@ -2,11 +2,12 @@ import styles from "@/styles/Home.module.css";
 import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import ImageSlideshow from "./images";
+/*import ImageSlideshow from "./images"; **/
 import FacilityReview from "./FacilityReview";
 import stylesReview from "../styles/FacilityReview.module.css";
 import ReviewFilter from "./ReviewFilter";
 import { defaultQuestions } from "./Reviewer";
+import ImageGallery from "./imageGallery";
 
 export default function DormLayout({ dorm }) {
   const router = useRouter();
@@ -120,7 +121,7 @@ export default function DormLayout({ dorm }) {
             )}
             {dorm.id === "gifford" ? (
               <>
-                <ImageSlideshow className={styles.mainImage} />
+                <ImageGallery className={styles.mainImage} />
               </>
             ) : (
               <></>
