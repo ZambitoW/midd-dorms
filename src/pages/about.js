@@ -2,6 +2,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
+import { useState } from "react";
 
 const developers = [
   {
@@ -37,6 +38,7 @@ const developers = [
 ];
 
 export default function About() {
+  const [selectedDev, setSelectedDev] = useState(null);
   return (
     <>
       <Head>
@@ -50,25 +52,28 @@ export default function About() {
         {/* Top section split left/right */}
         <div className={styles.topSection}>
           <div className={styles.leftColumn}>
-            <p className={styles.descriptionAboutPage}>
-              MiddDorms is an online housing rating system that allows current
-              Middlebury College students to share their reviews of their
-              housing experiences. It provides students with valuable
-              information of dorm buildings and their room types to make more
-              informed choices during room selection. MiddDorms allows students
-              to browse through the different dorms and see their key ratings
-              (noise, cleanliness, amenities) which might help them choose a
-              dorm room more suited to their needs.
-            </p>
+            <div className={styles.descriptionAboutPage}>
+              <p>
+                🏠&nbsp; <strong>MiddDorms</strong> is an online housing rating
+                system that allows current Middlebury College students (yes,
+                you!) to share their reviews of your housing experiences. It
+                also provides valuable insights into dorm buildings, helping you
+                make more informed choices during room selection.
+              </p>
+              <p>
+                You can browse different dorms and see key ratings- making it
+                easier to find a room that fits your lifestyle and needs!
+              </p>
+            </div>
           </div>
 
           <div className={styles.rightCardWrapper}>
             <div className={styles.stickyNote}>
               <h3>Features</h3>
               <ul>
-                <li>Browse reviews for campus dorms</li>
-                <li>Submit your own ratings and reviews</li>
-                <li>See dorm amenities and features</li>
+                <p>🛏️&nbsp; Browse reviews for campus dorms</p>
+                <p>💡&nbsp; Submit your own ratings and reviews</p>
+                <p>🔍&nbsp; See dorm amenities and features</p>
               </ul>
             </div>
             <div className={styles.stickyNote}>
@@ -80,14 +85,22 @@ export default function About() {
 
         {/* Team Section */}
         <section className={styles.teamSection}>
-          <h2>Meet the Team</h2>
-          <p style={{ padding: "2rem" }}>
-            We are a passionate and curious group of Middlebury College students
-            apart of the software development, CS 312, class!
+          <p className={styles.teamIntro}>
+            Brought to you by a passionate and curious group of Middlebury
+            College students who want you to find your next perfect home! 💙✨
           </p>
+          <h2 className={styles.meetTheTeamHeading}>Meet the Team</h2>
           <div className={styles.teamGrid}>
             {developers.map((dev) => (
-              <div key={dev.name} className={styles.card}>
+              <div
+                key={dev.name}
+                className={`${styles.card} ${
+                  selectedDev?.name === dev.name ? styles.active : ""
+                }`}
+                onClick={() =>
+                  setSelectedDev(selectedDev?.name === dev.name ? null : dev)
+                }
+              >
                 <Image
                   src={dev.image}
                   alt={dev.name}
@@ -96,9 +109,11 @@ export default function About() {
                   height={200}
                 />
                 <div className={styles.nameOverlay}>{dev.name}</div>
-                <div className={styles.descriptionOverlay}>
-                  <p>{dev.description}</p>
-                </div>
+                {selectedDev?.name === dev.name && (
+                  <div className={styles.descriptionOverlay}>
+                    <p>{dev.description}</p>
+                  </div>
+                )}
               </div>
             ))}
           </div>

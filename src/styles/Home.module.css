@@ -428,3 +428,218 @@
     filter: invert();
   }
 }
+/* About Page CSS */
+.container {
+  text-align: center;
+  padding-top: 150px;
+}
+
+.titleAboutPage {
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #1a1a1a;
+  font-family: "Merriweather", serif;
+}
+
+.topSection {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0 2rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.leftColumn {
+  flex: 1 1 500px;
+  min-width: 300px;
+  font-family: "Merriweather", serif;
+  font-size: 1rem;
+  text-align: left;
+  max-width: 500px;
+}
+
+.rightCardWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: flex-start;
+}
+
+.stickyNote {
+  /* background: #a9b9ff; */
+  background: #d7e2fa;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 2 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  font-size: 0.95rem;
+  font-family: "Merriweather", serif;
+}
+
+.stickyNote ul {
+  padding-left: 1rem;
+}
+
+.stickyNote h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.rightCard {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.rightCard h3 {
+  margin-top: 1rem;
+}
+
+.teamSection {
+  padding: 2rem 2rem;
+  font-family: "Merriweather", serif;
+}
+
+.teamIntro {
+  font-family: "Merriweather", serif;
+  text-align: center;
+  font-size: 1.05rem;
+  color: #333;
+  padding: 1.5rem 2rem;
+  background-color: #f5cdcd;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin: 0 auto 2rem;
+  max-width: 800px;
+}
+
+.meetTheTeamHeading {
+  text-align: center;
+  font-family: "Merriweather", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem; /* tighter spacing */
+  justify-items: center;
+  align-items: start;
+  margin-top: 2rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  margin: 0;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.avatar {
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.nameOverlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 0.4rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 0 0 12px 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card:hover .nameOverlay {
+  opacity: 1;
+}
+
+.descriptionAboutPage {
+  background-color: #d0e5fa;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  font-family: "Merriweather", serif;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.descriptionOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 1rem;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 12px;
+  z-index: 2;
+  opacity: 0;
+
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card:hover .descriptionOverlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.descriptionOverlay p {
+  margin: 0;
+  padding: 0 1rem;
+  font-family: "Merriweather", serif;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+}
