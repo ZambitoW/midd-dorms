@@ -428,33 +428,3 @@
     filter: invert();
   }
 }
-
-.reviewList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.reviewCard {
-  width: 100%;
-  display: block;
-  margin-top: 16px;
-  margin-bottom: 16px;
-  padding: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  border: 1px solid rgb(255, 255, 255);
-  padding: 16px;
-  max-width: 600px;
-}
-
-.reviewHeader {
-  font-weight: bold;
-  color: #00356b;
-  margin-bottom: 8px;
-}
-
-.ratings {
-  margin-top: 10px;
-  font-size: smaller;
-  font-weight: bold;
-}
