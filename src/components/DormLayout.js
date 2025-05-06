@@ -7,7 +7,6 @@ import FacilityReview from "./FacilityReview";
 import stylesReview from "../styles/FacilityReview.module.css";
 import ReviewFilter from "./ReviewFilter";
 import { defaultQuestions } from "./Reviewer";
-import Footer from "./footer";
 
 export default function DormLayout({ dorm }) {
   const router = useRouter();
@@ -194,7 +193,6 @@ export default function DormLayout({ dorm }) {
           )}
         </section>
       </main>
-      <Footer />
     </div>
   );
 }
