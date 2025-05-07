@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styles from "@/styles/NavBar.module.css";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { useState } from "react";
 
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
