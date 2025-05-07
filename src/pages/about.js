@@ -22,7 +22,7 @@ const developers = [
   },
   {
     name: "Moon",
-    image: "/devs/moon.jpg",
+    image: "/devs/moon.jpeg",
     description: "Moon will give you a tour of her favorite dorm, Gifford.",
   },
   {
