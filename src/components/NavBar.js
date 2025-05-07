@@ -1,15 +1,27 @@
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import styles from "@/styles/NavBar.module.css";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useState } from "react";
 
 export default function NavBar() {
+  const [scrolled, setScrolled] = useState(false);
   const router = useRouter();
   const { data: session } = useSession();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      setScrolled(offset > 100);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className={styles.navbar}>
+    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
       <div className={styles.logo_title} onClick={() => router.push("/")}>
         {}
         <picture>

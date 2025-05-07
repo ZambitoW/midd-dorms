@@ -2,22 +2,23 @@ import styles from "@/styles/Home.module.css";
 import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import ImageSlideshow from "./images";
+/*import ImageSlideshow from "./images"; **/
 import FacilityReview from "./FacilityReview";
 import stylesReview from "../styles/FacilityReview.module.css";
 import ReviewFilter from "./ReviewFilter";
 import { defaultQuestions } from "./Reviewer";
+import ImageGallery from "./imageGallery";
 
 export default function DormLayout({ dorm }) {
   const router = useRouter();
-  const [activeType, setActiveType] = useState("single");
+  const [activeType, setActiveType] = useState(null);
   const { roomTypes } = dorm;
   const [selectedQuestion, setSelectedQuestion] = useState(
     defaultQuestions[0].id,
   );
   const [selectedRating, setSelectedRating] = useState(1);
-
   const [facilityRatings, setFacilityRatings] = useState({});
+  const [filterActive, setFilterActive] = useState(false);
   const [reviews, setReviews] = useState({
     single: [],
     double: [],
@@ -120,7 +121,7 @@ export default function DormLayout({ dorm }) {
             )}
             {dorm.id === "gifford" ? (
               <>
-                <ImageSlideshow className={styles.mainImage} />
+                <ImageGallery className={styles.mainImage} />
               </>
             ) : (
               <></>
@@ -131,9 +132,16 @@ export default function DormLayout({ dorm }) {
         {/* Room Types Section */}
         <section className={styles.dormSection}>
           <h2 className={styles.dormHeading} style={{ textAlign: "center" }}>
-            Room Types
+            Reviews
           </h2>
           <div className={styles.roomTypeButtons}>
+            <button
+              key="all"
+              className={`${styles.secondary} ${!activeType ? styles.roomTypeButtonActive : ""}`}
+              onClick={() => setActiveType(null)}
+            >
+              All
+            </button>
             {roomTypes.map((type) => (
               <button
                 key={type}
@@ -149,20 +157,40 @@ export default function DormLayout({ dorm }) {
             setSelectedQuestion={setSelectedQuestion}
             selectedRating={selectedRating}
             setSelectedRating={setSelectedRating}
+            setFilterActive={setFilterActive}
           />
-
           {/* Dropdown Section */}
           <div className={styles.dropdown}>
-            <h4 style={{ marginBottom: "12px" }}>
-              {activeType.charAt(0).toUpperCase() + activeType.slice(1)} Reviews
-            </h4>
-            <ul>
-              {reviews[activeType]
-                .filter((r) => r[selectedQuestion] >= selectedRating)
+            <div className={styles.reviewList}>
+              {(activeType
+                ? reviews[activeType]
+                : [...reviews.single, ...reviews.double, ...reviews.suite]
+              )
+                .filter(
+                  (r) =>
+                    !filterActive || r[selectedQuestion] === selectedRating,
+                )
                 .map((review) => (
-                  <li key={review.id}>&quot;{review.comment}&quot;</li>
+                  <div key={review.id} className={styles.reviewCard}>
+                    <p className={styles.reviewHeader}>
+                      <strong> Sophomore </strong> -{" "}
+                      <strong> April 5th, 2025 </strong>
+                    </p>
+                    <p>{review.comment}</p>
+                    <p className={styles.ratings}>
+                      Storage: {review.storage_space} &nbsp; Cleanliness:{" "}
+                      {review.clean} &nbsp; Noise: {review.noise} &nbsp; Room
+                      Size: {review.size} &nbsp; Dining Hall:{" "}
+                      {review.dining_hall_proximity} &nbsp; Laundry:{" "}
+                      {review.laundry} &nbsp; Bathrooms:{" "}
+                      {review.public_bathrooms} &nbsp; Kitchens:{" "}
+                      {review.public_kitchens} &nbsp; Athletic Center Proximity:{" "}
+                      {review.ac_proximity} &nbsp; Elevators: {review.elevators}{" "}
+                      &nbsp;
+                    </p>
+                  </div>
                 ))}
-            </ul>
+            </div>
           </div>
         </section>
 
