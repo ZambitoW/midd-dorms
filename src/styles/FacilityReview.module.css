@@ -1,72 +1,106 @@
+.reviewLayout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.left {
+  flex: 1;
+  min-width: 320px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.right {
+  flex-shrink: 0;
+  min-width: 250px;
+  max-width: 400px;
+  text-align: center;
+}
+
 .reviewSummary {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-top: 1rem;
+  text-align: center;
+  gap: 2rem;
+  margin-top: 2rem;
   font-family: "Roboto", sans-serif;
-  color: #00356b; /* Middlebury blue text */
+  color: #00356b;
 }
 
 .left {
-  flex: 2;
-  min-width: 300px;
+  flex: 1;
+  min-width: 600px; /* Ensures enough space for labels + bars */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .right {
-  flex: 1;
+  flex-shrink: 0;
+  width: 160px;
   text-align: center;
-  min-width: 150px;
-  font-size: 1.2rem;
 }
 
 .ratingRow {
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
+  gap: 12px;
 }
 
 .label {
-  flex: 1;
-  font-weight: bold;
+  width: 180px;
+  font-weight: 600;
+  font-size: 1rem;
   color: #00356b;
+  white-space: nowrap;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25); /* subtle shadow */
 }
 
 .barContainer {
-  flex: 3;
-  height: 10px;
-  background-color: #dbe4ee; /* light blue-gray background */
-  border-radius: 5px;
-  margin: 0 10px;
+  flex: 1;
+  height: 12px;
+  background-color: #dbe4ee;
+  border-radius: 6px;
   overflow: hidden;
+  position: relative;
 }
 
 .barFill {
   height: 100%;
-  background-color: #00356b; /* Middlebury blue fill */
-  transition: width 0.4s ease;
+  background-color: #00356b;
+  transition: width 0.3s ease;
+  border-radius: 6px 0 0 6px;
 }
 
 .score {
   width: 50px;
-  text-align: right;
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.95rem;
   color: #00356b;
 }
 
 .average {
-  font-size: 2.2rem;
+  font-size: 2.6rem;
   font-weight: bold;
   color: #00356b;
+  margin-bottom: 0.3rem;
 }
 
 .stars {
   color: gold;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  margin-bottom: 0.2rem;
 }
 
 .reviewCount {
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
   font-size: 0.9rem;
   color: #666;
 }

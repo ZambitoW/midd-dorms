@@ -19,12 +19,10 @@ function parseFacilityRatings(facilityRatings) {
 
 const FacilityReview = ({ facilityRatings }) => {
   const totalFacilities = Object.keys(facilityRatings).length;
-  console.log(facilityRatings);
+
   const avgRating =
     Object.values(facilityRatings).reduce((sum, val) => {
-      if (parseFloat(val) === 0) {
-        return sum;
-      }
+      if (parseFloat(val) === 0) return sum;
       return sum + parseFloat(val);
     }, 0) / totalFacilities;
 
@@ -32,7 +30,13 @@ const FacilityReview = ({ facilityRatings }) => {
 
   return (
     <div className={styles.reviewSummary}>
+      {/* LEFT COLUMN: summary + bars */}
       <div className={styles.left}>
+        <div className={styles.average}>{avgRating.toFixed(1)}</div>
+        <div className={styles.stars}>★★★★★</div>
+        <div className={styles.reviewCount}>{totalFacilities} reviews</div>
+
+        {/* Rating bars */}
         {Object.entries(parsedFacilityRatings).map(([facility, rating]) => (
           <div className={styles.ratingRow} key={facility}>
             <span className={styles.label}>{facility}</span>
@@ -44,16 +48,12 @@ const FacilityReview = ({ facilityRatings }) => {
                 }}
               />
             </div>
-            <span className={styles.score}>{rating}/5</span>
+            <span className={styles.score}>{Number(rating).toFixed(1)}/5</span>
           </div>
         ))}
       </div>
 
-      <div className={styles.right}>
-        <div className={styles.average}>{avgRating.toFixed(1)}</div>
-        <div className={styles.stars}>★★★★★</div>
-        <div className={styles.reviewCount}>{totalFacilities} reviews</div>
-      </div>
+      {/* RIGHT COLUMN is not part of this component */}
     </div>
   );
 };
