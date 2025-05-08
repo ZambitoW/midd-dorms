@@ -109,15 +109,11 @@ export default function DormLayout({ dorm }) {
             </button>
           </div>
 
-          <div className={styles.mainImage}>
-            {dorm && (
-              <>
-                <p style={{ textAlign: "center", fontStyle: "italic" }}>
-                  {dorm.description}
-                </p>
-                <ImageGallery dormId={dorm.id} />
-              </>
-            )}
+          <div className={Dormstyles.descriptionAndImages}>
+            <p className={Dormstyles.description}>{dorm.description}</p>
+            <div className={Dormstyles.imageGallery}>
+              <ImageGallery dormId={dorm.id} />
+            </div>
           </div>
         </section>
 
