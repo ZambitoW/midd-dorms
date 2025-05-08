@@ -1,18 +1,16 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import PropTypes from "prop-types";
 import styles from "@/styles/Home.module.css";
+import { imageMap } from "../../data/imageMap.js";
 
-export default function ImageGallery() {
-  const images = [
-    { src: "/websiteimages/giffsinglesuite.jpg", alt: "Single Suite" },
-    { src: "/websiteimages/giffsuitesingle.jpg", alt: "Suite Single" },
-    { src: "/websiteimages/giff.jpg", alt: "Gifford Exterior" },
-    { src: "/websiteimages/giffbathroom.jpg", alt: "Bathroom" },
-    { src: "/websiteimages/giffkitchen.jpg", alt: "Kitchen" },
-    { src: "/websiteimages/gifflaundry.jpg", alt: "Laundry" },
-    { src: "/websiteimages/giffkitchenet.jpg", alt: "Kitchenette" },
-    { src: "/websiteimages/gifftrash.jpg", alt: "Trash Room" },
-  ];
+export default function ImageGallery({ dormId }) {
+  const imageSrcs = imageMap[dormId] || [];
+
+  const images = imageSrcs.map((src) => ({
+    src,
+    alt: src.split("/").pop().split(".")[0], // simple alt from filename
+  }));
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -34,53 +32,49 @@ export default function ImageGallery() {
     setSelectedImage(null);
   };
 
+  if (images.length === 0) return null;
+
   return (
     <>
       {/* Thumbnail Layout on Main Page */}
       <div className={styles.thumbnailGrid}>
-        <div className={styles.leftBigImage}>
-          <Image
-            src={images[0].src}
-            alt={images[0].alt}
-            onClick={() => openModal(images[0])}
-            width={500}
-            height={500}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              cursor: "pointer",
-            }}
-          />
-        </div>
-        <div className={styles.rightSmallImages}>
-          <Image
-            src={images[1].src}
-            alt={images[1].alt}
-            onClick={() => openModal(images[1])}
-            width={500}
-            height={250}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              cursor: "pointer",
-            }}
-          />
-          <Image
-            src={images[2].src}
-            alt={images[2].alt}
-            onClick={() => openModal(images[2])}
-            width={500}
-            height={250}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              cursor: "pointer",
-            }}
-          />
-        </div>
+        {images[0] && (
+          <div className={styles.leftBigImage}>
+            <Image
+              src={images[0].src}
+              alt={images[0].alt}
+              onClick={() => openModal(images[0])}
+              width={500}
+              height={500}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                cursor: "pointer",
+              }}
+            />
+          </div>
+        )}
+        {images.length > 1 && (
+          <div className={styles.rightSmallImages}>
+            {images.slice(1, 3).map((img) => (
+              <Image
+                key={img.src}
+                src={img.src}
+                alt={img.alt}
+                onClick={() => openModal(img)}
+                width={500}
+                height={250}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  cursor: "pointer",
+                }}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Modal with Large Image and Gallery */}
@@ -94,7 +88,6 @@ export default function ImageGallery() {
               &times;
             </span>
 
-            {/* Large Preview Image */}
             <Image
               src={selectedImage.src}
               alt={selectedImage.alt}
@@ -111,7 +104,6 @@ export default function ImageGallery() {
               }}
             />
 
-            {/* Thumbnails inside the modal */}
             <div
               className={styles.modalGallery}
               style={{
@@ -157,3 +149,7 @@ export default function ImageGallery() {
     </>
   );
 }
+
+ImageGallery.propTypes = {
+  dormId: PropTypes.string.isRequired,
+};

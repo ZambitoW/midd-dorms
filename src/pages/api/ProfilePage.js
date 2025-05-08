@@ -1,14 +1,21 @@
 import { createRouter } from "next-connect";
 import User from "../../../models/User";
 import Rating from "../../../models/Rating";
+import { getSession } from "next-auth/react";
 
 const router = createRouter();
 
 router.get(async (req, res) => {
-  const tempUserID = 1; // Placeholder, replace with dynamic user ID when available
+  const session = await getSession({ req });
+
+  if (!session || !session.user?.id) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
+  const userID = session.user.id;
   try {
-    const user = await User.query().findById(tempUserID).throwIfNotFound();
-    const reviews = await Rating.query().where("userId", tempUserID);
+    const user = await User.query().findById(userID).throwIfNotFound();
+    const reviews = await Rating.query().where("userId", userID);
 
     const ratingFields = [
       "storage_space",

@@ -11,15 +11,23 @@ export default class User extends BaseModel {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["firstName", "lastName"],
+      required: [], //["firstName", "lastName"],
 
       properties: {
         id: { type: "integer" },
+        googleId: { type: "string" },
         firstName: { type: "string" },
         lastName: { type: "string" },
         email: { type: "string" }, //Dont believe objection recognizes text as a type
         classYear: { type: "integer" },
       },
     };
+  }
+
+  // Override this method to exclude googleId
+  $formatJson(json) {
+    const formattedJson = super.$formatJson(json);
+    delete formattedJson.googleId;
+    return formattedJson;
   }
 }

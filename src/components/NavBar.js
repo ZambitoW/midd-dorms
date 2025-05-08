@@ -1,10 +1,13 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styles from "@/styles/NavBar.module.css";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const router = useRouter();
+  const { data: session } = useSession();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,33 +64,63 @@ export default function NavBar() {
         >
           About Us
         </button>
+        {session ? (
+          <div className={styles.profile_container}>
+            <div
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className={styles.profile}
+              style={{ cursor: "pointer" }}
+            >
+              <picture>
+                <source
+                  srcSet="/loginLight.png"
+                  media="(prefers-color-scheme: light)"
+                  alt="Profile"
+                  style={{ width: "20px", height: "20px" }}
+                />
+                <source
+                  srcSet="../loginDark.png"
+                  media="(prefers-color-scheme: dark)"
+                  alt="Profile"
+                  style={{ width: "20px", height: "20px" }}
+                />
+                <img
+                  src="../logoWhite.png"
+                  alt="Profile"
+                  style={{ width: "20px", height: "20px" }}
+                />
+              </picture>
+            </div>
 
-        <div
-          onClick={() => router.push("/user/ProfilePage")}
-          className={styles.profile}
-        >
-          <picture>
-            <source
-              srcset="/loginLight.png"
-              media="(prefers-color-scheme: light)"
-              alt="Profile"
-              style={{ width: "20px", height: "20px" }}
-            />
-
-            <source
-              srcset="../loginDark.png"
-              media="(prefers-color-scheme: dark)"
-              alt="Profile"
-              style={{ width: "20px", height: "20px" }}
-            />
-
-            <img
-              src="../logoWhite.png"
-              alt="Profile"
-              style={{ width: "20px", height: "20px" }}
-            />
-          </picture>
-        </div>
+            {dropdownOpen && (
+              <div className={styles.dropdown}>
+                <div
+                  onClick={() => {
+                    router.push("/user/ProfilePage");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  Profile Page
+                </div>
+                <div
+                  onClick={() => {
+                    alert("You have signed out.");
+                    signOut({ callbackUrl: "/" });
+                  }}
+                >
+                  Sign Out
+                </div>
+              </div>
+            )}
+          </div>
+        ) : (
+          <button
+            onClick={() => signIn("google")}
+            className={styles.about_button}
+          >
+            Login
+          </button>
+        )}
       </div>
     </nav>
   );
