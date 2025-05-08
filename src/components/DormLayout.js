@@ -2,11 +2,12 @@ import styles from "@/styles/Home.module.css";
 import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import ImageSlideshow from "./images";
+/*import ImageSlideshow from "./images"; **/
 import FacilityReview from "./FacilityReview";
 import stylesReview from "../styles/FacilityReview.module.css";
 import ReviewFilter from "./ReviewFilter";
 import { defaultQuestions } from "./Reviewer";
+import ImageGallery from "./imageGallery";
 
 export default function DormLayout({ dorm }) {
   const router = useRouter();
@@ -111,19 +112,14 @@ export default function DormLayout({ dorm }) {
             </button>
           </div>
 
-          {/* Updated ImageSlideshow condition */}
           <div className={styles.mainImage}>
             {dorm && (
-              <p style={{ textAlign: "center", fontStyle: "italic" }}>
-                {dorm.description}
-              </p>
-            )}
-            {dorm.id === "gifford" ? (
               <>
-                <ImageSlideshow className={styles.mainImage} />
+                <p style={{ textAlign: "center", fontStyle: "italic" }}>
+                  {dorm.description}
+                </p>
+                <ImageGallery dormId={dorm.id} />
               </>
-            ) : (
-              <></>
             )}
           </div>
         </section>

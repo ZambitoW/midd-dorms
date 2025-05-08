@@ -86,8 +86,6 @@ export default function HomeCreator() {
           </div>
         </div>
       </main>
-
-      <footer className={styles.footer}>{/* Footer will go here*/}</footer>
     </>
   );
 }

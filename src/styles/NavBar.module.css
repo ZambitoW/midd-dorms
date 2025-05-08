@@ -10,12 +10,16 @@
   padding: 12px 24px;
 
   background-color: #ffffff;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  overflow: visible;
+
   color: black;
-  box-shadow: none;
   transition:
     background-color 0.3s ease,
     box-shadow 0.3s ease,
     backdrop-filter 0.3s ease;
+
 }
 
 .navbar.scrolled {
@@ -54,6 +58,8 @@
   display: flex;
   align-items: center;
   gap: 16px;
+  position: relative;
+  overflow: visible;
 }
 
 .about_button {
@@ -132,4 +138,30 @@
     background-color: #d1d5d8;
     transform: scale(1.05);
   }
+}
+.dropdown {
+  position: absolute;
+  top: 48px; /* positions it below the profile icon */
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  min-width: 160px;
+  z-index: 1500;
+}
+.dropdown div {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.dropdown {
+  background-color: #1e1e1e;
+  border-color: #444;
+  color: white;
+}
+
+.dropdown div:hover {
+  background-color: #333;
 }

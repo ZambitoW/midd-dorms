@@ -1,9 +1,13 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/ProfilePage.module.css";
 import ReviewTable from "@/components/ReviewTable";
+import { getSession, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function ProfilePage() {
+  const { data: sessionData, status } = useSession();
+  const router = useRouter();
+
   const [userProfile, setUserProfile] = useState({
     id: null,
     firstName: "",
@@ -14,16 +18,21 @@ export default function ProfilePage() {
   });
 
   const [classChange, setClassChange] = useState(true);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessageState, setErrorMessage] = useState("");
 
-  // PlaceHolder Code/Text
+  // 👇 Redirect client-side if not authenticated
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.replace("/api/auth/signin");
+    }
+  }, [status]);
 
-  // Will need to fetch by userID when authentication is implemented
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch("/api/ProfilePage"); //Api Call will be set up in next Sprint
-
+        const response = await fetch(
+          `/api/ProfilePage?id=${sessionData.user.id}`,
+        );
         if (response.ok) {
           const data = await response.json();
           setUserProfile({
@@ -37,8 +46,11 @@ export default function ProfilePage() {
         console.error("Error fetching profile information", error);
       }
     };
-    fetchProfile();
-  }, []);
+
+    if (sessionData?.user?.id) {
+      fetchProfile();
+    }
+  }, [sessionData]);
 
   const handleClassYearChange = async () => {
     const currentYear = new Date().getFullYear();
@@ -133,7 +145,9 @@ export default function ProfilePage() {
               {classChange ? "Change Graduation Year" : "Submit"}
             </button>
           </div>
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+          {errorMessageState && (
+            <p style={{ color: "red" }}>{errorMessageState}</p>
+          )}
           <h2>Past Reviews</h2>
           <ReviewTable
             reviews={userProfile.pastReviews}
@@ -143,4 +157,23 @@ export default function ProfilePage() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/api/auth/signin",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      session,
+    },
+  };
 }

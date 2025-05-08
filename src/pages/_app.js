@@ -1,11 +1,19 @@
 import PropTypes from "prop-types";
 import "@/styles/globals.css";
 import NavBar from "@/components/NavBar";
-export default function App({ Component, pageProps }) {
+import { SessionProvider } from "next-auth/react";
+import Footer from "@/components/Footer.js";
+
+export default function App({ Component, pageProps: { session, pageProps } }) {
   return (
-    <div id="scrollContainer" className="page">
-      <NavBar />
-      <Component {...pageProps} />
+      <div className="layoutGrid">
+      <SessionProvider session={session}>
+        <NavBar />
+        <main className="pageContent">
+        <Component {...pageProps} />
+       </main>
+       <Footer />
+      </SessionProvider>
     </div>
   );
 }

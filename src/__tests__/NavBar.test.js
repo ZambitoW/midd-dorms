@@ -5,13 +5,19 @@ import ProfilePage from "@/pages/user/ProfilePage";
 import RateDormPage from "@/pages/RateDormPage";
 import Home from "@/pages/index";
 
-// This code below is to mock the router, if not the test won't pass
 jest.mock("next/router", () => ({
   useRouter: jest.fn().mockReturnValue({
     push: jest.fn(),
     pathname: "/",
   }),
 }));
+
+beforeEach(() => {
+  global.fetch = jest.fn().mockResolvedValue({
+    ok: true,
+    json: async () => ({ userInfo: {}, pastReviews: [] }),
+  });
+});
 
 describe("NavBar appears on all main pages", () => {
   const pagesToTest = [
@@ -22,9 +28,9 @@ describe("NavBar appears on all main pages", () => {
   ];
 
   pagesToTest.forEach(({ name, component }) => {
-    test(`NavBar is present on the ${name} page`, () => {
+    test(`NavBar is present on the ${name} page`, async () => {
       render(<App Component={component} pageProps={{}} />);
-      expect(screen.getByRole("navigation")).toBeInTheDocument();
+      expect(await screen.findByRole("navigation")).toBeInTheDocument();
     });
   });
 });
