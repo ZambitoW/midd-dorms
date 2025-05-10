@@ -103,12 +103,16 @@ export default function DormLayout({ dorm }) {
             <FacilityReview
               className={stylesReview.FacilityReview}
               facilityRatings={facilityRatings}
+              numReviews={Object.values(reviews).reduce(
+                (acc, arr) => acc + arr.length,
+                0,
+              )}
             />
             <button
               className={styles.secondary}
-              onClick={() => router.push("/")}
+              onClick={() => router.push("/RateDormPage")}
             >
-              Home
+              Write a Review
             </button>
           </div>
 

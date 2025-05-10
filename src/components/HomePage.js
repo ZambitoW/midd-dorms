@@ -24,8 +24,6 @@ export default function HomeCreator() {
   }, []);
 
   const toggleFilter = (category, value) => {
-    console.log("Toggling Filter:", category, value);
-
     setActiveFilters((prev) => {
       const val = value.toLowerCase();
       const isActive = prev[category].includes(val);
