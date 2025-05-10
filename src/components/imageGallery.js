@@ -55,6 +55,7 @@ export default function ImageGallery({ dormId }) {
             />
           </div>
         )}
+
         {images.length > 1 && (
           <div className={styles.rightSmallImages}>
             {images.slice(1, 3).map((img) => (
