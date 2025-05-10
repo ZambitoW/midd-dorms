@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styles from "@/styles/NavBar.module.css";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
@@ -115,7 +115,7 @@ export default function NavBar() {
           </div>
         ) : (
           <button
-            onClick={() => signIn("google")}
+            onClick={() => router.push("/login")}
             className={styles.about_button}
           >
             Login
