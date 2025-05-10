@@ -61,8 +61,47 @@
 }
 
 .stars {
-  color: gold;
+  color: var(--my-color);
   font-size: 1.5rem;
+}
+
+.partialStar {
+  display: inline-block;
+  position: relative;
+  width: 1.5rem; /* full star width */
+  height: 1.5rem;
+  overflow: hidden;
+  margin-right: 0.2rem;
+}
+
+.partialStar::before {
+  content: "★";
+  color: #eeeeee; /* empty color */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.partialStar::after {
+  content: "★";
+  color: gold;
+  position: absolute;
+  width: var(--partial-width); /* set in style attr */
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.stars,
+.partialStar,
+.emptyStar {
+  margin-right: 0.2rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  vertical-align: middle;
 }
 
 .reviewCount {

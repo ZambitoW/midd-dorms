@@ -129,7 +129,7 @@ export default function Reviewer({
 
     if (response.ok) {
       console.log(await response.json());
-      router.push("/submission");
+      router.push(`/dorms/${selectedDorm.split(" ")[0].toLowerCase()}`);
     } else {
       console.error("Failed to submit review:", response.statusText);
     }

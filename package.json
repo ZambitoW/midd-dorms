@@ -28,6 +28,7 @@
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "module-alias": "^2.2.3",
+    "nanoid": "^5.1.5",
     "next": "15.1.7",
     "next-auth": "^4.24.11",
     "next-connect": "^1.0.0",
