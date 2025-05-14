@@ -20,7 +20,7 @@ export default function ProfilePage() {
   const [classChange, setClassChange] = useState(true);
   const [errorMessageState, setErrorMessage] = useState("");
 
-  // 👇 Redirect client-side if not authenticated
+  //Redirect client-side if not authenticated
   useEffect(() => {
     if (status === "unauthenticated") {
       router.replace("/api/auth/signin");
@@ -72,8 +72,6 @@ export default function ProfilePage() {
       });
 
       if (response.ok) {
-        const updatedData = await response.json();
-        console.log("Class year updated successfully:", updatedData);
         setClassChange(!classChange);
         setErrorMessage("");
       } else {
@@ -107,6 +105,10 @@ export default function ProfilePage() {
     } catch (error) {
       console.error("Error deleting review:", error);
     }
+  };
+
+  const openEditForm = async (id) => {
+    router.push(`/reviews/${id}/edit`);
   };
 
   return (
@@ -152,6 +154,7 @@ export default function ProfilePage() {
           <ReviewTable
             reviews={userProfile.pastReviews}
             onDelete={handleDeleteReview}
+            onEdit={openEditForm}
           />
         </div>
       </div>

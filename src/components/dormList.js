@@ -49,8 +49,6 @@ export default function DormList({ dormFilter, filters = {} }) {
             return matchesYear && (noFilterActive || matchesFilters);
           });
           setDorms(filteredDorms);
-          console.log("filters:", filters);
-          console.log("filteredDorms:", filteredDorms);
         } else {
           console.error("Failed to fetch dorms:", response.statusText);
         }
