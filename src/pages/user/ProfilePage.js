@@ -30,9 +30,13 @@ export default function ProfilePage() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
+        /*
         const response = await fetch(
           `/api/ProfilePage?id=${sessionData.user.id}`,
         );
+        */
+        const response = await fetch(`/api/reviews`);
+
         if (response.ok) {
           const data = await response.json();
           setUserProfile({
@@ -60,6 +64,7 @@ export default function ProfilePage() {
     }
 
     try {
+      /*
       const response = await fetch("/api/ProfilePage", {
         method: "PUT",
         headers: {
@@ -67,6 +72,17 @@ export default function ProfilePage() {
         },
         body: JSON.stringify({
           id: userProfile.id,
+          classYear: userProfile.classYear,
+        }),
+      });
+      */
+
+      const response = await fetch(`/api/users/${userProfile.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
           classYear: userProfile.classYear,
         }),
       });
@@ -84,12 +100,21 @@ export default function ProfilePage() {
 
   const handleDeleteReview = async (id) => {
     try {
+      /*
       const response = await fetch("/api/ProfilePage", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ reviewId: id }),
+      });
+      */
+
+      const response = await fetch(`/api/reviews/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
 
       if (response.ok) {

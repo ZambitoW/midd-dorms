@@ -29,4 +29,21 @@ router.get(async (req, res) => {
   }
 });
 
+router.delete(async (req, res) => {
+  const { id } = req.query;
+
+  try {
+    const deletedReview = await Rating.query().findById(id).delete();
+
+    if (deletedReview) {
+      return res.status(200).json({ message: "Review deleted successfully" });
+    } else {
+      return res.status(404).json({ error: "Review not found" });
+    }
+  } catch (error) {
+    console.error("Error deleting review:", error.message, error.stack);
+    return res.status(500).json({ error: "Failed to delete review" });
+  }
+});
+
 export default router.handler();
