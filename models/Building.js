@@ -17,7 +17,7 @@ export default class Building extends BaseModel {
         id: { type: "string" },
         name: { type: "string" },
         category: { type: "string" },
-        description: { type: "string" }, //It doesnt look like objection recognizes text as a type
+        description: { type: "string" },
         roomType: { type: "array", items: { type: "string" } },
         amenities: { type: "array", items: { type: "string" } },
         accessibility: { type: "array", items: { type: "string" } },
