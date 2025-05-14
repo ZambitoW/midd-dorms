@@ -83,10 +83,10 @@ export default function DormLayout({ dorm }) {
     fetchReviews();
   }, [dorm]);
 
-  const reviewsRef = useRef(null);
+  const reviews_ref = useRef(null);
 
   const scrollToReviews = () => {
-    reviewsRef.current?.scrollIntoView({ behavior: "smooth" });
+    reviews_ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   if (!dorm) return <p>Loading...</p>;
@@ -119,7 +119,7 @@ export default function DormLayout({ dorm }) {
         </section>
 
         {/* Reviews Section */}
-        <section className={styles.dormSection} ref={reviewsRef}>
+        <section className={styles.dormSection} ref={reviews_ref}>
           <h2 className={styles.dormHeading} style={{ textAlign: "center" }}>
             Reviews
           </h2>
