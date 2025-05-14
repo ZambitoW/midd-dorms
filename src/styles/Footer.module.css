@@ -79,3 +79,38 @@
   margin-bottom: 0;
   padding-bottom: 0;
 }
+
+@media (max-width: 600px) {
+  .footerContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+    padding: 0 1rem;
+  }
+
+  .columns {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+  }
+
+  .column {
+    width: 80%;
+    max-width: 300px;
+    font-size: 1.05rem;
+  }
+
+  .column h4 {
+    font-size: 1.4rem;
+  }
+
+  .column a {
+    font-size: 1.2rem;
+  }
+
+  .footerBottom {
+    font-size: 1.05rem;
+  }
+}

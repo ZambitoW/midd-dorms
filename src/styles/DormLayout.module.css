@@ -74,3 +74,35 @@
   --foreground: black;
   --background: white;
 }
+
+.reviewAndMapSection {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+
+.leftColumn {
+  flex: 0 0 58%;
+  padding-right: 32px;
+  padding-left: 32px;
+}
+
+.rightColumn {
+  flex: 1;
+  max-width: 550px;
+  position: relative;
+}
+
+.stickyMapWrapper {
+  position: sticky;
+  top: 100px;
+}
+
+.mapBox {
+  width: 100%;
+  height: 430px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

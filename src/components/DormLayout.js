@@ -1,7 +1,7 @@
 import styles from "@/styles/Home.module.css";
 import PropTypes from "prop-types";
-
 import { useState, useEffect, useRef } from "react";
+import { Card, CardContent, Typography } from "@mui/material";
 import ImageGallery from "./imageGallery";
 import FacilityReview from "./FacilityReview";
 import stylesReview from "../styles/FacilityReview.module.css";
@@ -119,40 +119,41 @@ export default function DormLayout({ dorm }) {
         </section>
 
         {/* Reviews Section */}
-        <section className={styles.dormSection} ref={reviews_ref}>
-          <h2 className={styles.dormHeading} style={{ textAlign: "center" }}>
-            Reviews
-          </h2>
 
-          <div className={styles.roomTypeButtons}>
-            <button
-              key="all"
-              className={`${styles.secondary} ${!activeType ? styles.roomTypeButtonActive : ""}`}
-              onClick={() => setActiveType(null)}
-            >
-              All
-            </button>
-            {roomTypes.map((type) => (
+
+        <section className={Dormstyles.reviewAndMapSection} ref={reviews_ref}>
+          <div className={Dormstyles.leftColumn}>
+            <h2 className={styles.dormHeading}>Reviews</h2>
+
+            <div className={styles.roomTypeButtons}>
               <button
-                key={type}
-                className={`${styles.secondary} ${activeType === type ? styles.roomTypeButtonActive : ""}`}
-                onClick={() => setActiveType(type)}
+                key="all"
+                className={`${styles.secondary} ${!activeType ? styles.roomTypeButtonActive : ""}`}
+                onClick={() => setActiveType(null)}
               >
-                {type.charAt(0).toUpperCase() + type.slice(1)}
+                All
               </button>
-            ))}
-          </div>
+              {roomTypes.map((type) => (
+                <button
+                  key={type}
+                  className={`${styles.secondary} ${activeType === type ? styles.roomTypeButtonActive : ""}`}
+                  onClick={() => setActiveType(type)}
+                >
+                  {type.charAt(0).toUpperCase() + type.slice(1)}
+                </button>
+              ))}
+            </div>
 
-          <ReviewFilter
-            selectedQuestion={selectedQuestion}
-            setSelectedQuestion={setSelectedQuestion}
-            selectedRating={selectedRating}
-            setSelectedRating={setSelectedRating}
-            setFilterActive={setFilterActive}
-          />
+            <ReviewFilter
+              selectedQuestion={selectedQuestion}
+              setSelectedQuestion={setSelectedQuestion}
+              selectedRating={selectedRating}
+              setSelectedRating={setSelectedRating}
+              setFilterActive={setFilterActive}
+            />
 
-          <div className={styles.dropdown}>
-            <div className={styles.reviewList}>
+            {/* <div className={styles.dropdown}> */}
+            <div className={styles.reviewList} style={{ marginTop: "12px" }}>
               {(activeType
                 ? reviews[activeType]
                 : [...reviews.single, ...reviews.double, ...reviews.suite]
@@ -162,53 +163,71 @@ export default function DormLayout({ dorm }) {
                     !filterActive || r[selectedQuestion] === selectedRating,
                 )
                 .map((review) => (
-                  <div key={review.id} className={styles.reviewCard}>
-                    <p className={styles.reviewHeader}>
-                      <strong>Sophomore</strong> –{" "}
-                      <strong>April 5th, 2025</strong>
-                    </p>
-                    <p>{review.comment}</p>
-                    <p className={styles.ratings}>
-                      Storage: {review.storage_space} &nbsp; Cleanliness:{" "}
-                      {review.clean} &nbsp; Noise: {review.noise} &nbsp; Room
-                      Size: {review.size} &nbsp; Dining Hall:{" "}
-                      {review.dining_hall_proximity} &nbsp; Laundry:{" "}
-                      {review.laundry} &nbsp; Bathrooms:{" "}
-                      {review.public_bathrooms} &nbsp; Kitchens:{" "}
-                      {review.public_kitchens} &nbsp; Athletic Center Proximity:{" "}
-                      {review.ac_proximity} &nbsp; Elevators: {review.elevators}
-                    </p>
-                  </div>
+                  <Card
+                    key={review.id}
+                    variant="outlined"
+                    sx={{
+                      marginBottom: "16px",
+                      borderRadius: "12px",
+                      boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
+                    }}
+                  >
+                    <CardContent>
+                      <Typography variant="subtitle2" gutterBottom>
+                        <strong>Anonymous</strong> –{" "}
+                        <strong>{review.date}</strong>
+                      </Typography>
+                      <Typography variant="body1" gutterBottom>
+                        {review.comment}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Storage: {review.storage_space} &nbsp; Cleanliness:{" "}
+                        {review.clean} &nbsp; Noise: {review.noise} &nbsp; Room
+                        Size: {review.size} &nbsp; Dining Hall:{" "}
+                        {review.dining_hall_proximity} &nbsp; Laundry:{" "}
+                        {review.laundry} &nbsp; Bathrooms:{" "}
+                        {review.public_bathrooms} &nbsp; Kitchens:{" "}
+                        {review.public_kitchens} &nbsp; Athletic Center
+                        Proximity: {review.ac_proximity} &nbsp; Elevators:{" "}
+                        {review.elevators}
+                      </Typography>
+                    </CardContent>
+                  </Card>
                 ))}
             </div>
           </div>
-        </section>
 
-        {/* Map Section */}
-        <section className={styles.dormSection}>
-          <h2 className={styles.dormHeading} style={{ textAlign: "center" }}>
-            Location on Campus
-          </h2>
-          <div style={{ width: "100%", height: "500px", marginBottom: "20px" }}>
-            <iframe
-              src={
-                dorm.mapId
-                  ? `https://map.middlebury.edu/?id=229#!ce/50703?ct/68812,68815,68816?m/${dorm.mapId}?s/`
-                  : `https://map.middlebury.edu/?id=229`
-              }
-              width="100%"
-              height="100%"
-              style={{ border: "none" }}
-              loading="lazy"
-              allowFullScreen
-              title="Middlebury Dorm Map"
-            />
+          {/* Map Section */}
+          <div className={Dormstyles.rightColumn}>
+            <div className={Dormstyles.stickyMapWrapper}>
+              <h2
+                className={styles.dormHeading}
+                style={{ textAlign: "center" }}
+              >
+                Location on Campus
+              </h2>
+              <div className={Dormstyles.mapBox}>
+                <iframe
+                  src={
+                    dorm.mapId
+                      ? `https://map.middlebury.edu/?id=229#!ce/50703?ct/68812,68815,68816?m/${dorm.mapId}?s/`
+                      : `https://map.middlebury.edu/?id=229`
+                  }
+                  width="100%"
+                  height="100%"
+                  style={{ border: "none" }}
+                  loading="lazy"
+                  allowFullScreen
+                  title="Middlebury Dorm Map"
+                />
+              </div>
+              {!dorm.mapId && (
+                <p style={{ textAlign: "center", fontStyle: "italic" }}>
+                  Specific map location not yet linked to this dorm
+                </p>
+              )}
+            </div>
           </div>
-          {!dorm.mapId && (
-            <p style={{ textAlign: "center", fontStyle: "italic" }}>
-              Specific map location not yet linked to this dorm
-            </p>
-          )}
         </section>
       </main>
     </div>

@@ -20,7 +20,10 @@ export default function NavBar() {
   }, []);
 
   return (
-    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
+    <nav
+      role="navigation"
+      className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
+    >
       <div className={styles.logo_title} onClick={() => router.push("/")}>
         {}
         <picture>

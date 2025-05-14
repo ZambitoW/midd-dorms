@@ -2,6 +2,15 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "@/styles/Reviewer.module.css";
 import { useRouter } from "next/router";
+import {
+  Autocomplete,
+  TextField,
+  Slider,
+  Button,
+  Typography,
+  Box,
+} from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 export const defaultQuestions = [
   {
@@ -22,7 +31,7 @@ export const defaultQuestions = [
   {
     id: "size",
     prompt: "How big was your dorm?",
-    scale: { low: "Very Little", high: "Very Big" },
+    scale: { low: "Very Small", high: "Very Big" },
   },
   {
     id: "dining_hall_proximity",
@@ -49,12 +58,18 @@ export const defaultQuestions = [
     prompt: "How close are you to the athletic center?",
     scale: { low: "Very far", high: "Very close" },
   },
-  {
-    id: "elevators",
-    prompt: "How many elevators are in your dorm and how reliable are they?",
-    scale: { low: "No elevators", high: "Many very reliable elevators" },
-  },
+  // {
+  //   id: "elevators",
+  //   prompt: "How many elevators are in your dorm and how reliable are they?",
+  //   scale: { low: "No elevators", high: "Many very reliable elevators" },
+  // },
 ];
+
+const reviewerTheme = createTheme({
+  typography: {
+    fontFamily: '"Merriweather", serif',
+  },
+});
 
 export default function Reviewer({
   initialResponses = {},
@@ -100,7 +115,9 @@ export default function Reviewer({
 
   useEffect(() => {
     setRoomTypes(
-      dormsRoomTypes[selectedDorm.split(" ")[0].toLowerCase()] || [],
+      selectedDorm
+        ? dormsRoomTypes[selectedDorm.split(" ")[0].toLowerCase()] || []
+        : [],
     );
   }, [selectedDorm, dormsRoomTypes]);
 
@@ -135,97 +152,112 @@ export default function Reviewer({
   };
 
   return (
-    <div className={styles.overall}>
-      <h1>Rate Your Dorm Experience</h1>
+    <ThemeProvider theme={reviewerTheme}>
+      <div className={styles.pageBackground}>
+        <div className={styles.formBox}>
+          <div className={styles.overall}>
+            <h1>
+              {selectedDorm
+                ? `Rate Your ${selectedDorm} Experience`
+                : "Rate Your Dorm Experience"}
+            </h1>
+            <br />
+            <br />
 
-      {/* Dorm selector */}
-      <div className={styles.question}>
-        <h3>Select Your Dorm:</h3>
-        <select
-          value={selectedDorm}
-          onChange={(e) => setSelectedDorm(e.target.value)}
-          className={styles.select}
-        >
-          <option value="">-- Choose a dorm --</option>
-
-          {dormOptions.map((dorm) => (
-            <option key={dorm} value={dorm}>
-              {dorm}
-            </option>
-          ))}
-        </select>
-      </div>
-      {/* Room type selector */}
-      <div className={styles.question}>
-        <h3>Select Your Room Type:</h3>
-        <select
-          value={selectedRoomType}
-          onChange={(e) => setSelectedRoomType(e.target.value)}
-          className={styles.select}
-        >
-          <option value="">-- Choose a room type --</option>
-          {roomTypes.map((type) => (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          ))}
-        </select>
-      </div>
-      {questions.map((question) => (
-        <div key={question.id} className={styles.question}>
-          <p>
-            {question.prompt} (1 = {question.scale.low}, 5 ={" "}
-            {question.scale.high})
-          </p>
-
-          {[1, 2, 3, 4, 5].map((num) => (
-            <label key={`${question.id}-${num}`} className={styles.radio}>
-              <input
-                type="radio"
-                name={question.id}
-                value={num}
-                checked={responses[question.id] === num}
-                onChange={(e) => handleChange(question.id, e.target.value)}
+            {/* Dorm selector */}
+            <div className={styles.question}>
+              <Autocomplete
+                options={dormOptions}
+                value={selectedDorm}
+                onChange={(e, newValue) => setSelectedDorm(newValue || "")}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Select Your Dorm"
+                    variant="outlined"
+                  />
+                )}
+                sx={{ mb: 2 }}
               />
-              {num}{" "}
-            </label>
-          ))}
-        </div>
-      ))}
+            </div>
+            {/* Room type selector */}
+            <div className={styles.question}>
+              <Autocomplete
+                options={roomTypes}
+                value={selectedRoomType}
+                onChange={(e, newValue) => setSelectedRoomType(newValue)}
+                disabled={!selectedDorm}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Select Your Room Type"
+                    variant="outlined"
+                  />
+                )}
+                sx={{ mb: 2 }}
+              />
+            </div>
+            <br />
+            {questions.map((question) => (
+              <div key={question.id} className={styles.question}>
+                <Typography>{question.prompt}</Typography>
 
-      {/* comment box */}
-      <div className={styles.question}>
-        <h3> Please Leave a Comment on Your Room: </h3>
-        <div className={styles.textareaWrapper}>
-          <textarea
-            rows={4}
-            placeholder="Type your thoughts here..."
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            className={styles.text}
-          />
-          <div className={styles.characterCountWrapper}>
-            <p
-              className={
-                comment.length < 100 ? styles.errorText : styles.successText
+                <Slider
+                  min={1}
+                  max={5}
+                  step={1}
+                  value={responses[question.id] || 3}
+                  onChange={(e, val) => handleChange(question.id, val)}
+                  valueLabelDisplay="auto"
+                  sx={{ width: "100%", mt: 1 }}
+                />
+
+                <Box display="flex" justifyContent="space-between" mt={0.5}>
+                  <Typography fontSize="0.9rem">
+                    {question.scale.low}
+                  </Typography>
+                  <Typography fontSize="0.9rem">
+                    {question.scale.high}
+                  </Typography>
+                </Box>
+              </div>
+            ))}
+
+            {/* comment box */}
+            <div className={styles.question}>
+              <h3> Please Leave a Comment on Your Room: </h3>
+              <TextField
+                placeholder="Wow, what a well made website to help me rate dorms!"
+                multiline
+                rows={4}
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                fullWidth
+                helperText={
+                  comment.length < 100
+                    ? `You need ${100 - comment.length} more characters`
+                    : "You've reached the character minimum!"
+                }
+                error={comment.length < 100}
+                sx={{ mt: 2 }}
+              />
+            </div>
+
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleSubmit}
+              disabled={
+                !selectedDorm || !selectedRoomType || comment.length < 100
               }
+              sx={{ mt: 3 }}
             >
-              {comment.length < 100
-                ? `You need ${100 - comment.length} more characters`
-                : "You've reached the character minimum!"}
-            </p>
+              Submit
+            </Button>
           </div>
         </div>
       </div>
-
-      <button
-        onClick={handleSubmit}
-        disabled={!selectedDorm || !selectedRoomType || comment.length < 100}
-        className={styles.submitButton}
-      >
-        Submit{" "}
-      </button>
-    </div>
+    </ThemeProvider>
   );
 }
 

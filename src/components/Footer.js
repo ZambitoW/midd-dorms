@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import styles from "@/styles/Footer.module.css";
 
@@ -69,13 +70,32 @@ export default function Footer() {
             </ul>
           </div>
           <div className={styles.column}>
-            <h4>Coming Soon</h4>
-            <p>Woah look, information</p>
+            <h4>Feedback</h4>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScVgNCQWIgc_4dGBR8QeMFharzruPtQaDLkFo6PW3qvi9AJzA/viewform?usp=dialog"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Feedback Form
+                </a>
+              </li>
+              <li />
+              <li />
+            </ul>
           </div>
 
           <div className={styles.column}>
-            <h4>Stuff</h4>
-            <p>Maybe github links? or something</p>
+            <h4>More Info</h4>
+            <ul>
+              <li>
+                <Link href="/about">About us</Link>
+              </li>
+              <li>
+                <Link href="/faq">FAQs</Link>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

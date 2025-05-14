@@ -45,7 +45,7 @@ export default function ReviewFilter({
       </button>
 
       {showFilters && (
-        <div>
+        <div className={styles.filterFields}>
           <label className={styles.label}>
             Question:
             <select

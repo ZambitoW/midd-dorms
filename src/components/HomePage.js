@@ -1,6 +1,6 @@
 import styles from "@/styles/Home.module.css";
 import DormList from "@/components/dormList";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import funFacts from "../../data/funFacts";
 import FilterBar from "./filterBar";
 
@@ -11,6 +11,8 @@ function getRandomFacts(facts, count) {
 
 export default function HomeCreator() {
   const [randomFacts, setRandomFacts] = useState([]);
+  const videoRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
 
   const [activeFilters, setActiveFilters] = useState({
     roomTypes: [],
@@ -36,13 +38,48 @@ export default function HomeCreator() {
     });
   };
 
+  const toggleVideoPlayback = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      video.play();
+      setIsPaused(false);
+    } else {
+      video.pause();
+      setIsPaused(true);
+    }
+  };
+
   return (
     <>
       <main className={styles.main}>
         {/* Top Section */}
 
         <div className={styles.heroSection}>
-          <div className={styles.overlayContent}>
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className={styles.backgroundVideo}
+          >
+            <source src="/middleburyFallTrimmed.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <button className={styles.videoControl} onClick={toggleVideoPlayback}>
+            {isPaused ? (
+              <div className={styles.playIcon} />
+            ) : (
+              <div className={styles.pauseIcon}>
+                <div />
+                <div />
+              </div>
+            )}
+          </button>
+
+          <div className={styles.heroCardCombined}>
             <h1 className={styles.heroTitle}>Middlebury College Dorms</h1>
             <div className={styles.factsCard}>
               <h4>Fun Facts</h4>
@@ -52,6 +89,7 @@ export default function HomeCreator() {
                 ))}
               </ul>
             </div>
+            <div className={styles.scrollHint}>↓ Scroll to explore</div>
           </div>
         </div>
 
