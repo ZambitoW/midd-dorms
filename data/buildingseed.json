@@ -136,6 +136,92 @@
     }
   },
   {
+    "id": "forest",
+    "name": "Forest Hall",
+    "category": "upper",
+    "mapId": 571679,
+    "description": "Forest Hall is a junior/senior dorm building, very close to two major dining halls. Forest is made up of singles, which are mostly connected via a sink. Apart from multiple kitchens, and lounges, it also consists of a basement space dedicated for activities like dancing, singing and so on.",
+    "roomTypes": ["single", "double", "suites"],
+    "amenities": ["lounges", "kitchen", "laundry", "elevator"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "3 min walk",
+      "ross": "2 min walk",
+      "atwater": "7 min walk",
+      "library": "7 min walk",
+      "athletics": "10 min walk"
+    }
+  },
+  {
+    "id": "adk",
+    "name": "ADK House",
+    "category": "upper",
+    "mapId": 513982,
+    "description": "ADK House is a dorm building for junior/senior housing, and it is right next to ross dining hall. ADK consists of both singles and doubles with two small laundry rooms. ADK also has Coltrane Lounge, a large lounge space with a kitchen and a piano. There is also a pick-up stop for the shuttle bus to Hannahfords and Burlington, right in front of the house.",
+    "roomTypes": ["single", "double"],
+    "amenities": ["lounges", "kitchen", "laundry"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "3 min walk",
+      "ross": "1 min walk",
+      "atwater": "7 min walk",
+      "library": "7 min walk",
+      "athletics": "10 min walk"
+    }
+  },
+  {
+    "id": "voter",
+    "name": "Voter Hall",
+    "category": "upper",
+    "mapId": 511503,
+    "description": "Voter Hall is a great dorm for juniors and seniors seeking to live in suites. Voter has suites with 4 singles, a common room and a kitchen. Voter is located right next to the library and is only a short walk from Proctor dining hall.",
+    "roomTypes": ["suites"],
+    "amenities": ["lounges", "kitchen"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "5 min walk",
+      "ross": "6 min walk",
+      "atwater": "6 min walk",
+      "library": "2 min walk",
+      "athletics": "9 min walk"
+    }
+  },
+  {
+    "id": "munford",
+    "name": "Munford House",
+    "category": "upper",
+    "mapId": 511487,
+    "description": "Munford is a sophomore, junior/senior housing which is very close to the athletic center. Munford mostly is comprised of singles with few double rooms. It has a large lounge and a huge kitchen great for late-night studying ",
+    "roomTypes": ["suites"],
+    "amenities": ["lounges", "kitchen", "elevator", "laundry"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "9 min walk",
+      "ross": "10 min walk",
+      "atwater": "10 min walk",
+      "library": "5 min walk",
+      "athletics": "2 min walk"
+    }
+  },
+
+  {
+    "id": "chateau",
+    "name": "La Chateau",
+    "category": "upper",
+    "mapId": 61442,
+    "description": "Chateau is home to sophomores, juniors and seniors. Apart from huge lounges in the first floor, there are also classrooms which are great locations for studying. This dorm also has a water-fountain and single-use bathrooms. ",
+    "roomTypes": ["singles", "doubles"],
+    "amenities": ["lounges", "kitchen", "elevator"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "7 min walk",
+      "ross": "6 min walk",
+      "atwater": "2 min walk",
+      "library": "7 min walk",
+      "athletics": "10 min walk"
+    }
+  },
+  {
     "id": "milliken",
 
     "name": "Milliken Hall",
