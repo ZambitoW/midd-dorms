@@ -5,7 +5,7 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
-import styles from "@/styles/faq.module.css";
+import styles from "@/styles/Faq.module.css";
 
 const faqs = [
   {
