@@ -1,7 +1,7 @@
 import styles from "@/styles/Home.module.css";
 import PropTypes from "prop-types";
+import { useState, useEffect, useRef } from "react";
 import { Card, CardContent, Typography } from "@mui/material";
-import { useState, useEffect } from "react";
 import ImageGallery from "./imageGallery";
 import FacilityReview from "./FacilityReview";
 import stylesReview from "../styles/FacilityReview.module.css";
@@ -83,6 +83,12 @@ export default function DormLayout({ dorm }) {
     fetchReviews();
   }, [dorm]);
 
+  const reviewsRef = useRef(null);
+
+  const scrollToReviews = () => {
+    reviewsRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   if (!dorm) return <p>Loading...</p>;
 
   return (
@@ -100,6 +106,7 @@ export default function DormLayout({ dorm }) {
                 (acc, arr) => acc + arr.length,
                 0,
               )}
+              onScrollToReviews={scrollToReviews}
             />
           </div>
 
@@ -112,6 +119,7 @@ export default function DormLayout({ dorm }) {
         </section>
 
         {/* Reviews Section */}
+
         <section className={Dormstyles.reviewAndMapSection}>
           <div className={Dormstyles.leftColumn}>
             <h2 className={styles.dormHeading}>Reviews</h2>
