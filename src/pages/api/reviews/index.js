@@ -1,7 +1,7 @@
-/*
-import User from "../../../models/User";
-import Rating from "../../../models/Rating";
+import User from "../../../../models/User";
+import Rating from "../../../../models/Rating";
 import { getSession } from "next-auth/react";
+import { createRouter } from "next-connect";
 
 const router = createRouter();
 
@@ -55,7 +55,7 @@ router.get(async (req, res) => {
           RoomType: review.room_type,
           Rating: averageRating,
           comment: review.comment,
-          date: new Date().toISOString().split("T")[0],
+          date: review.created_at.toISOString().split("T")[0],
         };
       }),
     });
@@ -65,40 +65,4 @@ router.get(async (req, res) => {
   }
 });
 
-router.put(async (req, res) => {
-  const { id, classYear } = req.body;
-  try {
-    const user = await User.query().findById(id).throwIfNotFound();
-
-    const updatedUser = await user.$query().updateAndFetch({
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      classYear: parseInt(classYear),
-    });
-
-    return res.status(200).json(updatedUser);
-  } catch (error) {
-    console.error("Error updating user:", error.message, error.stack);
-    return res.status(500).json({ error: "Failed to update user data" });
-  }
-});
-router.delete(async (req, res) => {
-  const { reviewId } = req.body;
-
-  try {
-    const deletedReview = await Rating.query().findById(reviewId).delete();
-
-    if (deletedReview) {
-      return res.status(200).json({ message: "Review deleted successfully" });
-    } else {
-      return res.status(404).json({ error: "Review not found" });
-    }
-  } catch (error) {
-    console.error("Error deleting review:", error.message, error.stack);
-    return res.status(500).json({ error: "Failed to delete review" });
-  }
-});
-
 export default router.handler();
-*/
