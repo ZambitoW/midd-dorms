@@ -7,7 +7,16 @@ router.get(async (req, res) => {
   const { dorm_id } = req.query;
   try {
     const reviews = await Rating.query().where({ buildingId: dorm_id });
-    res.status(200).json(reviews);
+
+    const reviewsWithDate = reviews.map((review) => ({
+      ...review,
+      date: new Date(review.created_at).toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      }),
+    }));
+    res.status(200).json(reviewsWithDate);
   } catch (error) {
     console.error("Error fetching reviews:", error);
     res.status(500).json({ error: "Internal Server Error" });
