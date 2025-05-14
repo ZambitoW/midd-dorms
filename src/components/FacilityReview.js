@@ -18,7 +18,7 @@ function parseFacilityRatings(facilityRatings) {
   }, {});
 }
 
-const FacilityReview = ({ facilityRatings, numReviews }) => {
+const FacilityReview = ({ facilityRatings, numReviews, onScrollToReviews }) => {
   const totalFacilities = Object.keys(facilityRatings).length;
 
   const avgRating =
@@ -80,7 +80,9 @@ const FacilityReview = ({ facilityRatings, numReviews }) => {
       <div className={styles.right}>
         <div className={styles.average}>{avgRating.toFixed(1)}</div>
         <div className={styles.stars}>{renderStars(avgRating)}</div>
-        <div className={styles.reviewCount}>{numReviews} reviews</div>
+        <div className={styles.reviewCount} onClick={onScrollToReviews}>
+          {numReviews} reviews
+        </div>
       </div>
       <div className={styles.left}>
         {/* Rating bars */}
@@ -108,4 +110,5 @@ export default FacilityReview;
 FacilityReview.propTypes = {
   facilityRatings: PropTypes.object.isRequired,
   numReviews: PropTypes.number.isRequired,
+  onScrollToReviews: PropTypes.func.isRequired,
 };
