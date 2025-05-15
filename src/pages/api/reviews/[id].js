@@ -31,7 +31,6 @@ router.get(async (req, res) => {
 
 router.delete(async (req, res) => {
   const { id } = req.query;
-
   try {
     const deletedReview = await Rating.query().findById(id).delete();
 
