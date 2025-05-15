@@ -11,14 +11,14 @@ export default class User extends BaseModel {
   static get jsonSchema() {
     return {
       type: "object",
-      required: [], //["firstName", "lastName"],
+      required: [],
 
       properties: {
         id: { type: "integer" },
         googleId: { type: "string" },
         firstName: { type: "string" },
         lastName: { type: "string" },
-        email: { type: "string" }, //Dont believe objection recognizes text as a type
+        email: { type: "string" },
         classYear: { type: "integer" },
       },
     };

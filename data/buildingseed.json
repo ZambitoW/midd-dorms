@@ -1,20 +1,20 @@
 [
   {
-    "id": "gifford",
-    "name": "Gifford Hall",
-    "category": "sophomores",
-    "description": "Built in 1940, Gifford Hall is a sophomore residence hall that has 4- and 5-person suites in addition to singles that span accros 6 floors. Gifford is conveniently located near Proctor Dining Hall. The building also houses the Gamut Room, a student-run performance space situated in the basement, along with an outdoor amphitheater and a classroom.",
-    "roomTypes": ["single", "double", "suite"],
-    "amenities": ["lounges", "kitchen", "laundry", "elevator"],
-    "wheelchairAccessible": true,
+    "id": "allen",
+    "name": "Allen Hall",
+    "category": "freshman",
+    "mapId": 511450,
+    "description": "Allen is a small freshman dorm located about a 15 second walk from Atwater dining hall. Allen has a large lounge and a full kitchen. There is also a large parking lot next to Allen.",
+    "roomTypes": ["single", "double"],
+    "amenities": ["lounges", "kitchen"],
+    "wheelchairAccessible": false,
     "proximity": {
-      "proctor": "1 min walk",
-      "ross": "4 min walk",
-      "atwater": "6 min walk",
-      "library": "6 min walk",
-      "athletics": "10 min walk"
-    },
-    "mapId": 511466
+      "proctor": "6 min walk",
+      "ross": "3 min walk",
+      "atwater": "1 min walk",
+      "library": "4 min walk",
+      "athletics": "12 min walk"
+    }
   },
   {
     "id": "battell",
@@ -33,21 +33,22 @@
       "athletics": "10 min walk"
     }
   },
+
   {
-    "id": "allen",
-    "name": "Allen Hall",
+    "id": "hepburn",
+    "name": "Hepburn Hall",
     "category": "freshman",
-    "mapId": 511450,
-    "description": "Allen is a small freshman dorm located about a 15 second walk from Atwater dining hall. Allen has a large lounge and a full kitchen. There is also a large parking lot next to Allen.",
+    "mapId": 511470,
+    "description": "Hepburn is a freshman dorm located a 30 second walk from Proctor Dining Hall. It is also conveniently close to the athletic center and right down Chapel Hill is Davis Library ",
     "roomTypes": ["single", "double"],
-    "amenities": ["lounges", "kitchen"],
-    "wheelchairAccessible": false,
+    "amenities": ["lounges", "kitchen", "laundry", "elevator"],
+    "wheelchairAccessible": true,
     "proximity": {
-      "proctor": "6 min walk",
+      "proctor": "1 min walk",
       "ross": "3 min walk",
-      "atwater": "1 min walk",
+      "atwater": "7 min walk",
       "library": "4 min walk",
-      "athletics": "12 min walk"
+      "athletics": "7 min walk"
     }
   },
   {
@@ -67,40 +68,7 @@
       "athletics": "6 min walk"
     }
   },
-  {
-    "id": "hepburn",
-    "name": "Hepburn Hall",
-    "category": "freshman",
-    "mapId": 511470,
-    "description": "Hepburn is a freshman dorm located a 30 second walk from Proctor Dining Hall. It is also conveniently close to the athletic center and right down Chapel Hill is Davis Library ",
-    "roomTypes": ["single", "double"],
-    "amenities": ["lounges", "kitchen", "laundry", "elevator"],
-    "wheelchairAccessible": true,
-    "proximity": {
-      "proctor": "1 min walk",
-      "ross": "3 min walk",
-      "atwater": "7 min walk",
-      "library": "4 min walk",
-      "athletics": "7 min walk"
-    }
-  },
-  {
-    "id": "hadley",
-    "name": "Hadley Hall",
-    "category": "Sophomore",
-    "mapId": 511467,
-    "description": "Hadley is part of the Ross complex, so you can get to Ross dining hall without even going outside. It is also conveniently close to Bi hall. Each floor has 2 suites with 3 doubles and singles on the other side of the hall. There is laundry in the basement.",
-    "roomTypes": ["single", "double", "suite"],
-    "amenities": ["lounges", "kitchen", "laundry", "elevator"],
-    "wheelchairAccessible": true,
-    "proximity": {
-      "proctor": "4 min walk",
-      "ross": "1 min walk",
-      "atwater": "5 min walk",
-      "library": "6 min walk",
-      "athletics": "12 min walk"
-    }
-  },
+
   {
     "id": "coffrin",
     "name": "Coffrin Hall",
@@ -119,20 +87,37 @@
     }
   },
   {
-    "id": "pearsons",
-    "name": "Pearsons Hall",
-    "category": "Sophomore",
-    "mapId": 511491,
-    "description": "Pearsons is a sophomore dorm building next to Ross dining hall and only about a 3 minute walk from Proctor dining hall. There are doubles and singles in Pearsons. There is also a lounge",
-    "roomTypes": ["single", "double"],
-    "amenities": ["lounges"],
-    "wheelchairAccessible": false,
+    "id": "gifford",
+    "name": "Gifford Hall",
+    "category": "sophomores",
+    "description": "Built in 1940, Gifford Hall is a sophomore residence hall that has 4- and 5-person suites in addition to singles that span accros 6 floors. Gifford is conveniently located near Proctor Dining Hall. The building also houses the Gamut Room, a student-run performance space situated in the basement, along with an outdoor amphitheater and a classroom.",
+    "roomTypes": ["single", "double", "suite"],
+    "amenities": ["lounges", "kitchen", "laundry", "elevator"],
+    "wheelchairAccessible": true,
     "proximity": {
-      "proctor": "3 min walk",
+      "proctor": "1 min walk",
+      "ross": "4 min walk",
+      "atwater": "6 min walk",
+      "library": "6 min walk",
+      "athletics": "10 min walk"
+    },
+    "mapId": 511466
+  },
+  {
+    "id": "hadley",
+    "name": "Hadley Hall",
+    "category": "Sophomore",
+    "mapId": 511467,
+    "description": "Hadley is part of the Ross complex, so you can get to Ross dining hall without even going outside. It is also conveniently close to Bi hall. Each floor has 2 suites with 3 doubles and singles on the other side of the hall. There is laundry in the basement.",
+    "roomTypes": ["single", "double", "suite"],
+    "amenities": ["lounges", "kitchen", "laundry", "elevator"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "4 min walk",
       "ross": "1 min walk",
       "atwater": "5 min walk",
       "library": "6 min walk",
-      "athletics": "9 min walk"
+      "athletics": "12 min walk"
     }
   },
   {
@@ -154,6 +139,41 @@
     }
   },
   {
+    "id": "pearsons",
+    "name": "Pearsons Hall",
+    "category": "Sophomore",
+    "mapId": 511491,
+    "description": "Pearsons is a sophomore dorm building next to Ross dining hall and only about a 3 minute walk from Proctor dining hall. There are doubles and singles in Pearsons. There is also a lounge",
+    "roomTypes": ["single", "double"],
+    "amenities": ["lounges"],
+    "wheelchairAccessible": false,
+    "proximity": {
+      "proctor": "3 min walk",
+      "ross": "1 min walk",
+      "atwater": "5 min walk",
+      "library": "6 min walk",
+      "athletics": "9 min walk"
+    }
+  },
+
+  {
+    "id": "adk",
+    "name": "ADK House",
+    "category": "upper",
+    "mapId": 513982,
+    "description": "ADK House is a dorm building for junior/senior housing, and it is right next to ross dining hall. ADK consists of both singles and doubles with two small laundry rooms. ADK also has Coltrane Lounge, a large lounge space with a kitchen and a piano. There is also a pick-up stop for the shuttle bus to Hannahfords and Burlington, right in front of the house.",
+    "roomTypes": ["single", "double"],
+    "amenities": ["lounges", "kitchen", "laundry"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "3 min walk",
+      "ross": "1 min walk",
+      "atwater": "7 min walk",
+      "library": "7 min walk",
+      "athletics": "10 min walk"
+    }
+  },
+  {
     "id": "atwater",
     "name": "Atwater Suites",
     "category": "upper",
@@ -169,6 +189,40 @@
       "athletics": "12 min walk"
     },
     "mapId": 511451
+  },
+  {
+    "id": "forest",
+    "name": "Forest Hall",
+    "category": "upper",
+    "mapId": 571679,
+    "description": "Forest Hall is a junior/senior dorm building, very close to two major dining halls. Forest is made up of singles, which are mostly connected via a sink. Apart from multiple kitchens, and lounges, it also consists of a basement space dedicated for activities like dancing, singing and so on.",
+    "roomTypes": ["single", "double", "suites"],
+    "amenities": ["lounges", "kitchen", "laundry", "elevator"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "3 min walk",
+      "ross": "2 min walk",
+      "atwater": "7 min walk",
+      "library": "7 min walk",
+      "athletics": "10 min walk"
+    }
+  },
+  {
+    "id": "kelly",
+    "name": "Kelly Hall",
+    "category": "upper",
+    "description": "Kelly is part of the Ross building. It has suites and singles and normally houses juniors and seniors.",
+    "roomTypes": ["single", "suite"],
+    "amenities": ["lounges", "kitchen", "elevator", "Dining Hall", "Bike Room"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "5 min walk",
+      "ross": "0 min walk",
+      "atwater": "6 min walk",
+      "library": "8 min walk",
+      "athletics": "11 min walk"
+    },
+    "mapId": 511476
   },
   {
     "id": "laforce",
@@ -205,22 +259,57 @@
     "mapId": 511480
   },
   {
-    "id": "kelly",
-    "name": "Kelly Hall",
+    "id": "chateau",
+    "name": "Le Chateau",
     "category": "upper",
-    "description": "Kelly is part of the Ross building. It has suites and singles and normally houses juniors and seniors.",
-    "roomTypes": ["single", "suite"],
-    "amenities": ["lounges", "kitchen", "elevator", "Dining Hall", "Bike Room"],
+    "mapId": 61442,
+    "description": "Chateau is home to sophomores, juniors and seniors. Apart from huge lounges in the first floor, there are also classrooms which are great locations for studying. This dorm also has a water-fountain and single-use bathrooms. ",
+    "roomTypes": ["singles", "doubles"],
+    "amenities": ["lounges", "kitchen", "elevator"],
     "wheelchairAccessible": true,
     "proximity": {
-      "proctor": "5 min walk",
-      "ross": "0 min walk",
-      "atwater": "6 min walk",
-      "library": "8 min walk",
-      "athletics": "11 min walk"
-    },
-    "mapId": 511476
+      "proctor": "7 min walk",
+      "ross": "6 min walk",
+      "atwater": "2 min walk",
+      "library": "7 min walk",
+      "athletics": "10 min walk"
+    }
   },
+  {
+    "id": "meeker",
+    "name": "Meeker House",
+    "category": "upper",
+    "mapId": 511485,
+    "description": "Meeker is a junior/senior housing which is right next to Munford hall and is very close to the athletic center. Meeker is also mostly comprised of singles with few double rooms. It has a kitchen, a dining room and multiple common rooms perfect for gatherings.",
+    "roomTypes": ["single", "double"],
+    "amenities": ["lounges", "kitchen", "elevator"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "9 min walk",
+      "ross": "10 min walk",
+      "atwater": "10 min walk",
+      "library": "5 min walk",
+      "athletics": "2 min walk"
+    }
+  },
+  {
+    "id": "munford",
+    "name": "Munford House",
+    "category": "upper",
+    "mapId": 511487,
+    "description": "Munford is a sophomore, junior/senior housing which is very close to the athletic center. Munford mostly is comprised of singles with few double rooms. It has a large lounge and a huge kitchen great for late-night studying ",
+    "roomTypes": ["suites"],
+    "amenities": ["lounges", "kitchen", "elevator", "laundry"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "9 min walk",
+      "ross": "10 min walk",
+      "atwater": "10 min walk",
+      "library": "5 min walk",
+      "athletics": "2 min walk"
+    }
+  },
+
   {
     "id": "painter",
     "name": "Painter Hall",
@@ -254,5 +343,22 @@
       "athletics": "10 min walk"
     },
     "mapId": 511499
+  },
+  {
+    "id": "voter",
+    "name": "Voter Hall",
+    "category": "upper",
+    "mapId": 511503,
+    "description": "Voter Hall is a great dorm for juniors and seniors seeking to live in suites. Voter has suites with 4 singles, a common room and a kitchen. Voter is located right next to the library and is only a short walk from Proctor dining hall.",
+    "roomTypes": ["suites"],
+    "amenities": ["lounges", "kitchen"],
+    "wheelchairAccessible": true,
+    "proximity": {
+      "proctor": "5 min walk",
+      "ross": "6 min walk",
+      "atwater": "6 min walk",
+      "library": "2 min walk",
+      "athletics": "9 min walk"
+    }
   }
 ]
