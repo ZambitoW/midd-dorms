@@ -25,7 +25,6 @@ router.get(async (req, res) => {
       "ac_proximity",
       "public_bathrooms",
       "public_kitchens",
-      "elevators",
       "laundry",
     ];
 

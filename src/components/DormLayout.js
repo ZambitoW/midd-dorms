@@ -43,7 +43,6 @@ export default function DormLayout({ dorm }) {
       "public_bathrooms",
       "public_kitchens",
       "ac_proximity",
-      "elevators",
     ];
     const fetchReviews = async () => {
       if (dorm) {
@@ -257,8 +256,7 @@ export default function DormLayout({ dorm }) {
                         {review.laundry} &nbsp; Bathrooms:{" "}
                         {review.public_bathrooms} &nbsp; Kitchens:{" "}
                         {review.public_kitchens} &nbsp; Athletic Center
-                        Proximity: {review.ac_proximity} &nbsp; Elevators:{" "}
-                        {review.elevators}
+                        Proximity: {review.ac_proximity} &nbsp;
                       </Typography>
                     </CardContent>
                   </Card>

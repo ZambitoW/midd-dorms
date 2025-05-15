@@ -2,6 +2,14 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "@/styles/Editor.module.css";
 import { useRouter } from "next/router";
+import { TextField, Slider, Button, Typography, Box } from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const reviewerTheme = createTheme({
+  typography: {
+    fontFamily: '"Merriweather", serif',
+  },
+});
 
 export default function Editor({ id }) {
   const questions = [
@@ -50,11 +58,6 @@ export default function Editor({ id }) {
       prompt: "How close are you to the athletic center?",
       scale: { low: "Very far", high: "Very close" },
     },
-    {
-      id: "elevators",
-      prompt: "How many elevators are in your dorm and how reliable are they?",
-      scale: { low: "No elevators", high: "Many very reliable elevators" },
-    },
   ];
 
   const router = useRouter();
@@ -94,7 +97,7 @@ export default function Editor({ id }) {
   const handleChange = (questionId, value) => {
     setReview((prev) => ({
       ...prev,
-      [questionId]: value,
+      [questionId]: Number(value),
     }));
   };
 
@@ -102,70 +105,80 @@ export default function Editor({ id }) {
     return <div>Loading...</div>;
   } else {
     return (
-      <div>
-        {questions.map((question) => (
-          <div key={question.id} className={styles.question}>
-            <p>
-              {question.prompt} (1 = {question.scale.low}, 5 ={" "}
-              {question.scale.high})
-            </p>
+      <ThemeProvider theme={reviewerTheme}>
+        <div className={styles.pageBackground}>
+          <div className={styles.formBox}>
+            <div className={styles.overall}>
+              <h1>
+                {review.buildingId
+                  ? `Rate Your ${review.buildingId.charAt(0).toUpperCase() + review.buildingId.slice(1)} Experience`
+                  : "Rate Your Dorm Experience"}
+              </h1>
 
-            {[1, 2, 3, 4, 5].map((num) => (
-              <label key={`${question.id}-${num}`} className={styles.radio}>
-                <input
-                  type="radio"
-                  name={question.id}
-                  value={num}
-                  checked={review[question.id] === num}
+              <br />
+              {questions.map((question) => (
+                <div key={question.id} className={styles.question}>
+                  <Typography>{question.prompt}</Typography>
+
+                  <Slider
+                    min={1}
+                    max={5}
+                    step={1}
+                    value={review[question.id] || 3}
+                    onChange={(e, val) => handleChange(question.id, val)}
+                    valueLabelDisplay="auto"
+                    sx={{ width: "100%", mt: 1 }}
+                  />
+
+                  <Box display="flex" justifyContent="space-between" mt={0.5}>
+                    <Typography fontSize="0.9rem">
+                      {question.scale.low}
+                    </Typography>
+                    <Typography fontSize="0.9rem">
+                      {question.scale.high}
+                    </Typography>
+                  </Box>
+                </div>
+              ))}
+
+              {/* comment box */}
+              <div className={styles.question}>
+                <h3> Please Leave a Comment on Your Room: </h3>
+                <TextField
+                  placeholder="Type your comment here"
+                  multiline
+                  rows={4}
+                  value={review.comment}
                   onChange={(e) =>
-                    handleChange(question.id, Number(e.target.value))
+                    setReview((prev) => ({
+                      ...prev,
+                      comment: e.target.value,
+                    }))
                   }
+                  fullWidth
+                  helperText={
+                    review.comment.length < 100
+                      ? `You need ${100 - review.comment.length} more characters`
+                      : "You've reached the character minimum!"
+                  }
+                  error={review.comment.length < 100}
+                  sx={{ mt: 2 }}
                 />
-                {num}{" "}
-              </label>
-            ))}
-          </div>
-        ))}
+              </div>
 
-        {/* comment box */}
-        <div className={styles.question}>
-          <h3> Please Leave a Comment on Your Room: </h3>
-          <div className={styles.textareaWrapper}>
-            <textarea
-              rows={4}
-              value={review.comment}
-              onChange={(e) =>
-                setReview((prev) => ({
-                  ...prev,
-                  comment: e.target.value,
-                }))
-              }
-              className={styles.text}
-            />
-            <div className={styles.characterCountWrapper}>
-              <p
-                className={
-                  review.comment.length < 100
-                    ? styles.errorText
-                    : styles.successText
-                }
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => handleEditSubmit(review)}
+                disabled={review.comment.length < 100}
+                sx={{ mt: 3 }}
               >
-                {review.comment.length < 100
-                  ? `You need ${100 - review.comment.length} more characters`
-                  : "You've reached the character minimum!"}
-              </p>
+                Submit
+              </Button>
             </div>
           </div>
         </div>
-
-        <button
-          onClick={() => handleEditSubmit(review)}
-          disabled={review.comment.length < 100}
-          className={styles.submitButton}
-        >
-          Submit{" "}
-        </button>
-      </div>
+      </ThemeProvider>
     );
   }
 }

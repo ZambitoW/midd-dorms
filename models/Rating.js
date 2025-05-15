@@ -26,7 +26,6 @@ export default class Rating extends BaseModel {
         ac_proximity: { type: "integer", minimum: 0, maximum: 5 },
         public_bathrooms: { type: "integer", minimum: 0, maximum: 5 },
         public_kitchens: { type: "integer", minimum: 0, maximum: 5 },
-        elevators: { type: "integer", minimum: 0, maximum: 5 },
         laundry: { type: "integer", minimum: 0, maximum: 5 },
         comment: { type: "string" },
         created_at: { type: "string", format: "date-time" },

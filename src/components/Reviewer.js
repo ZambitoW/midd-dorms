@@ -58,11 +58,6 @@ export const defaultQuestions = [
     prompt: "How close are you to the athletic center?",
     scale: { low: "Very far", high: "Very close" },
   },
-  // {
-  //   id: "elevators",
-  //   prompt: "How many elevators are in your dorm and how reliable are they?",
-  //   scale: { low: "No elevators", high: "Many very reliable elevators" },
-  // },
 ];
 
 const reviewerTheme = createTheme({
@@ -227,7 +222,7 @@ export default function Reviewer({
             <div className={styles.question}>
               <h3> Please Leave a Comment on Your Room: </h3>
               <TextField
-                placeholder="Wow, what a well made website to help me rate dorms!"
+                placeholder="Type your comment here"
                 multiline
                 rows={4}
                 value={comment}

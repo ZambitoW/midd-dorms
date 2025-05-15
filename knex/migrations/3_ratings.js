@@ -25,7 +25,6 @@ exports.up = function (knex) {
     table.integer("ac_proximity");
     table.integer("public_bathrooms");
     table.integer("public_kitchens");
-    table.integer("elevators");
     table.integer("laundry");
     table.text("comment");
     table.timestamp("created_at").defaultTo(knex.fn.now());
