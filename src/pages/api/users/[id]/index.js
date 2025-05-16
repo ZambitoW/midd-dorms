@@ -14,7 +14,6 @@ router.put(async (req, res) => {
       lastName: user.lastName,
       email: user.email,
       classYear: parseInt(classYear),
-      complete: true,
     });
 
     return res.status(200).json(updatedUser);
