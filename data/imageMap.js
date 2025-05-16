@@ -15,7 +15,7 @@ export const imageMap = {
   coffrin: [
     "/websiteimages/coffrin/coffrinsingle.jpg",
     "/websiteimages/coffrin/coffrinkitchen.jpg",
-    "/websiteimages/coffrin/coffrinlounge.jpg",
+    "/websiteimages/coffrin/cofflounge.jpg",
   ],
 
   stewart: [
