@@ -168,7 +168,7 @@ export default function Reviewer({
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    label="Select Your Dorm"
+                    label="Select Your Dorm*"
                     variant="outlined"
                   />
                 )}
@@ -185,7 +185,7 @@ export default function Reviewer({
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    label="Select Your Room Type"
+                    label="Select Your Room Type*"
                     variant="outlined"
                   />
                 )}
@@ -220,7 +220,7 @@ export default function Reviewer({
 
             {/* comment box */}
             <div className={styles.question}>
-              <h3> Please Leave a Comment on Your Room: </h3>
+              <h3> Please Leave a Comment on Your Room* </h3>
               <TextField
                 placeholder="Type your comment here"
                 multiline
