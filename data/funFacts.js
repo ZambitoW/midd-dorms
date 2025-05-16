@@ -5,8 +5,6 @@ const funFacts = [
   "🏛️ Painter Hall is the oldest still-in-use college building in Vermont.",
   "🏰 Ross Complex used to be 4 separate buildings",
   "🌳 Forest Hall is named after a swath of forest Middlebury sold to get funding for the dorm.",
-  "Cool fact here!",
-  "I have run out of facts...",
 ];
 
 export default funFacts;

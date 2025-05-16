@@ -10,7 +10,6 @@ jest.mock("next/router", () => ({
     asPath: "/",
   }),
 }));
-
 describe("Reviewer", () => {
   test("Test if submit button is disable when first opening the page", () => {
     // Arrange

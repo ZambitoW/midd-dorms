@@ -19,7 +19,6 @@ export default function ProfilePage() {
 
   const [classChange, setClassChange] = useState(true);
   const [errorMessageState, setErrorMessage] = useState("");
-
   //Redirect client-side if not authenticated
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -53,8 +52,13 @@ export default function ProfilePage() {
 
   const handleClassYearChange = async () => {
     const currentYear = new Date().getFullYear();
-    if (userProfile.classYear < currentYear) {
-      setErrorMessage("You must enter a valid Graduation Year!");
+    if (
+      userProfile.classYear < currentYear ||
+      userProfile.classYear > currentYear + 4
+    ) {
+      setErrorMessage(
+        `Please enter a valid graduation year between ${currentYear} and ${currentYear + 4}.`,
+      );
       return;
     }
 
@@ -165,7 +169,7 @@ export async function getServerSideProps(context) {
   if (!session) {
     return {
       redirect: {
-        destination: "/api/auth/signin",
+        destination: "/login?alert=1",
         permanent: false,
       },
     };

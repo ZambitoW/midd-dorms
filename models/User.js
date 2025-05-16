@@ -20,6 +20,7 @@ export default class User extends BaseModel {
         lastName: { type: "string" },
         email: { type: "string" },
         classYear: { type: "integer" },
+        complete: { type: "boolean" },
       },
     };
   }

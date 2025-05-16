@@ -3,7 +3,6 @@ import GoogleProvider from "next-auth/providers/google";
 import User from "../../../../models/User";
 
 export const authOptions = {
-  // Configure one or more authentication providers
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -17,7 +16,7 @@ export const authOptions = {
           profile.email_verified && profile.email.endsWith("@middlebury.edu")
         );
       }
-      return true; // Do different verification for other providers that don't have `email_verified`
+      return true;
     },
     async jwt({ token, user }) {
       if (user) {
@@ -33,15 +32,15 @@ export const authOptions = {
             firstName: firstName,
             lastName: lastName,
             email: user.email,
+            classYear: 2025,
+            complete: false,
           });
         }
-        // Add user id to the token
         token.id = localUser.id;
       }
       return token;
     },
     async session({ session, token }) {
-      // Add user id to the session
       session.user.id = token.id;
       return session;
     },
