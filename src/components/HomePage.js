@@ -65,7 +65,7 @@ export default function HomeCreator() {
             playsInline
             className={styles.backgroundVideo}
           >
-            <source src="/middleburyFallTrimmed.mp4" type="video/mp4" />
+            <source src="/middleburyDrone.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <button className={styles.videoControl} onClick={toggleVideoPlayback}>
