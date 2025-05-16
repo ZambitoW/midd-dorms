@@ -3,6 +3,7 @@ import styles from "../../styles/ProfilePage.module.css";
 import ReviewTable from "@/components/ReviewTable";
 import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function ProfilePage() {
   const { data: sessionData, status } = useSession();
@@ -109,13 +110,19 @@ export default function ProfilePage() {
   };
 
   return (
-    <div style={{ paddingTop: "100px" }}>
-      <div className={styles["profile-container"]}>
-        <h1>Profile Page</h1>
-        <div>
+    <div className={styles.pageWrapper}>
+      <div className={styles.profileGrid}>
+        <div className={styles.profileSidebar}>
+          <Image
+            src="/avatar1.png"
+            alt="User avatar"
+            width={100}
+            height={100}
+            className={styles.avatar}
+          />
           <h2>{`${userProfile.firstName} ${userProfile.lastName}`}</h2>
           <p>{`Email: ${userProfile.email}`}</p>
-          <div className={styles["graduation-year-section"]}>
+          <div className={styles.graduation}>
             {classChange ? (
               <span>{`Graduation Year: ${userProfile.classYear}`}</span>
             ) : (
@@ -145,8 +152,11 @@ export default function ProfilePage() {
             </button>
           </div>
           {errorMessageState && (
-            <p style={{ color: "red" }}>{errorMessageState}</p>
+            <p className={styles.error}>{errorMessageState}</p>
           )}
+        </div>
+
+        <div className={styles.reviewSection}>
           <h2>Past Reviews</h2>
           <ReviewTable
             reviews={userProfile.pastReviews}

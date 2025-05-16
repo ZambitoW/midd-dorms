@@ -12,16 +12,7 @@ export default function LoginPage() {
         <h1 className={styles.loginTitle}>Login to MiddDorms</h1>
         <h3>Please use your Middlebury College email</h3>
         <div className={styles.loginForm}>
-          <button
-            onClick={handleLogin}
-            className={styles.loginButton}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "10px",
-            }}
-          >
+          <button onClick={handleLogin} className={styles.loginButton}>
             <img
               src="https://developers.google.com/identity/images/g-logo.png"
               alt="Google Logo"
