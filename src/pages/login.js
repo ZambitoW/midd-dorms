@@ -1,10 +1,23 @@
 import { signIn } from "next-auth/react";
 import styles from "@/styles/login.module.css";
+import { useRouter } from "next/router";
+import { useEffect, useRef } from "react";
 
 export default function LoginPage() {
   const handleLogin = () => {
     signIn("google", { callbackUrl: "/" });
   };
+
+  const router = useRouter();
+  const alertShown = useRef(false);
+
+  useEffect(() => {
+    if (router.query.alert === "1" && !alertShown.current) {
+      alert("You must be logged in to view that page.");
+      alertShown.current = true;
+      router.replace("/login", undefined, { shallow: true });
+    }
+  }, [router]);
 
   return (
     <div className={styles.loginPage}>

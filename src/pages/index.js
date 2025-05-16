@@ -2,6 +2,8 @@ import Head from "next/head";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import HomeCreator from "../components/HomePage";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,6 +16,16 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
+  const router = useRouter();
+  const { alert } = router.query;
+  const [showAlert, setShowAlert] = useState(false);
+
+  useEffect(() => {
+    if (alert === "need_review") {
+      setShowAlert(true);
+    }
+  }, [alert]);
+
   return (
     <>
       <Head>
@@ -25,6 +37,18 @@ export default function Home() {
       <div
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >
+        {showAlert && (
+          <div className={styles.alert}>
+            You need to write at least one review to access other reviews!
+            <button
+              onClick={() => setShowAlert(false)}
+              className={styles.closeButton}
+              aria-label="Close alert"
+            >
+              ×
+            </button>
+          </div>
+        )}
         <HomeCreator />
         <footer className={styles.footer}>
           {/* footer if applicable later*/}
