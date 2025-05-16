@@ -35,4 +35,6 @@ export const imageMap = {
     "/websiteimages/atwater/atwaterRoom.jpg",
     "/websiteimages/atwater/atwaterRoom2.jpg",
   ],
+
+  forest: ["/websiteimages/forest/forestRoom.jpg"],
 };
