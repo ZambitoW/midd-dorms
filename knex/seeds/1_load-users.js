@@ -5,7 +5,7 @@
 const fs = require("fs");
 
 exports.seed = function (knex) {
-  const contents = fs.readFileSync("./data/userseed.json", "utf8");
+  const contents = fs.readFileSync("./data/userseed.json");
   const data = JSON.parse(contents);
 
   // Deletes ALL existing entries

@@ -33,7 +33,6 @@ export const authOptions = {
             lastName: lastName,
             email: user.email,
             classYear: 2025,
-            complete: false,
           });
         }
         token.id = localUser.id;

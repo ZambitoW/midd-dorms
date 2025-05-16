@@ -6,7 +6,6 @@ exports.up = function (knex) {
     table.string("lastName");
     table.text("email");
     table.integer("classYear");
-    table.boolean("complete");
   });
 };
 
