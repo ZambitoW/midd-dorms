@@ -1,13 +1,21 @@
 import styles from "@/styles/Home.module.css";
 import PropTypes from "prop-types";
 import { useState, useEffect, useRef } from "react";
-import { Card, CardContent, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Box,
+  Chip,
+  Button,
+} from "@mui/material";
 import ImageGallery from "./imageGallery";
 import FacilityReview from "./FacilityReview";
 import stylesReview from "../styles/FacilityReview.module.css";
 import ReviewFilter from "./ReviewFilter";
 import { defaultQuestions } from "./Reviewer";
 import Dormstyles from "../styles/DormLayout.module.css";
+import { useRouter } from "next/router";
 
 export default function DormLayout({ dorm }) {
   const [activeType, setActiveType] = useState(null);
@@ -87,6 +95,40 @@ export default function DormLayout({ dorm }) {
 
   const scrollToReviews = () => {
     reviews_ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const [currentUserId, setCurrentUserId] = useState(null);
+
+  useEffect(() => {
+    const fetchUserId = async () => {
+      const response = await fetch("/api/auth/session");
+      const data = await response.json();
+      if (data.user) {
+        setCurrentUserId(data.user.id);
+      }
+    };
+    fetchUserId();
+  }, [currentUserId]);
+
+  const router = useRouter();
+
+  const onEditReview = (reviewId) => {
+    router.push(`/reviews/${reviewId}/edit`);
+  };
+
+  const onDeleteReview = async (reviewId) => {
+    await fetch(`/api/reviews/${reviewId}`, {
+      method: "DELETE",
+    });
+    setReviews((prevReviews) => {
+      const updatedReviews = { ...prevReviews };
+      Object.keys(updatedReviews).forEach((key) => {
+        updatedReviews[key] = updatedReviews[key].filter(
+          (review) => review.id !== reviewId,
+        );
+      });
+      return updatedReviews;
+    });
   };
 
   if (!dorm) return <p>Loading...</p>;
@@ -169,12 +211,40 @@ export default function DormLayout({ dorm }) {
                       marginBottom: "16px",
                       borderRadius: "12px",
                       boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
+                      position: "relative",
                     }}
                   >
+                    {currentUserId && review.userId === currentUserId && (
+                      <Box
+                        sx={{
+                          position: "absolute",
+                          top: 8,
+                          right: 8,
+                        }}
+                      >
+                        <Button onClick={() => onEditReview(review.id)}>
+                          Edit Review
+                        </Button>
+                        <Button onClick={() => onDeleteReview(review.id)}>
+                          Delete Review
+                        </Button>
+                      </Box>
+                    )}
+
                     <CardContent>
                       <Typography variant="subtitle2" gutterBottom>
-                        <strong>Anonymous</strong> –{" "}
-                        <strong>{review.date}</strong>
+                        {review.userId === currentUserId ? (
+                          <Chip
+                            label="Your Review"
+                            color="primary"
+                            size="small"
+                            variant="outlined"
+                          />
+                        ) : (
+                          <strong>Anonymous – </strong>
+                        )}
+
+                        <strong> {review.date}</strong>
                       </Typography>
                       <Typography variant="body1" gutterBottom>
                         {review.comment}

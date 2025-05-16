@@ -1,4 +1,3 @@
-
 import Building from "../../../../models/Building";
 import { createRouter } from "next-connect";
 
@@ -13,9 +12,6 @@ router.get(async (req, res) => {
     console.error("Error fetching dorms:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-
 });
 
-
 export default router.handler();
-

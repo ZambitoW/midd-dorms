@@ -12,7 +12,11 @@ export const imageMap = {
   ],
   battell: ["/websiteimages/battell/battellDouble.jpeg"],
 
-  coffrin: ["/websiteimages/coffrin/coffrinsingle.jpg"],
+  coffrin: [
+    "/websiteimages/coffrin/coffrinsingle.jpg",
+    "/websiteimages/coffrin/coffrinkitchen.jpg",
+    "/websiteimages/coffrin/coffrinlounge.jpg",
+  ],
 
   stewart: [
     "/websiteimages/stewart/stewdouble.jpeg",

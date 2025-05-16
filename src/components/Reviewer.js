@@ -89,7 +89,7 @@ export default function Reviewer({
   useEffect(() => {
     const fetchDormsAndRoomTypes = async () => {
       try {
-        const response = await fetch("/api/dorms");
+        const response = await fetch("/api/dorms/");
         if (response.ok) {
           const data = await response.json();
           const drt = data.reduce((dict, dorm) => {
