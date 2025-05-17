@@ -16,6 +16,7 @@ import ReviewFilter from "./ReviewFilter";
 import { defaultQuestions } from "./Reviewer";
 import Dormstyles from "../styles/DormLayout.module.css";
 import { useRouter } from "next/router";
+import DormList from "@/components/dormList";
 
 export default function DormLayout({ dorm }) {
   const [activeType, setActiveType] = useState(null);
@@ -31,6 +32,7 @@ export default function DormLayout({ dorm }) {
     double: [],
     suite: [],
   });
+  const [allDormData, setAllDormData] = useState([]);
 
   useEffect(() => {
     const categories = [
@@ -90,6 +92,34 @@ export default function DormLayout({ dorm }) {
     fetchReviews();
   }, [dorm]);
 
+  useEffect(() => {
+    const fetchDorms = async () => {
+      try {
+        const response = await fetch("/api/dorms");
+        if (response.ok) {
+          const data = await response.json();
+          setAllDormData(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch dorms:", error);
+      }
+    };
+
+    fetchDorms();
+  }, [dorm]);
+
+  const normalize = (str) => (str || "").toLowerCase().trim().replace(/s$/, "");
+
+  const suggestedDorms = allDormData
+    ? allDormData
+        .filter(
+          (d) =>
+            d.id !== dorm.id &&
+            normalize(d.category) === normalize(dorm.category),
+        )
+        .slice(0, 4)
+    : [];
+
   const reviews_ref = useRef(null);
 
   const scrollToReviews = () => {
@@ -131,7 +161,6 @@ export default function DormLayout({ dorm }) {
   };
 
   if (!dorm) return <p>Loading...</p>;
-
   return (
     <div className={Dormstyles.page}>
       <main className={Dormstyles.main}>
@@ -297,6 +326,12 @@ export default function DormLayout({ dorm }) {
             </div>
           </section>
         </div>
+        <div className={Dormstyles.suggestedSection}>
+          <div className={Dormstyles.suggestedContent}>
+            <h2 className={styles.dormHeading}>Suggested Dorms</h2>
+            <DormList dorms={suggestedDorms} />
+          </div>
+        </div>
       </main>
     </div>
   );
@@ -311,5 +346,6 @@ DormLayout.propTypes = {
     mapId: PropTypes.string,
     description: PropTypes.string,
     roomTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
+    category: PropTypes.string,
   }).isRequired,
 };
