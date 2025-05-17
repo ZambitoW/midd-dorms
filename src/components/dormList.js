@@ -4,7 +4,11 @@ import styles from "@/styles/Home.module.css";
 import PropTypes from "prop-types";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
-export default function DormList({ dormFilter, filters = {} }) {
+export default function DormList({
+  dormFilter,
+  filters = {},
+  dorms: passedDorms,
+}) {
   const [dorms, setDorms] = useState([]);
 
   const matchesCategoryFilters = (dorm, selectedFilters) => {
@@ -23,6 +27,8 @@ export default function DormList({ dormFilter, filters = {} }) {
   };
 
   useEffect(() => {
+    if (passedDorms) return;
+
     const fetchDorms = async () => {
       try {
         const response = await fetch("/api/dorms");
@@ -57,14 +63,16 @@ export default function DormList({ dormFilter, filters = {} }) {
       }
     };
     fetchDorms();
-  }, [dormFilter, filters]);
+  }, [dormFilter, filters, passedDorms]);
+
+  const displayDorms = passedDorms || dorms;
 
   return (
     <div className={styles.cardGrid}>
-      {dorms.length === 0 ? (
+      {displayDorms.length === 0 ? (
         <p>No dorms found.</p>
       ) : (
-        dorms.map((dorm) => (
+        displayDorms.map((dorm) => (
           <Link
             key={dorm.id}
             href={`/dorms/${dorm.id}`}
@@ -104,4 +112,5 @@ export default function DormList({ dormFilter, filters = {} }) {
 DormList.propTypes = {
   dormFilter: PropTypes.string.isRequired,
   filters: PropTypes.object,
+  dorms: PropTypes.array,
 };

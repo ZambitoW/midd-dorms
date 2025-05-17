@@ -2,9 +2,9 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 40px;
+  gap: 20px;
   flex-wrap: wrap;
-  padding-top: 20px;
+  padding-top: 0px;
   margin-left: 79px;
 }
 .description {
@@ -12,11 +12,11 @@
   font-style: italic;
   font-weight: 400;
   background-color: rgba(0, 53, 107, 0.05);
-  padding: 16px;
-  border-left: 4px solid #00356b;
+  padding: 22px;
+  border-left: 6px solid #00356b;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  max-width: 600px;
+  max-width: 1000px;
   margin: 0 auto 24px auto;
   text-align: center;
 }
@@ -26,17 +26,12 @@
   border-radius: 8px;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
 }
-.imageGallery {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
 
 .title {
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 800;
   text-align: center;
-  margin-top: 80px;
+  margin-top: 130px;
   margin-bottom: 32px;
   text-shadow:
     1px 1px 4px rgba(0, 53, 107, 0.6),
@@ -109,4 +104,61 @@
   justify-content: space-between;
   padding-top: 5px;
   padding: 40px;
+}
+
+.sideBySide {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  max-width: 1200px !important;
+  margin: 0 auto;
+  padding-top: 20px;
+  width: 100%;
+  align-items: center;
+  min-height: 500px;
+}
+
+.facilityReviewBox {
+  background-color: #f9f9f9;
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  flex: 1;
+  min-width: 400px;
+  max-width: 800px;
+  margin: 0;
+  align-self: center;
+}
+
+.imageGallery {
+  flex: 3;
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  align-self: center;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.mainFacts {
+  display: block;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.suggestedSection {
+  margin-top: 30px;
+  padding: 40px 20px;
+}
+
+.suggestedSection h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 32px;
+  color: #00356b;
 }

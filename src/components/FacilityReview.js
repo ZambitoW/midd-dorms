@@ -87,17 +87,19 @@ const FacilityReview = ({ facilityRatings, numReviews, onScrollToReviews }) => {
       <div className={styles.left}>
         {/* Rating bars */}
         {Object.entries(parsedFacilityRatings).map(([facility, rating]) => (
-          <div className={styles.ratingRow} key={facility}>
+          <div className={styles.ratingItem} key={facility}>
             <span className={styles.label}>{facility}</span>
-            <div className={styles.barContainer}>
-              <div
-                className={styles.barFill}
-                style={{
-                  width: `${(rating / 5) * 100}%`,
-                }}
-              />
+            <div className={styles.barAndScore}>
+              <div className={styles.barContainer}>
+                <div
+                  className={styles.barFill}
+                  style={{ width: `${(rating / 5) * 100}%` }}
+                />
+              </div>
+              <span className={styles.score}>
+                {Number(rating).toFixed(1)}/5
+              </span>
             </div>
-            <span className={styles.score}>{Number(rating).toFixed(1)}/5</span>
           </div>
         ))}
       </div>

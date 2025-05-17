@@ -7,17 +7,17 @@
 }
 
 .left {
-  flex: 1;
-  min-width: 320px;
-  max-width: 600px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  align-items: stretch;
+  width: 80%;
+  min-width: 300px;
+  margin: 0 auto;
 }
 
 .right {
   flex-shrink: 0;
-  min-width: 250px;
+  min-width: 200px;
   max-width: 400px;
   text-align: center;
 }
@@ -25,20 +25,13 @@
 .reviewSummary {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* center both sections if space allows */
+  justify-content: center;
   align-items: flex-start;
   gap: 3rem;
   margin-top: 2rem;
   font-family: "Roboto", sans-serif;
   color: #00356b;
-}
-
-.left {
-  flex: 1;
-  min-width: 600px; /* Ensures enough space for labels + bars */
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  width: 100%;
 }
 
 .right {
@@ -63,12 +56,14 @@
 }
 .barContainer {
   flex: 1;
+  min-width: 200px;
+  width: 80%;
   height: 12px;
   background-color: #dbe4ee;
   border-radius: 6px;
   overflow: hidden;
   position: relative;
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2); /* subtle depth */
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .barFill {
@@ -103,7 +98,7 @@
 .partialStar {
   display: inline-block;
   position: relative;
-  width: 1.5rem; /* full star width */
+  width: 1.5rem;
   height: 1.5rem;
   overflow: hidden;
   margin-right: 0.2rem;
@@ -111,7 +106,7 @@
 
 .partialStar::before {
   content: "★";
-  color: #eeeeee; /* empty color */
+  color: #eeeeee;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -123,7 +118,7 @@
   content: "★";
   color: gold;
   position: absolute;
-  width: var(--partial-width); /* set in style attr */
+  width: var(--partial-width);
   height: 100%;
   top: 0;
   left: 0;
@@ -143,4 +138,22 @@
   margin-top: 0.4rem;
   font-size: 0.9rem;
   color: #666;
+  cursor: pointer;
+}
+
+.ratingItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.barAndScore {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
 }
