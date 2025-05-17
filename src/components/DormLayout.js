@@ -17,6 +17,7 @@ import { defaultQuestions } from "./Reviewer";
 import Dormstyles from "../styles/DormLayout.module.css";
 import { useRouter } from "next/router";
 import DormList from "@/components/dormList";
+import Link from "next/link";
 
 export default function DormLayout({ dorm }) {
   const [activeType, setActiveType] = useState(null);
@@ -331,6 +332,9 @@ export default function DormLayout({ dorm }) {
             <h2 className={styles.dormHeading}>Suggested Dorms</h2>
             <DormList dorms={suggestedDorms} />
           </div>
+          <Link href="/" className={Dormstyles.neumorphicButton}>
+            <div className={Dormstyles.chevronLeft} />
+          </Link>
         </div>
       </main>
     </div>
