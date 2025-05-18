@@ -28,4 +28,18 @@ describe("Dorm filtering", () => {
       });
     }
   });
+  test("filters dorms by amenity: elevator", async () => {
+    render(<HomeCreator />);
+
+    const elevatorFilter = await screen.findByText(/elevator/i);
+
+    elevatorFilter.click();
+
+    await waitFor(() => {
+      const matches = screen.getAllByText(/hepburn/i);
+      expect(matches.length).toBeGreaterThan(0);
+    });
+
+    expect(screen.queryByText(/stewart/i)).not.toBeInTheDocument();
+  });
 });
