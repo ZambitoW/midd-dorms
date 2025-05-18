@@ -24,10 +24,34 @@ Development dependencies installed with:
 
 ### Additional tools you might need
 
+Tool for making keys for our rating system
+
+```
+💻 pnpm install -D nanoid
+```
+
+Tools for UI Design
+
+```
+💻 pnpm install -D @emotion/react @emotion/styles @mui/materials
+```
+
 #### Mocking fetch
 
 Tools for mocking fetch can be installed with
 
 ```
 💻 pnpm install -D @fetch-mock/jest
+```
+
+#### DB Setup
+
+Dev DB is created and seeded using knex and seed files contained within the /data directory. Before running application in development, create and seed the DB with:
+
+Our development database is created and seeded using knex and seed files which are found within the /data directory. Before running the application in the development, create and seed the DB using the following commands:
+
+```
+💻 npm exec knex migrate:rollback
+💻 npm exec knex migrate:latest
+💻 npm exec knex seed:run
 ```
