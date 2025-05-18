@@ -228,70 +228,83 @@ export default function DormLayout({ dorm }) {
                 {(activeType
                   ? reviews[activeType]
                   : [...reviews.single, ...reviews.double, ...reviews.suite]
-                )
-                  .filter(
+                ).length === 0 ? (
+                  <p>There are currently no reviews.</p>
+                ) : [
+                    ...reviews.single,
+                    ...reviews.double,
+                    ...reviews.suite,
+                  ].filter(
                     (r) =>
                       !filterActive || r[selectedQuestion] === selectedRating,
-                  )
-                  .map((review) => (
-                    <Card
-                      key={review.id}
-                      variant="outlined"
-                      sx={{
-                        marginBottom: "16px",
-                        borderRadius: "12px",
-                        boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
-                        position: "relative",
-                      }}
-                    >
-                      {currentUserId && review.userId === currentUserId && (
-                        <Box
-                          sx={{
-                            position: "absolute",
-                            top: 8,
-                            right: 8,
-                          }}
-                        >
-                          <Button onClick={() => onEditReview(review.id)}>
-                            Edit Review
-                          </Button>
-                          <Button onClick={() => onDeleteReview(review.id)}>
-                            Delete Review
-                          </Button>
-                        </Box>
-                      )}
+                  ).length === 0 ? (
+                  <p>No reviews currently meet this criteria.</p>
+                ) : (
+                  [...reviews.single, ...reviews.double, ...reviews.suite]
+                    .filter(
+                      (r) =>
+                        !filterActive || r[selectedQuestion] === selectedRating,
+                    )
+                    .map((review) => (
+                      <Card
+                        key={review.id}
+                        variant="outlined"
+                        sx={{
+                          marginBottom: "16px",
+                          borderRadius: "12px",
+                          boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
+                          position: "relative",
+                        }}
+                      >
+                        {currentUserId && review.userId === currentUserId && (
+                          <Box
+                            sx={{
+                              position: "absolute",
+                              top: 8,
+                              right: 8,
+                            }}
+                          >
+                            <Button onClick={() => onEditReview(review.id)}>
+                              Edit Review
+                            </Button>
+                            <Button onClick={() => onDeleteReview(review.id)}>
+                              Delete Review
+                            </Button>
+                          </Box>
+                        )}
 
-                      <CardContent>
-                        <Typography variant="subtitle2" gutterBottom>
-                          {review.userId === currentUserId ? (
-                            <Chip
-                              label="Your Review"
-                              color="primary"
-                              size="small"
-                              variant="outlined"
-                            />
-                          ) : (
-                            <strong>Anonymous – </strong>
-                          )}
+                        <CardContent>
+                          <Typography variant="subtitle2" gutterBottom>
+                            {review.userId === currentUserId ? (
+                              <Chip
+                                label="Your Review"
+                                color="primary"
+                                size="small"
+                                variant="outlined"
+                              />
+                            ) : (
+                              <strong>Anonymous – </strong>
+                            )}
 
-                          <strong> {review.date}</strong>
-                        </Typography>
-                        <Typography variant="body1" gutterBottom>
-                          {review.comment}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          Storage: {review.storage_space} &nbsp; Cleanliness:{" "}
-                          {review.clean} &nbsp; Noise: {review.noise} &nbsp;
-                          Room Size: {review.size} &nbsp; Dining Hall:{" "}
-                          {review.dining_hall_proximity} &nbsp; Laundry:{" "}
-                          {review.laundry} &nbsp; Bathrooms:{" "}
-                          {review.public_bathrooms} &nbsp; Kitchens:{" "}
-                          {review.public_kitchens} &nbsp; Athletic Center
-                          Proximity: {review.ac_proximity} &nbsp;
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  ))}
+                            <strong> {review.date}</strong>
+                          </Typography>
+                          <Typography variant="body1" gutterBottom>
+                            {review.comment}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            Storage: {review.storage_space} &nbsp; Cleanliness:{" "}
+                            {review.clean} &nbsp; Noise: {review.noise} &nbsp;
+                            Room Size: {review.size} &nbsp; Dining Hall:{" "}
+                            {review.dining_hall_proximity} &nbsp; Laundry:{" "}
+                            {review.laundry} &nbsp; Bathrooms:{" "}
+                            {review.public_bathrooms} &nbsp; Kitchens:{" "}
+                            {review.public_kitchens} &nbsp; Athletic Center
+                            Proximity: {review.ac_proximity} &nbsp;
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    ))
+                )}
               </div>
             </div>
 
