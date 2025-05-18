@@ -257,9 +257,6 @@ export default function Reviewer({
 }
 
 Reviewer.propTypes = {
-  dormOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
-  roomTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  complete: PropTypes.func.isRequired,
   initialResponses: PropTypes.object,
   initialComment: PropTypes.string,
 };
