@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import HomeCreator from "@/components/HomePage";
 import dorms from "../../data/buildingseed.json";
 
@@ -41,5 +41,21 @@ describe("Dorm filtering", () => {
     });
 
     expect(screen.queryByText(/stewart/i)).not.toBeInTheDocument();
+  });
+
+  test("renders no dorms when triples are selected", async () => {
+    render(<HomeCreator />);
+
+    const tripleFilter = await screen.findByText(/triple/i);
+    tripleFilter.click();
+
+    await waitFor(() => {
+      const dormSections = screen.getAllByRole("region");
+
+      for (const section of dormSections) {
+        const links = within(section).queryAllByRole("link");
+        expect(links.length).toBe(0);
+      }
+    });
   });
 });
