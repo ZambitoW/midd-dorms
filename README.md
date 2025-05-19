@@ -44,7 +44,7 @@ Tools for mocking fetch can be installed with
 💻 pnpm install -D @fetch-mock/jest
 ```
 
-#### DB Setup
+### DB Setup
 
 Dev DB is created and seeded using knex and seed files contained within the /data directory. Before running application in development, create and seed the DB with:
 
@@ -54,4 +54,13 @@ Our development database is created and seeded using knex and seed files which a
 💻 npm exec knex migrate:rollback
 💻 npm exec knex migrate:latest
 💻 npm exec knex seed:run
+
 ```
+
+### Steps for Deployment
+
+In order to be deployed:
+
+The `MiddDorm` App requires a Google Authentication Client ID
+
+The `MiddDorm` App also requires a cloud-based Database. In this case `Neon` was used!
