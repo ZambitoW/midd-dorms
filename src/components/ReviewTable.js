@@ -11,12 +11,12 @@ const ReviewTable = ({ reviews, onDelete, onEdit }) => {
       <table className={styles["review-table"]}>
         <thead>
           <tr>
-            <th>Dorm</th>
-            <th>Room Type</th>
-            <th>Overall Rating</th>
-            <th>Comment</th>
-            <th>Date</th>
-            <th>Actions</th>
+            <th className={styles.cellLabel}>Dorm</th>
+            <th className={styles.cellLabel}>Room Type</th>
+            <th className={styles.cellLabel}>Overall Rating</th>
+            <th className={styles.cellLabel}>Comment</th>
+            <th className={styles.cellLabel}>Date</th>
+            <th className={styles.cellLabel}>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -27,24 +27,20 @@ const ReviewTable = ({ reviews, onDelete, onEdit }) => {
               className={styles.rowClickable}
             >
               <td>
-                <span className={styles.cellLabel}>Dorm</span>
                 <span className={styles.cellValue}>
                   {review.Dorm.charAt(0).toUpperCase() + review.Dorm.slice(1)}
                 </span>
               </td>
               <td>
-                <span className={styles.cellLabel}>Room Type</span>
                 <span className={styles.cellValue}>
                   {review.RoomType.charAt(0).toUpperCase() +
                     review.RoomType.slice(1)}
                 </span>
               </td>
               <td>
-                <span className={styles.cellLabel}>Rating</span>
                 <span className={styles.cellValue}>{review.Rating}</span>
               </td>
               <td>
-                <span className={styles.cellLabel}>Comment</span>
                 <span className={styles.cellValue}>
                   {review.comment.length > 50
                     ? `${review.comment.slice(0, 50)}...`
@@ -52,11 +48,9 @@ const ReviewTable = ({ reviews, onDelete, onEdit }) => {
                 </span>
               </td>
               <td>
-                <span className={styles.cellLabel}>Date</span>
                 <span className={styles.cellValue}>{review.date}</span>
               </td>
               <td onClick={(e) => e.stopPropagation()}>
-                <span className={styles.cellLabel}>Actions</span>
                 <div className={styles.actionButtonGroup}>
                   <button
                     className={styles.tableButton}
