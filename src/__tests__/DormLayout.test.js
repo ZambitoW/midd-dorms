@@ -45,18 +45,21 @@ beforeEach(() => {
         json: () => Promise.resolve([]),
       });
     }
+
     if (url === "/api/auth/session") {
       return Promise.resolve({
         ok: true,
         json: () => Promise.resolve({ user: { id: 1 } }),
       });
     }
+
     return Promise.resolve({
       ok: true,
       json: () => Promise.resolve({}),
     });
   });
 });
+
 
 describe("DormLayout", () => {
   test("Shows dorm name and description", () => {
@@ -76,6 +79,7 @@ describe("DormLayout", () => {
     expect(screen.getByText("Gifford Hall")).toBeInTheDocument();
     expect(screen.getByText("Gifford description")).toBeInTheDocument();
   });
+
 
   test("Renders room type buttons", () => {
     render(
@@ -116,4 +120,5 @@ describe("DormLayout", () => {
     expect(editButtons.length).toBe(1);
     expect(deleteButtons.length).toBe(1);
   });
+
 });
