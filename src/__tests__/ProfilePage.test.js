@@ -1,9 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import ProfilePage from "@/pages/user/ProfilePage";
-import { SessionProvider } from "next-auth/react"; // Import SessionProvider
-import { useRouter } from "next/router"; // Import useRouter
+import { SessionProvider } from "next-auth/react";
+import { useRouter } from "next/router";
 
-// Mocking useRouter
 jest.mock("next/router", () => ({
   useRouter: jest.fn(),
 }));
@@ -23,10 +22,9 @@ beforeEach(() => {
     }),
   });
 
-  // Mock the return value of useRouter
   useRouter.mockReturnValue({
     push: jest.fn(),
-    pathname: "/profile", // Adjust the pathname as needed
+    pathname: "/profile",
   });
 });
 
