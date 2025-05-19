@@ -98,17 +98,29 @@ export default function HomeCreator() {
         <div className={styles.bottomSection}>
           <div className={styles.dormContentWrapper}>
             <div className={styles.mainContent}>
-              <section className={styles.dormSection}>
+              <section
+                className={styles.dormSection}
+                role="region"
+                aria-label="First Year Dorms"
+              >
                 <h2 className={styles.dormHeading}>First Year Dorms</h2>
                 <DormList dormFilter="first" filters={activeFilters} />
               </section>
 
-              <section className={styles.dormSection}>
+              <section
+                className={styles.dormSection}
+                role="region"
+                aria-label="Second Year Dorms"
+              >
                 <h2 className={styles.dormHeading}>Second Year Dorms</h2>
                 <DormList dormFilter="second" filters={activeFilters} />
               </section>
 
-              <section className={styles.dormSection}>
+              <section
+                className={styles.dormSection}
+                role="region"
+                aria-label="Junior/Senior Year Dorms"
+              >
                 <h2 className={styles.dormHeading}>Junior/Senior Year Dorms</h2>
                 <DormList dormFilter="junior" filters={activeFilters} />
               </section>
