@@ -174,7 +174,7 @@
     gap: 8px;
   }
 
-  .about_button {
+  /* .about_button {
     font-size: 0.75rem;
     padding: 6px 10px;
     border-radius: 6px;
@@ -185,7 +185,7 @@
     width: 28px;
     font-size: 0.7rem;
     border-radius: 6px;
-  }
+  } */
 
   .navbar {
     height: 80px;

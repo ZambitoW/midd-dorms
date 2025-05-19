@@ -127,7 +127,7 @@ export default function Editor({ id }) {
                     value={review[question.id] || 3}
                     onChange={(e, val) => handleChange(question.id, val)}
                     valueLabelDisplay="auto"
-                    sx={{ width: "100%", mt: 1 }}
+                    sx={{ width: "100%", mt: 1, color: "#00356b" }}
                   />
 
                   <Box display="flex" justifyContent="space-between" mt={0.5}>
