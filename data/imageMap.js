@@ -19,7 +19,7 @@ export const imageMap = {
   ],
 
   stewart: [
-    "/websiteimages/stewart/stewdouble.jpeg",
+    "/websiteimages/stewart/stewdouble.JPEG",
     "/websiteimages/stewart/stewartdouble.jpg",
     "/websiteimages/stewart/stewartcloset.jpg",
     "/websiteimages/stewart/stewbathroom.jpg",
@@ -41,4 +41,11 @@ export const imageMap = {
   ],
 
   forest: ["/websiteimages/forest/forestRoom.jpg"],
+
+  munford: [
+    "/websiteimages/munfordhouse/munford.JPEG",
+    "/websiteimages/munfordhouse/munfordbathroom.JPEG",
+    "/websiteimages/munfordhouse/munfordstudy.JPEG",
+    "/websiteimages/munfordhouse/munfordkitchen.JPEG",
+  ],
 };
