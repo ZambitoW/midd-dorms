@@ -27,23 +27,36 @@ const ReviewTable = ({ reviews, onDelete, onEdit }) => {
               className={styles.rowClickable}
             >
               <td>
-                {review.Dorm.charAt(0).toUpperCase() + review.Dorm.slice(1)}
+                <span className={styles.cellLabel}>Dorm</span>
+                <span className={styles.cellValue}>
+                  {review.Dorm.charAt(0).toUpperCase() + review.Dorm.slice(1)}
+                </span>
               </td>
               <td>
-                {review.RoomType.charAt(0).toUpperCase() +
-                  review.RoomType.slice(1)}
+                <span className={styles.cellLabel}>Room Type</span>
+                <span className={styles.cellValue}>
+                  {review.RoomType.charAt(0).toUpperCase() +
+                    review.RoomType.slice(1)}
+                </span>
               </td>
-              <td>{review.Rating}</td>
               <td>
-                <div>
+                <span className={styles.cellLabel}>Rating</span>
+                <span className={styles.cellValue}>{review.Rating}</span>
+              </td>
+              <td>
+                <span className={styles.cellLabel}>Comment</span>
+                <span className={styles.cellValue}>
                   {review.comment.length > 50
                     ? `${review.comment.slice(0, 50)}...`
                     : review.comment}
-                </div>
+                </span>
               </td>
-
-              <td>{review.date}</td>
+              <td>
+                <span className={styles.cellLabel}>Date</span>
+                <span className={styles.cellValue}>{review.date}</span>
+              </td>
               <td onClick={(e) => e.stopPropagation()}>
+                <span className={styles.cellLabel}>Actions</span>
                 <div className={styles.actionButtonGroup}>
                   <button
                     className={styles.tableButton}
