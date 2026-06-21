@@ -107,4 +107,4 @@ The app requires two environment variables:
 ## Contributors
 
 Built by a 5-person team at Middlebury College.  
-[William Zambito](https://github.com/ZambitoW) — Backend architecture, database schema, Agile Scrum lead
+[William Zambito](https://github.com/ZambitoW) — Backend architecture, database schema design, Google OAuth integration, profile page, Agile Scrum lead
