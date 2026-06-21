@@ -1,66 +1,110 @@
-# Project Skeleton
+# MiddDorms — Campus Housing Rating Platform
 
-## Project Workflow Status Badge
+A full-stack web application that allows Middlebury College students to browse, rate, and review campus dormitories — helping students make more informed choices during room selection.
 
-![workflow status](https://github.com/csci312a-s25/project-camelshump/actions/workflows/node.js.yml/badge.svg)
+> Built with a 5-person engineering team using Agile Scrum methodology (Spring 2025)
 
-## Project Description
+---
 
-MiddDorms is an online housing rating system that allows current Middlebury College students to share their reviews of their housing experiences. It provides students with valuable information of dorm buildings and their room types to make more informed choices during room selection. MiddDorms allows students to browse through the different dorms and see their key ratings (noise, cleanliness, amenities) which might help them choose a dorm room more suited to their needs.
+## Screenshots
 
-## Project Link
+### Home Page
 
-https://camelshump.csci312.dev
+![Home page](screenshots/screenshot-home.png)
 
-## Creation
+### Browse Dorms
 
-This project skeleton has been setup similar to our assignments and practicals. It is a Next.JS application, created with create-next-app `💻 npx create-next-app@latest`, which uses Jest and Testing Library for testing, ESLint for static analysis, Prettier for styling, and is configured to use GitHub actions for testing pull requests.
+![Browse dorms](screenshots/screenshot-browse.png)
 
-Development dependencies installed with:
+### Dorm Detail & Ratings
 
-```
-💻 pnpm install -D jest jest-environment-jsdom husky lint-staged prettier eslint-config-prettier @testing-library/react @testing-library/jest-dom eslint-plugin-testing-library cross-env
-```
+![Dorm detail](screenshots/screenshot-dorm-detail.png)
 
-### Additional tools you might need
+### Student Reviews & Campus Map
 
-Tool for making keys for our rating system
+![Reviews and map](screenshots/screenshot-reviews.png)
 
-```
-💻 pnpm install -D nanoid
-```
+### Write a Review
 
-Tools for UI Design
+![Review form](screenshots/screenshot-review-form.png)
 
-```
-💻 pnpm install -D @emotion/react @emotion/styles @mui/materials
-```
+---
 
-#### Mocking fetch
+## What It Does
 
-Tools for mocking fetch can be installed with
+Students can browse all campus dorms organized by year (First Year, Second Year, etc.), filter by room type and amenities, and view per-dorm ratings across storage, cleanliness, noise, size, dining hall proximity, laundry, bathrooms, kitchens, and AC proximity. Reviews are anonymous and filterable by room type. Each dorm page also shows a live campus map pin via the Middlebury Concept3D map.
 
-```
-💻 pnpm install -D @fetch-mock/jest
-```
+Authentication is handled via Google OAuth so only Middlebury students can contribute reviews.
 
-### DB Setup
+---
 
-Dev DB is created and seeded using knex and seed files contained within the /data directory. Before running application in development, create and seed the DB with:
+## Tech Stack
 
-Our development database is created and seeded using knex and seed files which are found within the /data directory. Before running the application in the development, create and seed the DB using the following commands:
+| Layer    | Technology                                      |
+| -------- | ----------------------------------------------- |
+| Frontend | Next.js, React, MUI (Material UI)               |
+| Backend  | Node.js, Next.js API routes                     |
+| Database | PostgreSQL via Knex.js (dev), Neon (production) |
+| Auth     | Google OAuth                                    |
+| Testing  | Jest, Testing Library                           |
+| CI/CD    | GitHub Actions                                  |
 
-```
-💻 npm exec knex migrate:rollback
-💻 npm exec knex migrate:latest
-💻 npm exec knex seed:run
+---
+
+## Project Structure
 
 ```
+midd-dorms/
+├── src/                  # Next.js pages and components
+├── models/               # Database models
+├── knex/                 # Migrations and seeds
+├── data/                 # Seed data
+├── public/               # Static assets
+└── __mocks__/            # Jest mocks
+```
 
-### Steps for Deployment
+---
 
-In order to be deployed:
+## Local Setup
 
-The `MiddDorm` App requires a Google Authentication Client ID
+**Install dependencies:**
 
-The `MiddDorm` App also requires a cloud-based Database. In this case `Neon` was used!
+```bash
+pnpm install
+```
+
+**Set up the database:**
+
+```bash
+npm exec knex migrate:rollback
+npm exec knex migrate:latest
+npm exec knex seed:run
+```
+
+**Run the development server:**
+
+```bash
+npm run dev
+```
+
+**Run tests:**
+
+```bash
+npm test
+```
+
+---
+
+## Deployment
+
+The app requires two environment variables:
+
+- `GOOGLE_CLIENT_ID` — Google OAuth client ID for authentication
+- `DATABASE_URL` — Connection string for a cloud PostgreSQL database (Neon recommended)
+
+---
+
+## Contributors
+
+Built by a 5-person team at Middlebury College.  
+[William Zambito](https://github.com/ZambitoW) — Backend architecture, database schema, Agile Scrum lead
